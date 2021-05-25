@@ -1,0 +1,28 @@
+name: Code Formatting
+
+on:
+  push:
+    paths:
+      - "**.java"
+
+jobs:
+  formatting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout Repository
+
+      - uses: axel-op/googlejavaformat-action@v3
+        name: Format Code
+        with:
+          args: "--skip-sorting-imports --replace --aosp"
+          commitMessage: "🤖 Formatted code"
+          skipCommit: true
+
+      - name: Git Auto Commit
+        if: github.ref != 'refs/heads/main'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 🤖 Automated Code Formatting (bot)
+          commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
