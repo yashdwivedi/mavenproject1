@@ -30,7 +30,8 @@ jobs:
 
       - name: Upload artifacts/test results
         uses: actions/upload-artifact@v2
+        if: failure()
         with:
           name: sure-fire reports
-          path: **/target/surefire-reports/
+          path: "**/target/surefire-reports/"
           retention-days: 5
