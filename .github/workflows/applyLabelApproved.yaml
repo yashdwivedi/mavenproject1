@@ -4,6 +4,8 @@ jobs:
   labelWhenApproved:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Check and Apply label
         uses: pullreminders/label-when-approved-action@master
         env:
