@@ -1,4 +1,4 @@
-package com.github.TeamRocketBalleBalle.Ricktionary;
+package com.github.TeamRocketBalleBalle.Ricktionary.Server;
 
 /**
  * Hello world!
