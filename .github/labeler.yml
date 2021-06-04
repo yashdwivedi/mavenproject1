@@ -1,5 +1,15 @@
 # add a Review pending label on all new PR
 Review Pending:
-    - ./**/*
-    - ./*
-    - src/**/*
+    - **/*.*
+
+Server:
+    - Server/**
+
+Client:
+    - Client/**
+
+Resources:
+    - Resources/**
+
+Game Logic:
+    - Flowcharts/**
