@@ -1,6 +1,6 @@
 # add a Review pending label on all new PR
 Review Pending:
-    - /**/*.*
+    - "**"
 
 Server:
     - Server/**
