@@ -4,7 +4,23 @@ class Room{
     - ImageHash : randomly selected
 
     -- methods --
-    + Timer?
+    + Timer
 }
-
+class GameMode {
+    -- Attributes --
+    - boolean GameEnded = False
+    - Winner
+    -- Methods --
+    + PlayTurn
+    + InputPhase
+    ' + EndPhase
+}
+note left of GameMode::PlayTurn
+Processing the input from user....
+endnote
+note left of GameMode::InputPhase
+Server takes Data Packet 
+Introduction of TickRate
+Stores it in Server queue
+endnote 
 @enduml
