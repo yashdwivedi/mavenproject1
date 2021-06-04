@@ -1,0 +1,18 @@
+@startuml
+start
+:Room Object;
+:Starts game;
+: Sends image hash;
+while (Have all clients loaded the image?) is (no :/)
+    :wait;
+endwhile (all loaded ^-^)
+:Start timer;
+while (Start 🌟 game loop)
+:Put on thinking caps;
+:think;
+endwhile
+: Game Ends, Room Destroys itself
+Losers get RickRolled
+Winner gets a ¯\_(ツ)_/¯;
+stop
+@enduml

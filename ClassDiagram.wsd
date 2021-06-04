@@ -1,0 +1,10 @@
+@startuml
+class Room{
+    - noOfPlayers : int -> 8 players?
+    - ImageHash : randomly selected
+
+    -- methods --
+    + Timer?
+}
+
+@enduml
