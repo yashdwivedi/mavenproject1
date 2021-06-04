@@ -7,11 +7,18 @@ while (Have all clients loaded the image?) is (no :/)
     :wait;
 endwhile (all loaded ^-^)
 :Start timer;
-while (Start 🌟 game loop)
-:Put on thinking caps;
-:think;
-endwhile
-: Game Ends, Room Destroys itself
+while (Start 🌟 game loop) is (started)
+:get input from user;
+while (input is right) is (no)
+:take more input
+show the input in chat ;
+endwhile (guessed) 
+:Increment the score
+Hide the answer
+Announce in the chat;
+
+endwhile (ended)
+:Game Ends, Room Destroys itself
 Losers get RickRolled
 Winner gets a ¯\_(ツ)_/¯;
 stop
