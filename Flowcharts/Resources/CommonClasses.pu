@@ -1,0 +1,20 @@
+@startuml
+
+abstract class Communication{
+    + static send(LoadScene, Player)
+    + static send(GameState, Player)
+}
+class LoadScene{
+    - MATCHMAKING_SCENE = 1
+    - LOAD_IMAGE
+    - GAME_SCENE = 2
+    - WINNER_SCENE = 3
+    - LOSER_SCENE = 4
+    ' TODO: Decide this part in Room
+}
+
+Communication <|-- LoadScene
+Communication <|-- GameStates
+
+
+@enduml

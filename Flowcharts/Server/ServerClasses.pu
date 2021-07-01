@@ -4,28 +4,32 @@ class Server {
     + listen()
 }
 class Room {
+    - imageHash: String
     - ArrayList: Players
+    - Map<Players, Score>
     - GameMode: mode
     - int: tickRate (ms)
     - int: curTick or tick
+    
     + addPlayer()
     + ready() -> bool
     + endGame()
     - sendMessage(Message)
     - updateGameState()
+    + startSetup() 
     
 }
 class GameMode{
     + gameEnded()
     + processInput()
-    + getScores() 
+    + getScores()
 }
-class Players{
+class Player{
     - Socket
     - InputStream
     - OutputStream
-    + getOutputStream()
-    + getInputStream()
+    - name
+    - imageLoaded: boolean
 }
 note left of Server::listen()
  start accepting
