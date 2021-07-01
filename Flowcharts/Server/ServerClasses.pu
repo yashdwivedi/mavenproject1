@@ -1,0 +1,35 @@
+@startuml
+class Server {
+    - ArrayList: Rooms
+    + listen()
+}
+class Room {
+    - ArrayList: Players
+    - GameMode: mode
+    - int: tickRate (ms)
+    - int: curTick or tick
+    + addPlayer()
+    + ready() -> bool
+    + endGame()
+    - sendMessage(Message)
+    - updateGameState()
+    
+}
+class GameMode{
+    + gameEnded()
+    + processInput()
+    + getScores() 
+}
+class Players{
+    - Socket
+    - InputStream
+    - OutputStream
+    + getOutputStream()
+    + getInputStream()
+}
+note left of Server::listen()
+ start accepting
+  connections and 
+  making Room Threads
+end note
+@enduml

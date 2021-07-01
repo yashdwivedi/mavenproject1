@@ -1,0 +1,36 @@
+@startuml
+start
+:Server loads config from a yaml file; 
+:Server starts listening on port;
+:Create an ArrayList of Room objects;
+:Add one instance of Room object;
+repeat
+    :servSock.accept();
+    :Create an instance of __ClientSocket()__
+    passing in the socket;
+    :Room.add(ClientSocket)
+    __Send a waiting message__ to the client
+    So the client can display the Waiting
+    screen in the UI;
+    ' For the message mesa was thinking, ki send integer values w/ descriptive variable names just like how BorderLayout.CENTER constants work
+
+    if (Room.ready()? (8 players in room)) then (yes)
+        split 
+            :start the Room thread;
+            detach
+        split again
+            :Add a new instance of
+            Room() to the ArrayList
+            at 0 index;
+        end split
+    else (no)
+    endif
+repeat while (forever till KeyboardInterrupt)
+-> ctrl+c;
+:Iterate through ArrayList
+call the Room.end()
+function to __gracefully__ 
+disconnect all the clients;
+stop
+' Test case idea: start the connection, make and connect sockets to the server, and check whether arraylist is created and stuff
+@enduml

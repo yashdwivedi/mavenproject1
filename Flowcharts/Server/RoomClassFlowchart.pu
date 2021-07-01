@@ -1,0 +1,16 @@
+@startuml
+start
+:Send all clients show GameScreen message;
+:start tick count;
+while (GameMode.ended() != true)
+    if (tick < tickRate) then (yes)
+        :collect and verify and sanitise
+        user input;
+        :tick = time.now() - tickStartTime;
+    else (no)
+        :tickStartTime = time.now();
+        :GameMode.playTurn(userInput dictionary);
+    endif
+endwhile
+    :game ends (Room.endGame());
+@enduml
