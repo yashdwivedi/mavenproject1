@@ -1,4 +1,5 @@
 endif
+endswitch
 enduml
 endwhile
 startuml
