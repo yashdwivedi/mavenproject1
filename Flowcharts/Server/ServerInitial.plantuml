@@ -32,5 +32,5 @@ call the Room.end()
 function to __gracefully__ 
 disconnect all the clients;
 stop
-' Test case idea: start the connection, make and connect sockets to the server, and check whether arraylist is created and stuff
+' Test case idea: start the connection, make and connect sockets to the server, and check whether ArrayList is created and stuff
 @enduml
