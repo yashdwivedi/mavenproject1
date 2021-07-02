@@ -1,1 +1,3 @@
 junit
+qos
+logback
