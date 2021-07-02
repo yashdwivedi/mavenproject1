@@ -14,7 +14,7 @@ public class Server {
     public Server(String ip, int port) {
         this.ip = ip;
         this.port = port;
-        logger = LoggerFactory.getLogger("Rictionary.Server");
+        logger = LoggerFactory.getLogger("Ricktionary.Server");
     }
 
     public Server() {
