@@ -1,3 +1,4 @@
 junit
-qos
 logback
+qos
+slf
