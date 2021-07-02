@@ -28,9 +28,8 @@ public class Server {
     public void listen() {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             logger.info("server started");
-        } catch (IOException ex){
+        } catch (IOException ex) {
             logger.error("Something happened in Server: ", ex);
         }
     }
-
 }
