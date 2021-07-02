@@ -8,7 +8,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.javacodegeeks.examples.logbackexample.beans" level="INFO" additivity="false">
+    <logger name="Ricktionary.Server" level="INFO" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
 
