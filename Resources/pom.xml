@@ -17,6 +17,13 @@
         <maven.compiler.source>15</maven.compiler.source>
         <maven.compiler.target>15</maven.compiler.target>
     </properties>
+    <repositories>
+        <repository>
+            <id>com.github.TeamRocketBalleBalle.Ricktionary</id>
+            <name>Resources</name>
+            <url>file:${project.basedir}/Resources</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>

@@ -1,20 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 /**
  * @author Yash
  */
-public class gs extends javax.swing.JFrame implements ActionListener {
+public class GameScreen extends javax.swing.JFrame implements ActionListener {
 
 
     // Variables declaration - do not modify
@@ -35,10 +30,7 @@ public class gs extends javax.swing.JFrame implements ActionListener {
      * Creates new form NewJFrame
      */
 
-    public gs() {
-
-//        scaledImage();
-//        System.out.print(bg.getX(), bg.getY());
+    public GameScreen() {
         initComponents();
 
     }
@@ -46,6 +38,7 @@ public class gs extends javax.swing.JFrame implements ActionListener {
     /**
      * @param args the command line arguments
      */
+    //Main Method
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -60,36 +53,23 @@ public class gs extends javax.swing.JFrame implements ActionListener {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(gs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GameScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(gs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GameScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(gs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GameScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(gs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GameScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new gs();
+            new GameScreen();
         });
     }
-    /**
-     public String image()
-     {
-     * Trynig to use it for randomly generating the images in Picture Area
 
-     ArrayList<String> array = new ArrayList<>();
-     array.add("test.png");
-     array.add("gameScreenBg.gif");
-     array.add("easy.gif");
-     Random random = new Random();
-
-     return array.get(random.nextInt(3));
-     }
-     */
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -158,10 +138,6 @@ public class gs extends javax.swing.JFrame implements ActionListener {
         display.setRows(5);
         display.setEditable(false);
         jScrollPane1.setViewportView(display);
-        ImageIcon i3 = new ImageIcon(ClassLoader.getSystemResource("test.jpg"));
-        Image i4 = i3.getImage().getScaledInstance(416, 594, Image.SCALE_DEFAULT);
-        ImageIcon rimage = new ImageIcon(i4);
-        picture.setIcon(rimage);
 
         send.setText("Send");
 
@@ -253,33 +229,12 @@ public class gs extends javax.swing.JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        final File file = new File(String.valueOf(ClassLoader.getSystemResource("test.jpg")));
-        String picName = file.getName();
         String displayText = display.getText();
         String inputText = input.getText();
-
-        int c = 0;
-        String modPicName = "";
-        for (int i = 0; i < picName.length(); i++) {
-            if (picName.charAt(i) == '.') {
-                c = i;
-                break;
-            } else continue;
-
-        }
-
-        for (int j = 0; j < c; j++) {
-            modPicName = modPicName + picName.charAt(j);
-        }
-        System.out.println(inputText + " " + modPicName);
-        if (inputText.equals(modPicName)) {
-            display.setText(displayText + "\n" + Name.getText() + ": -" + "Has Guessed the Picture" + "\n");
-            input.setText("");
-        } else {
-            display.setText(displayText + "\n" + Name.getText() + ": -" + inputText + "\n");
-            input.setText("");
-        }
+        display.setText(displayText + "\n" + Name.getText() + ": -> " + inputText + "\n");
+        input.setText("");
 
 
     }
+
 }
