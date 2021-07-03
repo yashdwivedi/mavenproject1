@@ -1,8 +1,15 @@
 @startuml
 
-abstract class Communication{
+abstract class Order{
     + static send(LoadScene, Player)
     + static send(GameState, Player)
+}
+class OrderReply {
+    - replyingTo: Order
+    - data: Object
+}
+class ParseOrderReply{
+    + ParseOrderReply(OrderReply)
 }
 class LoadScene{
     - MATCHMAKING_SCENE = 1
@@ -13,8 +20,8 @@ class LoadScene{
     ' TODO: Decide this part in Room
 }
 
-Communication <|-- LoadScene
-Communication <|-- GameStates
+Order <|-- LoadScene
+Order <|-- GameStates
 
 
 @enduml
