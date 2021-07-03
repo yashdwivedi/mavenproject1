@@ -7,9 +7,11 @@ import org.slf4j.LoggerFactory;
 
 public class Room implements Runnable {
     private final Logger logger;
+
     {
         logger = LoggerFactory.getLogger("Ricktionary.Server.Room");
     }
+
     public void add(Player player) {}
 
     public boolean isReady() {
