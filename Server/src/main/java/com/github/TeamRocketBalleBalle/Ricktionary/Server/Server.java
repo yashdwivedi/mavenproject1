@@ -65,7 +65,6 @@ public class Server {
                 if (currentRoom.isReady()) {
                     Thread thread = new Thread(currentRoom);
                     thread.start();
-                    logger.info("New thread created");
                     rooms.add(0, new Room());
                 }
             }
