@@ -8,12 +8,18 @@ package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
- *
  * @author tiwar
  */
-public class welcomescreen extends javax.swing.JFrame {
+public class welcomescreen extends javax.swing.JFrame implements ActionListener {
+    public String Playername;
+    public String PlayerIP;
+    private javax.swing.JTextField name;
+    private JTextField ip;
+
 
     /**
      * Creates new form NewJFrame
@@ -30,28 +36,32 @@ public class welcomescreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        Name = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        ImageIcon icon = new ImageIcon("Client/src/main/resources/image0.gif");
+        Image img = icon.getImage();
+        Image imgscale = img.getScaledInstance(1077, 767, Image.SCALE_DEFAULT);
+        ImageIcon scaledIcon = new ImageIcon(imgscale);
+
+        // Variables declaration - do not modify
+        name = new JTextField();
+        ip = new javax.swing.JTextField();
+        JLabel nameLabel = new JLabel();
+        JLabel ipLabel = new JLabel();
+        JButton sendButton = new JButton();
+        JLabel bg = new JLabel(scaledIcon);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1077, 767));
 
-        Name.setFont(new java.awt.Font("Tw Cen MT Condensed", Font.BOLD | Font.ITALIC, 18)); // NOI18N
-        Name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        Name.addActionListener(this::NameActionPerformed);
+        name.setFont(new java.awt.Font("Tw Cen MT Condensed", Font.BOLD | Font.ITALIC, 18)); // NOI18N
+        name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
+        nameLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
+        nameLabel.setText("Name");
 
-        jLabel1.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
-        jLabel1.setText("Name");
+        ipLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
+        ipLabel.setText("IP Address ");
 
-        jLabel2.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
-        jLabel2.setText("IP Address ");
-
-        jButton1.setText("SUBMIT");
+        sendButton.setText("SUBMIT");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,17 +73,30 @@ public class welcomescreen extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(80, 80, 80)
-                                                        .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(ipLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGap(80, 80, 80)
-                                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(ip, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(layout.createSequentialGroup()
                                                         .addGap(70, 70, 70)
-                                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(bg,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        Short.MAX_VALUE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(bg,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        Short.MAX_VALUE)
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,32 +105,34 @@ public class welcomescreen extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(10, 10, 10)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(ipLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(ip, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(110, 110, 110)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(bg,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        Short.MAX_VALUE)
+                                .addContainerGap())
         );
 
         pack();
     }
-    ImageIcon icon = new ImageIcon("Client/src/main/resources/image0.gif");
-    Image img = icon.getImage();
-    Image imgscale = img.getScaledInstance(1077,767,Image.SCALE_SMOOTH);
-    ImageIcon scaledIcon = new ImageIcon(imgscale);
-        //jLabel3.setIcon(scaledIcon);
 
-    private void NameActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    public void ClientName(String name) {
+        Playername = name;
     }
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    public void ClientIP(String ip) {
+        PlayerIP = ip;
     }
+
 
     /**
      * @param args the command line arguments
@@ -135,12 +160,13 @@ public class welcomescreen extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new welcomescreen().setVisible(true));
     }
 
-    // Variables declaration - do not modify
-    private javax.swing.JTextField Name;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField2;
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        ClientIP(ip.getText());
+        ClientName(name.getText());
+        System.exit(1);
+    }
+
     // End of variables declaration
 }
 

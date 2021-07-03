@@ -73,6 +73,7 @@ public class GameScreen extends javax.swing.JFrame implements ActionListener {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
+        welcomescreen ws = new welcomescreen();
 
         nameLabel = new javax.swing.JLabel();
         scoreLabel = new javax.swing.JLabel();
@@ -102,7 +103,7 @@ public class GameScreen extends javax.swing.JFrame implements ActionListener {
 
         scoreLabel.setText("Score: -");
 
-        Name.setText("XYZ");
+        Name.setText(ws.Playername);
 
         Score.setText("10000");
 
