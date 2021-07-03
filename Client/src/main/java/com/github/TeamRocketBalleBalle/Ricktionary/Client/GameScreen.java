@@ -316,8 +316,7 @@ public class GameScreen extends javax.swing.JFrame implements ActionListener {
         Rectangle rectangle = new Rectangle(1077, 767);
         nameLabel.getAccessibleContext().setAccessibleDescription("");
         ImageIcon i1;
-        i1 =
-                new ImageIcon(("Client/src/main/resources/gameScreenBg.gif"));
+        i1 = new ImageIcon(("Client/src/main/resources/gameScreenBg.gif"));
 
         // resize an image
         //        backGround.setBounds(rectangle);
@@ -343,5 +342,4 @@ public class GameScreen extends javax.swing.JFrame implements ActionListener {
         display.setText(displayText + "\n" + Name.getText() + ": -> " + inputText + "\n");
         input.setText("");
     }
-
 }
