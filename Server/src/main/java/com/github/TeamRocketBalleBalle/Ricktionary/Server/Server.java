@@ -19,15 +19,16 @@ public class Server {
         this.port = port;
         logger = LoggerFactory.getLogger("Ricktionary.Server");
         // add shutdown hook
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            public void run() {
-                logger.warn("Shutdown signal received...");
-                for (Room room :
-                        rooms) {
-                    room.end();
-                }
-            }
-        });
+        Runtime.getRuntime()
+                .addShutdownHook(
+                        new Thread() {
+                            public void run() {
+                                logger.warn("Shutdown signal received...");
+                                for (Room room : rooms) {
+                                    room.end();
+                                }
+                            }
+                        });
     }
 
     public Server() {
@@ -52,7 +53,10 @@ public class Server {
 
                 // TODO: replace this part with a thread.
                 Player player = new Player(clientSocket);
-                logger.info("Client: {} ({}) has connected", player.getName(), player.getSocket().getInetAddress());
+                logger.info(
+                        "Client: {} ({}) has connected",
+                        player.getName(),
+                        player.getSocket().getInetAddress());
 
                 // add the player to the room
                 currentRoom.add(player);
