@@ -1,8 +1,5 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Server;
 
-
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -19,21 +16,15 @@ public class DummyClient {
                 if (0 < out.available()) {
                     System.out.println(out.readByte());
                     System.out.println(out.readObject());
-
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public static void main(String[] args) {
         DummyClient obj = new DummyClient();
         obj.test();
-
-
     }
 }
-
-
