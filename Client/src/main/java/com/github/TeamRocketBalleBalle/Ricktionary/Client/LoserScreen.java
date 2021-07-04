@@ -9,13 +9,49 @@ package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 import javax.swing.*;
 import java.awt.*;
 
-/** @author Vatsal */
-public class losercreenfinal extends javax.swing.JFrame {
+/**
+ * @author Vatsal
+ */
+public class LoserScreen extends javax.swing.JFrame {
 
-    /** Creates new form losercreenfinal */
-    public losercreenfinal() {
+    private javax.swing.JLabel BackGround;
+
+    /** Creates new form LoserScreen */
+    public LoserScreen() {
         initComponents();
     }
+
+    /** @param args the command line arguments */
+    public static void main(String[] args) {
+        /* Set the Nimbus look and feel */
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info :
+                    javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException
+                | InstantiationException
+                | IllegalAccessException
+                | UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(LoserScreen.class.getName())
+                    .log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        // </editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> new LoserScreen().setVisible(true));
+    }
+
+    // Variables declaration - do not modify
+    private javax.swing.JLabel Looseimage;
+    private javax.swing.JButton mainmenu;
 
     /**
      * This method is called from within the constructor to initialize the form. WARNING: Do NOT
@@ -23,19 +59,14 @@ public class losercreenfinal extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-        ImageIcon icon = new ImageIcon("Client/src/main/resources/tenor.gif");
-        Image img = icon.getImage();
-        Image imgscale = img.getScaledInstance(501, 500, Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(imgscale);
-
-        Looseimage = new javax.swing.JLabel("hemlo");
+        Looseimage = new javax.swing.JLabel();
         mainmenu = new javax.swing.JButton();
-        Looseimage.setIcon(scaledIcon);
+        BackGround = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1077, 767));
 
-        mainmenu.setText("Hai himmat ?");
-        mainmenu.addActionListener(this::mainmenuActionPerformed);
+        mainmenu.setText("Kyu Harr Gaye...?");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,7 +101,8 @@ public class losercreenfinal extends javax.swing.JFrame {
                                                                                 501,
                                                                                 javax.swing
                                                                                         .GroupLayout
-                                                                                        .PREFERRED_SIZE)))
+                                                                                        .PREFERRED_SIZE))
+                                        )
                                         .addGap(288, 288, 288)));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,46 +135,22 @@ public class losercreenfinal extends javax.swing.JFrame {
                                                                                 500,
                                                                                 javax.swing
                                                                                         .GroupLayout
-                                                                                        .PREFERRED_SIZE)))
+                                                                                        .PREFERRED_SIZE))
+                                        )
                                         .addGap(216, 216, 216)));
+
+
+        ImageIcon icon1 = new ImageIcon("Client/src/main/resources/jayant.jpg");
+        Image img1 = icon1.getImage();
+        Image imgscale1 = img1.getScaledInstance(1077, 767, Image.SCALE_DEFAULT);
+        ImageIcon scaledIcon1 = new ImageIcon(imgscale1);
+        Rectangle rectangle = new Rectangle(1077, 767);
+        BackGround.setBounds(rectangle);
+        BackGround.setIcon(scaledIcon1);
+        add(BackGround);
+
 
         pack();
     } // </editor-fold>
-
-    private void mainmenuActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    /** @param args the command line arguments */
-    public static void main(String[] args) {
-        /* Set the Nimbus look and feel */
-        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info :
-                    javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException
-                | InstantiationException
-                | IllegalAccessException
-                | UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(losercreenfinal.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        // </editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new losercreenfinal().setVisible(true));
-    }
-
-    // Variables declaration - do not modify
-    private javax.swing.JLabel Looseimage;
-    private javax.swing.JButton mainmenu;
     // End of variables declaration
 }
