@@ -9,9 +9,7 @@ package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * @author Vatsal
- */
+/** @author Vatsal */
 public class LoserScreen extends javax.swing.JFrame {
 
     private javax.swing.JLabel BackGround;
@@ -101,8 +99,7 @@ public class LoserScreen extends javax.swing.JFrame {
                                                                                 501,
                                                                                 javax.swing
                                                                                         .GroupLayout
-                                                                                        .PREFERRED_SIZE))
-                                        )
+                                                                                        .PREFERRED_SIZE)))
                                         .addGap(288, 288, 288)));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,10 +132,8 @@ public class LoserScreen extends javax.swing.JFrame {
                                                                                 500,
                                                                                 javax.swing
                                                                                         .GroupLayout
-                                                                                        .PREFERRED_SIZE))
-                                        )
+                                                                                        .PREFERRED_SIZE)))
                                         .addGap(216, 216, 216)));
-
 
         ImageIcon icon1 = new ImageIcon("Client/src/main/resources/jayant.jpg");
         Image img1 = icon1.getImage();
@@ -148,7 +143,6 @@ public class LoserScreen extends javax.swing.JFrame {
         BackGround.setBounds(rectangle);
         BackGround.setIcon(scaledIcon1);
         add(BackGround);
-
 
         pack();
     } // </editor-fold>
