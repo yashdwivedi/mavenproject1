@@ -1,0 +1,31 @@
+@startuml
+start
+:Player;
+split
+    :Player.read();
+    if (input == "1"?(order reply)) then (yes)
+        :ArrayList<OrderReply>.add(Player.readObject());
+        detach
+    elseif (input == "2"?(string reply)) then (yes)
+        if (storeInput?) then (yes)
+            :Room.inputs.add(gameInput);
+            detach
+        else (no)
+            :pass;
+            detach
+        endif
+    else (nothing)
+        :pass;
+    endif
+    detach
+split again
+    :LoadScene.GAME_SCREEN;
+    :Player.storeInput = true;
+    :Player.send(Order LoadScene);
+    detach
+split again
+    :Player.add();
+    :Player.addUserInputTo(RoomInput);
+    detach
+end split
+@enduml
