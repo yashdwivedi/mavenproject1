@@ -11,7 +11,7 @@ class ServerPacket {
 }
 class ClientPacket {
     + byte packetType
-      [replying to order, or sending a gameinput]
+      [replying to order, or sending a game input]
     + Order replyingTo
     + Reply<?> reply
     + ClientPacket(packetType, replyingTo, reply)
