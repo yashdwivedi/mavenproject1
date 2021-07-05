@@ -39,6 +39,7 @@ class OrderTypeLookupTable{
     + Initialise = 0
     + GameState = 1
     + LoadScene = 3
+    + LoadImage = 4
 }
 class CommData<type of value>{
     # <type of value> value
