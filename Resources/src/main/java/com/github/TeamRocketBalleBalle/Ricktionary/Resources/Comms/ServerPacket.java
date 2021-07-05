@@ -15,7 +15,8 @@ public class ServerPacket extends Packet implements Serializable {
      * @param order the order object
      * @throws IllegalArgumentException if packetType or orderType are beyond range, then exception is thrown
      */
-    public ServerPacket(byte packetType, byte orderType, Order<?> order) throws IllegalArgumentException {
+    public ServerPacket(byte packetType, byte orderType, Order<?> order)
+            throws IllegalArgumentException {
         super(packetType);
         if (OrderTypeLookupTable.INITIALISE <= orderType && orderType < OrderTypeLookupTable.LAST) {
             this.orderType = orderType;

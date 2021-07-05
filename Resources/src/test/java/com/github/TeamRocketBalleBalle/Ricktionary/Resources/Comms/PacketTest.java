@@ -1,10 +1,6 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms;
 
-
-
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -20,7 +16,7 @@ import org.junit.jupiter.params.provider.CsvSource;
  *  - when packet = 0
  *  - when packet > 0
  */
-class  PacketTestNotAbstract extends Packet{
+class PacketTestNotAbstract extends Packet {
 
     /**
      * protected Constructor for Packet
@@ -32,26 +28,27 @@ class  PacketTestNotAbstract extends Packet{
         super(packetType);
     }
 }
+
 class PacketTest {
 
     @ParameterizedTest
     @CsvSource({"1", "2", "4", "6"})
-    public void legitPacketTest(byte packet){
+    public void legitPacketTest(byte packet) {
         PacketTestNotAbstract testObj = new PacketTestNotAbstract(packet);
         Assertions.assertEquals(packet, testObj.packetType);
     }
 
     @ParameterizedTest
     @CsvSource({"0", "7"})
-    public void boundaryTest(byte packet){
+    public void boundaryTest(byte packet) {
         PacketTestNotAbstract testObj = new PacketTestNotAbstract(packet);
         Assertions.assertEquals(packet, testObj.packetType);
     }
 
     @ParameterizedTest
     @CsvSource({"-1", "8", "9"})
-    public void beyondRange(byte packet){
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new PacketTestNotAbstract(packet)
-        );
+    public void beyondRange(byte packet) {
+        Assertions.assertThrows(
+                IllegalArgumentException.class, () -> new PacketTestNotAbstract(packet));
     }
 }

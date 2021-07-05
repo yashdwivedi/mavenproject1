@@ -1,6 +1,6 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms;
 
-public class ClientPacket extends Packet{
+public class ClientPacket extends Packet {
     private final Order<?> replyingTo;
     private final Reply<?> reply;
 
