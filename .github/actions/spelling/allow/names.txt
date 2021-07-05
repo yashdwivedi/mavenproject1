@@ -1,4 +1,7 @@
 aaaayuushhhh
+csv
+choosen
+gamemode
 github
 ngrok
 RICA
