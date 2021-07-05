@@ -7,7 +7,6 @@ import java.io.Serializable;
 public class ServerPacket extends Packet implements Serializable {
     private final byte orderType;
     private final Order<?> order;
-// TODO: Make test case
 
     /**
      * Constructor for making a Server Packet
@@ -18,7 +17,7 @@ public class ServerPacket extends Packet implements Serializable {
      */
     public ServerPacket(byte packetType, byte orderType, Order<?> order) throws IllegalArgumentException {
         super(packetType);
-        if (OrderTypeLookupTable.INITIALISE <= orderType && orderType <= OrderTypeLookupTable.LOAD_IMAGE) {
+        if (OrderTypeLookupTable.INITIALISE <= orderType && orderType < OrderTypeLookupTable.LAST) {
             this.orderType = orderType;
         } else {
             throw new IllegalArgumentException(orderType + " is not a valid order type");
