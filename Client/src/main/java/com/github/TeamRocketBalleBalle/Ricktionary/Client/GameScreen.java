@@ -342,5 +342,6 @@ public class GameScreen extends javax.swing.JFrame implements ActionListener {
         String inputText = input.getText();
         display.setText(displayText + "\n" + Name.getText() + ": -> " + inputText + "\n");
         input.setText("");
+        input.requestFocus();
     }
 }
