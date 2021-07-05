@@ -57,7 +57,8 @@ public class Server {
                         "Client: {} ({}) has connected",
                         player.getName(),
                         player.getSocket().getInetAddress());
-
+                // TODO: remove this after we're done showcasing
+                player.initialise();
                 // add the player to the room
                 currentRoom.add(player);
 

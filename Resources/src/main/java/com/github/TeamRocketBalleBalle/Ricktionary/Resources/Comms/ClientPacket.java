@@ -23,4 +23,13 @@ public class ClientPacket extends Packet {
     public Reply<?> getReply() {
         return reply;
     }
+
+    @Override
+    public String toString() {
+        return "ClientPacket{" +
+                "replyingTo=" + replyingTo +
+                ", reply=" + reply +
+                ", packetType=" + packetType +
+                '}';
+    }
 }
