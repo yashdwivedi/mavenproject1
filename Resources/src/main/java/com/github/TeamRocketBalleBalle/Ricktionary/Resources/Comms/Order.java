@@ -1,7 +1,6 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms;
 
 import java.io.Serializable;
-// TODO: Make testcase
 public class Order<T extends Serializable> extends CommData<T>{
 
     /**
