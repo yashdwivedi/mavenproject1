@@ -2,11 +2,17 @@
 start
 :Player;
 split
+    :Player.getOrderReply(Order);   
+    :OrderReply.isReplyingTo(Order);
+    
+    detach 
+split again
     :Player.read();
-    if (input == "1"?(order reply)) then (yes)
+    :input = ClientPacket.getPacketType();
+    if (input == "2"?(order reply)) then (yes)
         :ArrayList<OrderReply>.add(Player.readObject());
         detach
-    elseif (input == "2"?(string reply)) then (yes)
+    elseif (input == "5"?(string reply)) then (yes)
         if (storeInput?) then (yes)
             :Room.inputs.add(gameInput);
             detach
@@ -14,6 +20,7 @@ split
             :pass;
             detach
         endif
+    elseif (input == )
     else (nothing)
         :pass;
     endif

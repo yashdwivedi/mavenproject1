@@ -1,18 +1,24 @@
 @startuml classes for communication
 class ServerPacket {
-    + short packetType 
+    + byte packetType 
       [PacketType]
     + Order<?> orderType 
       [Initialise, GameState, LoadScene]
     + Packet(packetType, orderType, orderValue)
+    + getPacketType()
+    + getOrderType()
+    + getOrderObj()
 }
 class ClientPacket {
-    + short packetType
+    + byte packetType
       [replying to order, or sending a gameinput]
     + Order replyingTo
     + Reply<?> reply
     + ClientPacket(packetType, replyingTo, reply)
     + ClientPacket(packetType, value)
+    + getPacketType()
+
+    
 }
 class PacketType{
     - INITIALISE = 0
@@ -33,7 +39,6 @@ class OrderTypeLookupTable{
     + Initialise = 0
     + GameState = 1
     + LoadScene = 3
-    Order<int>(LoadScene.CONSTANT)
 }
 class CommData<type of value>{
     # <type of value> value
