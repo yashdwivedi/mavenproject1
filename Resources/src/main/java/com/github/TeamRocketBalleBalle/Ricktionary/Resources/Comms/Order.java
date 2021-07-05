@@ -1,7 +1,8 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms;
 
 import java.io.Serializable;
-public class Order<T extends Serializable> extends CommData<T>{
+
+public class Order<T extends Serializable> extends CommData<T> {
 
     /**
      *
@@ -13,7 +14,7 @@ public class Order<T extends Serializable> extends CommData<T>{
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Order)){
+        if (!(obj instanceof Order)) {
             return false;
         } else {
             Order<?> that = (Order<?>) obj;

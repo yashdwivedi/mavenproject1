@@ -6,5 +6,4 @@ public final class LoadScene {
     public static final int GAME_SCENE = 3;
     public static final int WINNER_SCENE = 4;
     public static final int LOSER_SCENE = 5;
-
 }
