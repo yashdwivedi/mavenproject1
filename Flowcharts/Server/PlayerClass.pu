@@ -10,9 +10,30 @@ split again
     :Player.read();
     :input = ClientPacket.getPacketType();
     if (input == "2"?(order reply)) then (yes)
-        :ArrayList<OrderReply>.add(Player.readObject());
+        :orderType = ClientPacket.getOrderType;
+        :replyObj = ClientPacket.getReply;
+        if (orderType == 0?) then (initialise)
+            :init = (Reply<Initialise>) ClientPacker.getOrder();
+            :this.pendingReplies.put(ClientPacker.getReplyingToOrder(), init);
+        elseif (orderType==3?) then (LoadScene)
+            :init = (Reply<Integer>) replyObj;
+            :init.put();
+            detach
+        elseif (orderType==4?) then (LOAD_IMAGE)
+            :TOO;
+            detach
+        elseif (orderType==5?) then (GameInput)
+            :TIRED;
+            detach
+        elseif (orderType==6?) then (GameState)
+            :FOR THIS;
+            detach
+        else (no known orderType)
+            :pass;
+            detach
+        endif
         detach
-    elseif (input == "5"?(string reply)) then (yes)
+    elseif (input == "5"?(Game input)) then (yes)
         if (storeInput?) then (yes)
             :Room.inputs.add(gameInput);
             detach
@@ -20,7 +41,6 @@ split again
             :pass;
             detach
         endif
-    elseif (input == )
     else (nothing)
         :pass;
     endif
@@ -33,6 +53,15 @@ split again
 split again
     :Player.add();
     :Player.addUserInputTo(RoomInput);
+    detach
+split again
+    :order = Order(value);
+    :Player.send(int PacketType, int OrderTypeLookupTable, order);
+    :Player.get(order) -> Reply.getValue();
+    detach
+split again
+    :Player.sendChatMessage("string");
+
     detach
 end split
 @enduml
