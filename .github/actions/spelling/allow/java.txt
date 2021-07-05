@@ -16230,7 +16230,7 @@ instanceKlassInitStateOffset
 instanceKlassStateFullyInitialized
 instanceKlassStateLinked
 InstanceNotFoundException
-INSTANCEOF
+instanceof
 INSTANCE_OF
 instanceofDynamic
 InstanceOfDynamicNode
