@@ -1,0 +1,59 @@
+@startuml classes for communication
+class ServerPacket {
+    + short packetType 
+      [PacketType]
+    + Order<?> orderType 
+      [Initialise, GameState, LoadScene]
+    + Packet(packetType, orderType, orderValue)
+}
+class ClientPacket {
+    + short packetType
+      [replying to order, or sending a gameinput]
+    + Order replyingTo
+    + Reply<?> reply
+    + ClientPacket(packetType, replyingTo, reply)
+    + ClientPacket(packetType, value)
+}
+class PacketType{
+    - INITIALISE = 0
+    - ORDER = 1
+    - ORDER_REPLY = 2
+    - LoadScene = 3
+    - LOAD_IMAGE = 4
+    - GameInput = 5
+    - GameState = 6
+}
+class LoadScene{
+    - MATCHMAKING_SCENE = 1
+    - GAME_SCENE = 2
+    - WINNER_SCENE = 3
+    - LOSER_SCENE = 4
+}
+class OrderTypeLookupTable{
+    + Initialise = 0
+    + GameState = 1
+    + LoadScene = 3
+    Order<int>(LoadScene.CONSTANT)
+}
+class CommData<type of value>{
+    # <type of value> value
+    + CommData(<type> value)
+    + <type of value> getValue()
+}
+class Order<type of value>{
+    + Order(<type of value> value);
+    + equals()
+}
+class Reply<type of value>{
+    + Reply(<type> value)
+}
+CommData <|-- Order
+CommData <|-- Reply
+' Done by: Reply<T> extends CommData<T>
+class GameState<in server package> {
+    + HashMap<PlayerLT, int Score>
+    + GameState(HashMap<Player, int Score>)
+      Conversion from Play to PlayerLT
+
+}
+@endumlP
