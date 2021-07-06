@@ -8,9 +8,18 @@
             <pattern>%highlight([%d{HH:mm:ss}]:[%thread]:[%level]:[%logger{6}]:%M: %msg) %n</pattern>
         </encoder>
     </appender>
+    <appender name="Player" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>%highlight([%d{HH:mm:ss}]:[%thread]:[%level]:[%logger{15}]:%M: %msg) %n</pattern>
+        </encoder>
+    </appender>
 
     <logger name="Ricktionary.Server" level="INFO" additivity="false">
         <appender-ref ref="STDOUT" />
+    </logger>
+    <logger name="Ricktionary.Player" level="DEBUG" additivity="false">
+        <appender-ref ref="Player" />
     </logger>
 
     <!-- By default, the level of the root level is set to DEBUG -->

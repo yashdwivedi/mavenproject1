@@ -1,10 +1,8 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Server;
 
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.ClientPacket;
-import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.Order;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.Reply;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.ServerPacket;
-import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.OrderTypeLookupTable;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.PacketType;
 
 import java.io.ObjectInputStream;

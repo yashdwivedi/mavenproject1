@@ -57,31 +57,31 @@ public class Player implements Runnable {
         return name;
     }
 
-    public void initialise() {
-        Order<String> nameOrder = new Order<>("nameOrder");
-        send(PacketType.INITIALISE, OrderTypeLookupTable.INITIALISE, nameOrder);
+    public Reply<?> getReply(Order<?> order) {
+        logger.debug("PendingReplies map: {}", pendingReplies.toString());
         Reply<?> reply = null;
         while (reply == null) {
             synchronized (pendingReplies) {
-                reply = pendingReplies.get(nameOrder);
-                logger.debug(pendingReplies.toString());
-                logger.debug("reply: {}", reply);
-                logger.debug("contains key: {}", pendingReplies.containsKey(nameOrder));
-            }
-            for (Object obj :
-                    pendingReplies.keySet()) {
-                logger.debug("{}", obj.equals(nameOrder));
-                logger.debug("{}", nameOrder.equals(obj));
-
+                reply = pendingReplies.get(order);
             }
             try {
-                Thread.sleep(100);
+                Thread.sleep(0, 1000); // sleep for 1 micro second
             } catch (InterruptedException e) {
-                logger.error("error while sleeping", e);
+                logger.error("Error while getting data from map", e);
             }
         }
+        synchronized (this){
+            pendingReplies.remove(order, reply);
+        }
+        return reply;
+    }
+
+    public void initialise() {
+        Order<String> nameOrder = new Order<>("nameOrder");
+        send(PacketType.INITIALISE, OrderTypeLookupTable.INITIALISE, nameOrder);
+        Reply<String> reply = (Reply<String>) getReply(nameOrder);
         logger.debug("got reply: {}", reply);
-        synchronized (this) {
+        synchronized (logger) {
             this.name = (String) reply.getValue();
             logger = LoggerFactory.getLogger("Ricktionary.Player."+ socket.getInetAddress() + this.name);
         }
