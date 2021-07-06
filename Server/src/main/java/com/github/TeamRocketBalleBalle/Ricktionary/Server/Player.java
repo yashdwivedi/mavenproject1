@@ -12,9 +12,11 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.Queue;
 
 public class Player implements Runnable {
 
+    // critical stuff
     private Logger logger;
 
     private final Socket socket;
@@ -22,15 +24,15 @@ public class Player implements Runnable {
     private final ObjectInputStream objReader;
     private final ObjectOutputStream objWriter;
 
+    // class stuff
     private String name;
 
-    private HashMap<Player, String> roomsInput;
+    private Queue<PlayersInput> roomsInput;
 
-    private boolean storeInput;
+    private boolean storeInput, isLoaded = false;
     private final HashMap<Order<?>, Reply<?>> pendingReplies;
 
-    /* TODO: prolly add code here to send an Order to client to send the player name from them */
-    /* TODO: also maybe have the client send a response as OrderResponse object? */
+
     public Player(Socket socket) throws IOException {
         pendingReplies = new HashMap<>();
 
@@ -47,9 +49,10 @@ public class Player implements Runnable {
                                 + socket.getInetAddress().toString().substring(1)
                                 + name);
         new Thread(this::read).start();
+        this.initialise();
     }
 
-    public void addUserInputTo(HashMap<Player, String> roomsInput) {
+    public void addUserInputTo(Queue<PlayersInput> roomsInput) {
         this.roomsInput = roomsInput;
     }
 
@@ -98,6 +101,10 @@ public class Player implements Runnable {
                 socket.getInetAddress());
     }
 
+    public boolean isLoaded() {
+        return isLoaded;
+    }
+
     /**
      * This is the method that reads inputs from the client and parses it accordingly
      */
@@ -123,12 +130,16 @@ public class Player implements Runnable {
                         pendingReplies.put(
                                 receivedPacket.getReplyingTo(), receivedPacket.getReply());
                     }
+                    case PacketType.LOAD_IMG -> {
+                        logger.debug("recieved LOAD_IMG response");
+                        isLoaded = true;
+                    }
                     case 5 -> {
                         // synchronize the inputs dictionary
                         synchronized (roomsInput) {
                             logger.debug("string input received");
                             if (storeInput) {
-                                roomsInput.put(this, (String) receivedPacket.getReply().getValue());
+                                roomsInput.offer(new PlayersInput(this, (String) receivedPacket.getReply().getValue()));
                             }
                         }
                     }
@@ -171,5 +182,9 @@ public class Player implements Runnable {
     public void sendChatMessage(String message) {
         Order<String> stringOrder = new Order<>(message);
         send(PacketType.GAME_STATE, OrderTypeLookupTable.CHAT_MSG, stringOrder);
+    }
+
+    public void setStoreInput(boolean storeInput) {
+        this.storeInput = storeInput;
     }
 }
