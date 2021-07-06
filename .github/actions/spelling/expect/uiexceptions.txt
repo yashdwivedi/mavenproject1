@@ -1,0 +1,12 @@
+clientip
+defaultstate
+imgscale
+insdie
+lookandfeel
+Looseimage
+mainmenu
+NOI
+uiswing
+welcomescreen
+winnergif
+winnerscreen

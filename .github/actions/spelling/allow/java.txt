@@ -2007,6 +2007,7 @@ awaitQuiescence
 awaitTermination
 awaitUninterruptibly
 awaitUntil
+awt
 AWT_COMPONENT
 AWTError
 AWTEvent
@@ -18422,6 +18423,7 @@ JRadioButtonMenuItem
 JRootPane
 jrtFileSystem
 JrtFileSystemProvider
+JScroll
 JScrollBar
 JScrollPane
 JSeparator
@@ -18464,6 +18466,7 @@ JSZIPUTILS_MIN
 JTabbedPane
 JTable
 JTableHeader
+JText
 JTextArea
 JTextComponent
 JTextField
