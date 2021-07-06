@@ -8,7 +8,7 @@ import java.util.Random;
 import static java.awt.Font.BOLD;
 
 /** @author Yash */
-public class MatchmakingScreen extends javax.swing.JFrame {
+public class MatchmakingScreen extends javax.swing.JPanel {
 
     public MatchmakingScreen() {
         initComponents();
@@ -60,72 +60,55 @@ public class MatchmakingScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        JLabel message = new JLabel();
+        JLabel Message = new JLabel();
         // Variables declaration - do not modify
-        JLabel backGround = new JLabel();
+        JLabel BackGround = new JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+//        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1077, 767));
-        setResizable(false);
+//        setResizable(false);
 
-        message.setBackground(new java.awt.Color(51, 51, 51));
-        message.setFont(new java.awt.Font("Viner Hand ITC", BOLD, 24)); // NOI18N
-        message.setForeground(new java.awt.Color(51, 255, 102));
-        message.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        message.setText("Please Be Patient...");
+        Message.setBackground(new java.awt.Color(51, 51, 51));
+        Message.setFont(new java.awt.Font("Viner Hand ITC", BOLD, 24)); // NOI18N
+        Message.setForeground(Color.BLACK);
+        Message.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Message.setText("Please Be Patient...");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(
-                                layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(
-                                                message,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                1053,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(17, 17, 17))
-                //                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                // layout.createSequentialGroup()
-                //                                .addContainerGap()
-                //                                .addComponent(BackGround,
-                // javax.swing.GroupLayout.PREFERRED_SIZE, 1058,
-                // javax.swing.GroupLayout.PREFERRED_SIZE)
-                //                                .addContainerGap())
-                );
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 1053, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17))
+//                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+//                                .addContainerGap()
+//                                .addComponent(BackGround, javax.swing.GroupLayout.PREFERRED_SIZE, 1058, javax.swing.GroupLayout.PREFERRED_SIZE)
+//                                .addContainerGap())
+        );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(
-                                layout.createSequentialGroup()
-                                        .addGap(42, 42, 42)
-                                        .addComponent(
-                                                message,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                117,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                Short.MAX_VALUE))
-                //                        .addGroup(layout.createSequentialGroup()
-                //                                .addGap(10, 10, 10)
-                //                                .addComponent(BackGround,
-                // javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
-                // Short.MAX_VALUE)
-                //                                .addContainerGap())
-                );
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+//                        .addGroup(layout.createSequentialGroup()
+//                                .addGap(10, 10, 10)
+//                                .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+//                                .addContainerGap())
+        );
         Rectangle rectangle = new Rectangle(1077, 767);
         ImageIcon i1;
         i1 = new ImageIcon(("Client/src/main/resources/" + image()));
         Image i2;
         i2 = i1.getImage().getScaledInstance(1077, 767, Image.SCALE_DEFAULT);
         ImageIcon resizedImage = new ImageIcon(i2);
-        backGround.setIcon(resizedImage);
-        backGround.setBounds(rectangle);
-        add(backGround);
+        BackGround.setIcon(resizedImage);
+        BackGround.setBounds(rectangle);
+        add(BackGround);
 
-        pack();
+//        pack();
     } // </editor-fold>
     // End of variables declaration
 }

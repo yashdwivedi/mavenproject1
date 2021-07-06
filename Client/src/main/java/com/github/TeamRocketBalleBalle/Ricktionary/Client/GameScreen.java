@@ -275,8 +275,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         send.addActionListener(this);
 
         //        pack();
-        //        setVisible(true);
-        System.out.println("File Opened");
+        //        setVisible(true)
     } // </editor-fold>
 
     @Override
