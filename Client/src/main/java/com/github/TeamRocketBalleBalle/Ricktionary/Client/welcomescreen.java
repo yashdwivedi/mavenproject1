@@ -288,7 +288,7 @@ public class welcomescreen extends javax.swing.JFrame implements ActionListener 
                                         .addContainerGap()));
 
         pack();
-//        setVisible(true);
+        //        setVisible(true);
     }
 
     @Override

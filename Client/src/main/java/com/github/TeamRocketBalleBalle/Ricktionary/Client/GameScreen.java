@@ -47,7 +47,10 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException
+                | InstantiationException
+                | IllegalAccessException
+                | UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GameScreen.class.getName())
                     .log(java.util.logging.Level.SEVERE, null, ex);
         }
@@ -55,8 +58,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         // </editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(
-                GameScreen::new);
+        java.awt.EventQueue.invokeLater(GameScreen::new);
     }
 
     /**
@@ -87,7 +89,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         Score.setForeground(Color.white);
         Title.setForeground(Color.white);
 
-//        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         nameLabel.setText("Name: -");
         nameLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -107,71 +109,153 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(picture, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
-                                .addContainerGap())
-        );
+                jPanel1Layout
+                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(
+                                jPanel1Layout
+                                        .createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(
+                                                picture,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                416,
+                                                Short.MAX_VALUE)
+                                        .addContainerGap()));
         jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(picture, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
-                                .addContainerGap())
-        );
+                jPanel1Layout
+                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(
+                                jPanel1Layout
+                                        .createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(
+                                                picture,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                594,
+                                                Short.MAX_VALUE)
+                                        .addContainerGap()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(nameLabel)
-                                .addGap(37, 37, 37)
-                                .addComponent(Name)
-                                .addGap(295, 295, 295)
-                                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(scoreLabel)
-                                .addGap(37, 37, 37)
-                                .addComponent(Score))
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(90, 90, 90)
-                                .addComponent(send)
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addComponent(nameLabel)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(Name)
+                                        .addGap(295, 295, 295)
+                                        .addComponent(
+                                                Title,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                550,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addComponent(scoreLabel)
+                                        .addGap(37, 37, 37)
+                                        .addComponent(Score))
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(50, 50, 50)
+                                        .addComponent(
+                                                jPanel1,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(90, 90, 90)
+                                        .addComponent(send)
+                                        .addGap(29, 29, 29)
+                                        .addGroup(
+                                                layout.createParallelGroup(
+                                                                javax.swing.GroupLayout.Alignment
+                                                                        .LEADING)
+                                                        .addComponent(
+                                                                jScrollPane1,
+                                                                javax.swing.GroupLayout
+                                                                        .PREFERRED_SIZE,
+                                                                330,
+                                                                javax.swing.GroupLayout
+                                                                        .PREFERRED_SIZE)
+                                                        .addComponent(
+                                                                input,
+                                                                javax.swing.GroupLayout
+                                                                        .PREFERRED_SIZE,
+                                                                330,
+                                                                javax.swing.GroupLayout
+                                                                        .PREFERRED_SIZE))));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(nameLabel)
-                                        .addComponent(Name)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(scoreLabel)
-                                        .addComponent(Score))
-                                .addGap(58, 58, 58)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(540, 540, 540)
-                                                .addComponent(send))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(40, 40, 40)
-                                                .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(26, 26, 26)
+                                        .addGroup(
+                                                layout.createParallelGroup(
+                                                                javax.swing.GroupLayout.Alignment
+                                                                        .LEADING)
+                                                        .addComponent(nameLabel)
+                                                        .addComponent(Name)
+                                                        .addGroup(
+                                                                layout.createSequentialGroup()
+                                                                        .addGap(10, 10, 10)
+                                                                        .addComponent(
+                                                                                Title,
+                                                                                javax.swing
+                                                                                        .GroupLayout
+                                                                                        .PREFERRED_SIZE,
+                                                                                40,
+                                                                                javax.swing
+                                                                                        .GroupLayout
+                                                                                        .PREFERRED_SIZE)))
+                                        .addGroup(
+                                                layout.createParallelGroup(
+                                                                javax.swing.GroupLayout.Alignment
+                                                                        .LEADING)
+                                                        .addComponent(scoreLabel)
+                                                        .addComponent(Score))
+                                        .addGap(58, 58, 58)
+                                        .addGroup(
+                                                layout.createParallelGroup(
+                                                                javax.swing.GroupLayout.Alignment
+                                                                        .LEADING)
+                                                        .addComponent(
+                                                                jPanel1,
+                                                                javax.swing.GroupLayout
+                                                                        .PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout
+                                                                        .DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout
+                                                                        .PREFERRED_SIZE)
+                                                        .addGroup(
+                                                                layout.createSequentialGroup()
+                                                                        .addGap(540, 540, 540)
+                                                                        .addComponent(send))
+                                                        .addGroup(
+                                                                layout.createSequentialGroup()
+                                                                        .addGap(20, 20, 20)
+                                                                        .addComponent(
+                                                                                jScrollPane1,
+                                                                                javax.swing
+                                                                                        .GroupLayout
+                                                                                        .PREFERRED_SIZE,
+                                                                                510,
+                                                                                javax.swing
+                                                                                        .GroupLayout
+                                                                                        .PREFERRED_SIZE)
+                                                                        .addGap(40, 40, 40)
+                                                                        .addComponent(
+                                                                                input,
+                                                                                javax.swing
+                                                                                        .GroupLayout
+                                                                                        .PREFERRED_SIZE,
+                                                                                javax.swing
+                                                                                        .GroupLayout
+                                                                                        .DEFAULT_SIZE,
+                                                                                javax.swing
+                                                                                        .GroupLayout
+                                                                                        .PREFERRED_SIZE)))));
         Rectangle rectangle = new Rectangle(1077, 767);
         nameLabel.getAccessibleContext().setAccessibleDescription("");
         ImageIcon i1;
@@ -190,8 +274,8 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
         send.addActionListener(this);
 
-//        pack();
-//        setVisible(true);
+        //        pack();
+        //        setVisible(true);
         System.out.println("File Opened");
     } // </editor-fold>
 
