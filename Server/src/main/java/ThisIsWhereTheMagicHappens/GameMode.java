@@ -12,11 +12,10 @@ public class GameMode {
         return false;
     }
 
-    public HashMap<Player, Integer> playTurn(ArrayList<PlayersInput> inputs){
+    public HashMap<Player, Integer> playTurn(ArrayList<PlayersInput> inputs) {
         // big brain game logic
         HashMap<Player, Integer> playerIntegerHashMap = new HashMap<>();
-        for (PlayersInput input :
-                inputs) {
+        for (PlayersInput input : inputs) {
             playerIntegerHashMap.put(input.getThem(), (int) (Math.random() * 100));
         }
         return playerIntegerHashMap;

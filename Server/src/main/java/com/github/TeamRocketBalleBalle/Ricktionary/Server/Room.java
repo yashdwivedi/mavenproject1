@@ -10,7 +10,6 @@ import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.PacketTyp
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.SocketException;
 import java.util.*;
 
 public class Room implements Runnable {
@@ -30,7 +29,8 @@ public class Room implements Runnable {
     public void add(Player player) {
         playerArray.add(player);
         player.addUserInputTo(inputs);
-        player.send(PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, new Order<String>("wait"));
+        player.send(
+                PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, new Order<String>("wait"));
     }
 
     public boolean isReady() {
@@ -46,13 +46,17 @@ public class Room implements Runnable {
         // send game scenes
         Order<String> gameOn = new Order<>("gameOn");
         try {
-            new Thread(() -> {
-                for (Player player :
-                        playerArray) {
-                    player.send(PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, gameOn);
-                    player.setStoreInput(true);
-                }
-            }).join();
+            new Thread(
+                            () -> {
+                                for (Player player : playerArray) {
+                                    player.send(
+                                            PacketType.LOAD_SCENE,
+                                            OrderTypeLookupTable.LOAD_SCENE,
+                                            gameOn);
+                                    player.setStoreInput(true);
+                                }
+                            })
+                    .join();
         } catch (InterruptedException e) {
             logger.error("error while sending message to all clients", e);
         }
@@ -79,18 +83,15 @@ public class Room implements Runnable {
 
         this.endGame();
 
-
         // start tick count
         // while gamemode.ended!=true
 
     }
 
     private void tellEveryone(ArrayList<PlayersInput> playersInputs) {
-        for (PlayersInput value :
-                playersInputs) {
+        for (PlayersInput value : playersInputs) {
             Order<String> chatMessage = new Order<>(value.getTheirInput());
-            for (Player player :
-                    playerArray) {
+            for (Player player : playerArray) {
                 player.send(PacketType.CHAT_MESSAGE, OrderTypeLookupTable.CHAT_MSG, chatMessage);
             }
         }
@@ -98,8 +99,7 @@ public class Room implements Runnable {
 
     private void endGame() {
         Player winner = null;
-        for (Map.Entry<Player, Integer> candidate :
-                scores.entrySet()) {
+        for (Map.Entry<Player, Integer> candidate : scores.entrySet()) {
             Integer currentScore = candidate.getValue();
             if (winner == null) {
                 winner = candidate.getKey();
@@ -108,55 +108,57 @@ public class Room implements Runnable {
             }
         }
         assert winner != null;
-        winner.send(PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, new Order<Integer>(LoadScene.WINNER_SCENE));
-        for (Player player :
-                playerArray) {
+        winner.send(
+                PacketType.LOAD_SCENE,
+                OrderTypeLookupTable.LOAD_SCENE,
+                new Order<Integer>(LoadScene.WINNER_SCENE));
+        for (Player player : playerArray) {
             if (!player.equals(winner)) {
-                player.send(PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, new Order<Integer>(LoadScene.LOSER_SCENE));
+                player.send(
+                        PacketType.LOAD_SCENE,
+                        OrderTypeLookupTable.LOAD_SCENE,
+                        new Order<Integer>(LoadScene.LOSER_SCENE));
             }
         }
     }
 
-        public String getImageHash () {
-            Random rand = new Random();
+    public String getImageHash() {
+        Random rand = new Random();
 
-            //        String[] hash = Database.getAllImageHash(); // function to be implemented that
-            // will send an array of all the hashes of images from the database
-            //        int lengthOfHash = hash.length;
-            //
-            //        String choosenHash = hash[rand.nextInt(lengthOfHash)];
+        //        String[] hash = Database.getAllImageHash(); // function to be implemented that
+        // will send an array of all the hashes of images from the database
+        //        int lengthOfHash = hash.length;
+        //
+        //        String choosenHash = hash[rand.nextInt(lengthOfHash)];
 
-            //        return choosenHash;
-            //        logger.debug("choosenHash {}", choosenHash);
-            //
-            //        return choosenHash;
-            return ("");
+        //        return choosenHash;
+        //        logger.debug("choosenHash {}", choosenHash);
+        //
+        //        return choosenHash;
+        return ("");
+    }
+
+    public void startSetup() {
+        hash = getImageHash();
+        Order<String> imageOrder = new Order<>(hash);
+        for (Player player : playerArray) {
+            player.send(PacketType.LOAD_IMG, OrderTypeLookupTable.LOAD_IMAGE, imageOrder);
         }
-
-        public void startSetup () {
-            hash = getImageHash();
-            Order<String> imageOrder = new Order<>(hash);
-            for (Player player :
-                    playerArray) {
-                player.send(PacketType.LOAD_IMG, OrderTypeLookupTable.LOAD_IMAGE, imageOrder);
-            }
-            boolean anyOneHasNotLoadedImg = true; // starting value
-            while (anyOneHasNotLoadedImg) {
-                anyOneHasNotLoadedImg = false;
-                for (Player player :
-                        playerArray) {
-                    if (!player.isLoaded()) {
-                        anyOneHasNotLoadedImg = true;
-                    }
+        boolean anyOneHasNotLoadedImg = true; // starting value
+        while (anyOneHasNotLoadedImg) {
+            anyOneHasNotLoadedImg = false;
+            for (Player player : playerArray) {
+                if (!player.isLoaded()) {
+                    anyOneHasNotLoadedImg = true;
                 }
             }
-
-        }
-
-        public static void main (String args[]){ // -----------------------MAIN CLASS------------//
-
-            Room imageLoader = new Room();
-            String hash = imageLoader.getImageHash();
-            System.out.println("hash of the image is -->" + hash);
         }
     }
+
+    public static void main(String args[]) { // -----------------------MAIN CLASS------------//
+
+        Room imageLoader = new Room();
+        String hash = imageLoader.getImageHash();
+        System.out.println("hash of the image is -->" + hash);
+    }
+}

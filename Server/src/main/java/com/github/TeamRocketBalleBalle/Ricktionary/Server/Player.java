@@ -32,7 +32,6 @@ public class Player implements Runnable {
     private boolean storeInput, isLoaded = false;
     private final HashMap<Order<?>, Reply<?>> pendingReplies;
 
-
     public Player(Socket socket) throws IOException {
         pendingReplies = new HashMap<>();
 
@@ -139,7 +138,10 @@ public class Player implements Runnable {
                         synchronized (roomsInput) {
                             logger.debug("string input received");
                             if (storeInput) {
-                                roomsInput.offer(new PlayersInput(this, (String) receivedPacket.getReply().getValue()));
+                                roomsInput.offer(
+                                        new PlayersInput(
+                                                this,
+                                                (String) receivedPacket.getReply().getValue()));
                             }
                         }
                     }
