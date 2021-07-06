@@ -69,7 +69,7 @@ public class welcomescreen extends javax.swing.JPanel {
         JLabel ipLabel = new JLabel();
         JButton sendButton = new JButton();
         JLabel bg = new JLabel(scaledIcon);
-
+        JLabel jLabel3 = new javax.swing.JLabel();
         //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1077, 767));
 
@@ -89,6 +89,9 @@ public class welcomescreen extends javax.swing.JPanel {
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
+                                .addGap(450, 450, 450)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
                                 .addGap(310, 310, 310)
                                 .addComponent(nameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(137, 137, 137)
@@ -106,6 +109,9 @@ public class welcomescreen extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(270, 270, 270)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
