@@ -90,7 +90,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         Score.setForeground(Color.white);
         Title.setForeground(Color.white);
 
-        //        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        // setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         nameLabel.setText("Name: -");
         nameLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -100,7 +100,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
         scoreLabel.setText("Score: -");
 
-        // Name.setText(ws.Playername);
+        Name.setText(ws.clientName);
 
         Score.setText("10000");
 
@@ -286,8 +286,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         send.addActionListener(this);
 
         //        pack();
-        //        setVisible(true);
-        System.out.println("File Opened");
+        //        setVisible(true)
     } // </editor-fold>
 
     @Override
