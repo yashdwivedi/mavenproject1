@@ -13,7 +13,7 @@ import java.awt.*;
  *
  * @author tiwar
  */
-public class winnerscreen extends javax.swing.JFrame {
+public class winnerscreen extends javax.swing.JPanel {
 
     /**
      * Creates new form winnerscreen
@@ -38,29 +38,29 @@ public class winnerscreen extends javax.swing.JFrame {
         back = new javax.swing.JLabel("hemlo");
         winnergif = new javax.swing.JLabel();
         back.setIcon(scaledIcon);
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+       // setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1077, 767));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(395, 395, 395)
                                 .addComponent(winnergif, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        //.addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(773, 773, 773)
                                 .addComponent(winnergif, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        //.addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 1010, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 1010, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         Rectangle rect = new Rectangle(1077,767);
         back.setBounds(rect);
         add(back);
-        pack();
+        //pack();
     }// </editor-fold>
 
     /**
