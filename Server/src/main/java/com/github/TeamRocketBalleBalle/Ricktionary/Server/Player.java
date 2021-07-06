@@ -31,6 +31,7 @@ public class Player implements Runnable {
 
     private boolean storeInput, isLoaded = false;
     private final HashMap<Order<?>, Reply<?>> pendingReplies;
+    private boolean disconnected = false;
 
     public Player(Socket socket) throws IOException {
         pendingReplies = new HashMap<>();
@@ -149,6 +150,8 @@ public class Player implements Runnable {
 
             } catch (IOException ex) {
                 logger.error("IOException in Player", ex);
+                disconnected = true;
+                break;
             } catch (ClassNotFoundException ex) {
                 logger.error("Class not found in Player", ex);
             }
@@ -188,5 +191,9 @@ public class Player implements Runnable {
 
     public void setStoreInput(boolean storeInput) {
         this.storeInput = storeInput;
+    }
+
+    public boolean isDisconnected() {
+        return disconnected;
     }
 }

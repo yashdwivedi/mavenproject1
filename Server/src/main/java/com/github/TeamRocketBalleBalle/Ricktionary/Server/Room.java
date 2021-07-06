@@ -10,6 +10,7 @@ import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.PacketTyp
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Room implements Runnable {
@@ -41,6 +42,7 @@ public class Room implements Runnable {
     public void run() {
 
         logger.info("New Room created");
+        pingCheck();
 
         startSetup();
 
@@ -174,5 +176,23 @@ public class Room implements Runnable {
         Room imageLoader = new Room();
         String hash = imageLoader.getImageHash();
         System.out.println("hash of the image is -->" + hash);
+    }
+
+    public void pingCheck() {
+        Thread thread = new Thread(() -> {
+            while (true) {
+                synchronized (playerArray) {
+                    playerArray.removeIf(Player::isDisconnected);
+                }
+                
+                try {
+                    Thread.sleep(100);
+                } catch (
+                        InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
     }
 }
