@@ -18,9 +18,50 @@ public class welcomescreen extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JTextField name;
     private JTextField ip;
 
-    /** Creates new form NewJFrame */
+    /**
+     * Creates new form NewJFrame
+     */
     public welcomescreen() {
         initComponents();
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        /* Set the Nimbus look and feel */
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info :
+                    javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException
+                | IllegalAccessException
+                | InstantiationException
+                | UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(welcomescreen.class.getName())
+                    .log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        // </editor-fold>
+        // </editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> new welcomescreen());
+    }
+
+    public void ClientName(String name) {
+        Playername = name;
+    }
+
+    public void ClientIP(String ip) {
+        PlayerIP = ip;
     }
 
     /**
@@ -247,43 +288,7 @@ public class welcomescreen extends javax.swing.JFrame implements ActionListener 
                                         .addContainerGap()));
 
         pack();
-    }
-
-    public void ClientName(String name) {
-        Playername = name;
-    }
-
-    public void ClientIP(String ip) {
-        PlayerIP = ip;
-    }
-
-    /** @param args the command line arguments */
-    public static void main(String[] args) {
-        /* Set the Nimbus look and feel */
-        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info :
-                    javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException
-                | IllegalAccessException
-                | InstantiationException
-                | UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(welcomescreen.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        // </editor-fold>
-        // </editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new welcomescreen().setVisible(true));
+//        setVisible(true);
     }
 
     @Override

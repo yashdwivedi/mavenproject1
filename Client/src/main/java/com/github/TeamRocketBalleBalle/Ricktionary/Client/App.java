@@ -1,8 +1,15 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class App {
     public static void main(String[] args) {
-        GameScreen.main(null);
+        JFrame frame = new JFrame();
+        Rectangle rectangle = new Rectangle(1077, 767);
+        frame.setBounds(rectangle);
+        frame.add(new GameScreen());
+        frame.setVisible(true);
     }
 }
 /*
