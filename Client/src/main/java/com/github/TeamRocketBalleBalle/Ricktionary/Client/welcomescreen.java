@@ -22,7 +22,7 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
     public JLabel ipLabel = new JLabel();
     public JButton sendButton = new JButton();
     public String clientName;
-    public  String clientip;
+    public String clientip;
 
     /**
      * Creates new form NewJFrame
@@ -198,7 +198,6 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
         clientip = ip.getText();
         clientName = name.getText();
     }
-
 
     // End of variables declaration
 }
