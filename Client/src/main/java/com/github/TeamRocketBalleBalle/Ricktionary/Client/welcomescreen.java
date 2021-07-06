@@ -8,12 +8,21 @@ package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author tiwar
  */
-public class welcomescreen extends javax.swing.JPanel {
+public class welcomescreen extends javax.swing.JPanel implements ActionListener {
+    public JTextField name = new JTextField();
+    public JTextField ip = new JTextField();
+    public JLabel nameLabel = new JLabel();
+    public JLabel ipLabel = new JLabel();
+    public JButton sendButton = new JButton();
+    public String clientName;
+    public  String clientip;
 
     /**
      * Creates new form NewJFrame
@@ -65,11 +74,7 @@ public class welcomescreen extends javax.swing.JPanel {
         Image imgscale = img.getScaledInstance(1077, 767, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(imgscale);
         // Variables declaration - do not modify
-        JTextField name = new JTextField();
-        JTextField ip = new JTextField();
-        JLabel nameLabel = new JLabel();
-        JLabel ipLabel = new JLabel();
-        JButton sendButton = new JButton();
+
         JLabel bg = new JLabel(scaledIcon);
 
         // setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -187,6 +192,13 @@ public class welcomescreen extends javax.swing.JPanel {
         // pack();
         //        setVisible(true);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        clientip = ip.getText();
+        clientName = name.getText();
+    }
+
 
     // End of variables declaration
 }

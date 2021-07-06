@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * @author Yash
@@ -89,7 +90,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         Score.setForeground(Color.white);
         Title.setForeground(Color.white);
 
-        //        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         nameLabel.setText("Name: -");
         nameLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -99,9 +100,10 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
         scoreLabel.setText("Score: -");
 
-        // Name.setText(ws.Playername);
+        Name.setText(ws.clientName);
 
         Score.setText("10000");
+
 
         Title.setText("Riktionary");
         display.setLineWrap(true);
