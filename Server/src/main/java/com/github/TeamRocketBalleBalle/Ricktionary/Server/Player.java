@@ -130,7 +130,7 @@ public class Player implements Runnable {
                                 receivedPacket.getReplyingTo(), receivedPacket.getReply());
                     }
                     case PacketType.LOAD_IMG -> {
-                        logger.debug("recieved LOAD_IMG response");
+                        logger.debug("received LOAD_IMG response");
                         isLoaded = true;
                     }
                     case 5 -> {
