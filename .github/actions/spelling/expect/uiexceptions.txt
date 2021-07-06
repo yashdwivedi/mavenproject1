@@ -6,6 +6,7 @@ lookandfeel
 Looseimage
 mainmenu
 NOI
+plaf
 uiswing
 welcomescreen
 winnergif

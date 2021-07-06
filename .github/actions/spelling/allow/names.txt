@@ -7,6 +7,7 @@ github
 javase
 jayant
 ngrok
+Resizable
 RICA
 Ricktionary
 shreyanshsharma
