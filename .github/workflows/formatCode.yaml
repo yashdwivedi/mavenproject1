@@ -18,7 +18,7 @@ jobs:
       - uses: axel-op/googlejavaformat-action@v3
         name: Format Code
         with:
-          args: "--skip-sorting-imports --replace --aosp"
+          args: "--skip-sorting-imports --replace --aosp --skip-javadoc-formatting"
           commitMessage: "🤖 Formatted code"
           skipCommit: true
 
