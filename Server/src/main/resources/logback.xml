@@ -15,7 +15,7 @@
         </encoder>
     </appender>
 
-    <logger name="Ricktionary.Server" level="INFO" additivity="false">
+    <logger name="Ricktionary.Server" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
     <logger name="Ricktionary.Player" level="DEBUG" additivity="false">

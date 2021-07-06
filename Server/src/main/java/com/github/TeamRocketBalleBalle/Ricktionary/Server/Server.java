@@ -25,7 +25,7 @@ public class Server {
                             public void run() {
                                 logger.warn("Shutdown signal received...");
                                 for (Room room : rooms) {
-                                    room.end();
+                                    room.endGame();
                                 }
                             }
                         });

@@ -17,7 +17,7 @@ public class Room implements Runnable {
     private final Logger logger;
     private final ArrayList<Player> playerArray = new ArrayList<Player>();
     private String hash;
-    private final int tickRate = 30;
+    private final int tickRate = 1000;
     private final GameMode gameMode = new GameMode(); // TODO: do something about this.
     private final Queue<PlayersInput> inputs = new LinkedList<>();
     private final HashMap<Player, Integer> scores = new HashMap<>();
@@ -31,10 +31,11 @@ public class Room implements Runnable {
         player.addUserInputTo(inputs);
         player.send(
                 PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, new Order<String>("wait"));
+        logger.debug("added {} to this room", player.getName());
     }
 
     public boolean isReady() {
-        return playerArray.toArray().length == 3;
+        return playerArray.toArray().length == 1;
     }
 
     public void run() {
@@ -45,39 +46,51 @@ public class Room implements Runnable {
 
         // send game scenes
         Order<String> gameOn = new Order<>("gameOn");
-        try {
-            new Thread(
-                            () -> {
-                                for (Player player : playerArray) {
-                                    player.send(
-                                            PacketType.LOAD_SCENE,
-                                            OrderTypeLookupTable.LOAD_SCENE,
-                                            gameOn);
-                                    player.setStoreInput(true);
-                                }
-                            })
-                    .join();
-        } catch (InterruptedException e) {
-            logger.error("error while sending message to all clients", e);
+
+        for (Player player : playerArray) {
+            player.send(
+                    PacketType.LOAD_SCENE,
+                    OrderTypeLookupTable.LOAD_SCENE,
+                    gameOn);
+            player.setStoreInput(true);
+            logger.debug("sent {} to {}", gameOn, player.getName());
         }
-        logger.debug("send all clients order to change screen");
+
+
+        logger.debug("sent all clients order to change screen");
 
         long tickStartTime = System.currentTimeMillis();
         int tick = 0;
+        logger.debug("Starting game loop");
         // Game Loop is ON 🔥🔥🔥🔥
         while (!gameMode.ended()) {
             if (tick < tickRate) {
                 // TODO: sanitise input. one day
                 tick = (int) (System.currentTimeMillis() - tickStartTime);
+//                logger.debug("waiting for tick -> inside if");
             } else {
-                ArrayList<PlayersInput> playersInputs = new ArrayList<>(inputs);
-                for (Map.Entry<Player, Integer> entry :
-                        gameMode.playTurn(playersInputs).entrySet()) {
-                    int new_score = scores.getOrDefault(entry.getKey(), 0) + entry.getValue();
-                    scores.put(entry.getKey(), new_score);
+//                logger.debug("insdie else block");
+                synchronized (inputs) {
+                    ArrayList<PlayersInput> playersInputs = new ArrayList<>();
+                    for (PlayersInput input: inputs){
+                        playersInputs.add(inputs.remove());
+                    }
+
+                    logger.debug("processing: {}", playersInputs);
+                    for (Map.Entry<Player, Integer> entry :
+                            gameMode.playTurn(playersInputs).entrySet()) {
+                        int new_score = scores.getOrDefault(entry.getKey(), 0) + entry.getValue();
+                        scores.put(entry.getKey(), new_score);
+                    }
+//                    logger.debug("processed input");
+                    tellEveryone(playersInputs);
+                    tickStartTime = System.currentTimeMillis();
                 }
-                tellEveryone(playersInputs);
-                tickStartTime = System.currentTimeMillis();
+            }
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
 
@@ -90,14 +103,17 @@ public class Room implements Runnable {
 
     private void tellEveryone(ArrayList<PlayersInput> playersInputs) {
         for (PlayersInput value : playersInputs) {
-            Order<String> chatMessage = new Order<>(value.getTheirInput());
-            for (Player player : playerArray) {
-                player.send(PacketType.CHAT_MESSAGE, OrderTypeLookupTable.CHAT_MSG, chatMessage);
+            if (!value.getTheirInput().isBlank()) {
+                Order<String> chatMessage = new Order<>(value.getTheirInput());
+                for (Player player : playerArray) {
+                    player.send(PacketType.CHAT_MESSAGE, OrderTypeLookupTable.CHAT_MSG, chatMessage);
+                }
+                logger.info("Sent message : {}", chatMessage);
             }
         }
     }
 
-    private void endGame() {
+    public void endGame() {
         Player winner = null;
         for (Map.Entry<Player, Integer> candidate : scores.entrySet()) {
             Integer currentScore = candidate.getValue();
@@ -145,6 +161,7 @@ public class Room implements Runnable {
             player.send(PacketType.LOAD_IMG, OrderTypeLookupTable.LOAD_IMAGE, imageOrder);
         }
         boolean anyOneHasNotLoadedImg = true; // starting value
+        logger.debug("starting while loop");
         while (anyOneHasNotLoadedImg) {
             anyOneHasNotLoadedImg = false;
             for (Player player : playerArray) {
