@@ -112,7 +112,6 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         jPanel1Layout.setHorizontalGroup(
                 jPanel1Layout
                         .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
                         .addGroup(
                                 jPanel1Layout
                                         .createSequentialGroup()
@@ -126,7 +125,6 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         jPanel1Layout.setVerticalGroup(
                 jPanel1Layout
                         .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
                         .addGroup(
                                 jPanel1Layout
                                         .createSequentialGroup()
@@ -142,10 +140,14 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(450, 450, 450)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(450, 450, 450)
+                                        .addComponent(
+                                                jLabel3,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                250,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(
                                 layout.createSequentialGroup()
                                         .addGap(29, 29, 29)
@@ -195,10 +197,14 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                                                         .PREFERRED_SIZE))));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(
+                                                jLabel3,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                100,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(
                                 layout.createSequentialGroup()
                                         .addGap(26, 26, 26)
