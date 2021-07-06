@@ -26,10 +26,13 @@ public class ClientPacket extends Packet {
 
     @Override
     public String toString() {
-        return "ClientPacket{" +
-                "replyingTo=" + replyingTo +
-                ", reply=" + reply +
-                ", packetType=" + packetType +
-                '}';
+        return "ClientPacket{"
+                + "replyingTo="
+                + replyingTo
+                + ", reply="
+                + reply
+                + ", packetType="
+                + packetType
+                + '}';
     }
 }

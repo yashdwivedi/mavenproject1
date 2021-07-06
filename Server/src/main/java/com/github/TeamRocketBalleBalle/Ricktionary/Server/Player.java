@@ -41,7 +41,11 @@ public class Player implements Runnable {
 
         name = null;
 
-        logger = LoggerFactory.getLogger("Ricktionary.Player." + socket.getInetAddress().toString().substring(1) + name);
+        logger =
+                LoggerFactory.getLogger(
+                        "Ricktionary.Player."
+                                + socket.getInetAddress().toString().substring(1)
+                                + name);
         new Thread(this::read).start();
     }
 
@@ -70,7 +74,7 @@ public class Player implements Runnable {
                 logger.error("Error while getting data from map", e);
             }
         }
-        synchronized (this){
+        synchronized (this) {
             pendingReplies.remove(order, reply);
         }
         return reply;
@@ -83,9 +87,15 @@ public class Player implements Runnable {
         logger.debug("got reply: {}", reply);
         synchronized (logger) {
             this.name = (String) reply.getValue();
-            logger = LoggerFactory.getLogger("Ricktionary.Player."+ socket.getInetAddress() + this.name);
+            logger =
+                    LoggerFactory.getLogger(
+                            "Ricktionary.Player." + socket.getInetAddress() + this.name);
         }
-        logger.info("Set null:{} to {}:{}", socket.getInetAddress(), this.name, socket.getInetAddress());
+        logger.info(
+                "Set null:{} to {}:{}",
+                socket.getInetAddress(),
+                this.name,
+                socket.getInetAddress());
     }
 
     /**
@@ -98,17 +108,20 @@ public class Player implements Runnable {
             try {
 
                 ClientPacket receivedPacket = (ClientPacket) objReader.readObject();
-                logger.debug("Data received: {}",(ClientPacket) receivedPacket);
+                logger.debug("Data received: {}", (ClientPacket) receivedPacket);
                 switch (receivedPacket.getPacketType()) {
                     case 0 -> {
-                        synchronized (pendingReplies){
-                            pendingReplies.put(receivedPacket.getReplyingTo(), (Reply<String>) receivedPacket.getReply());
+                        synchronized (pendingReplies) {
+                            pendingReplies.put(
+                                    receivedPacket.getReplyingTo(),
+                                    (Reply<String>) receivedPacket.getReply());
                             logger.debug("put {} in pendingReplies", receivedPacket.getReply());
                         }
                     }
                     case 1 -> {
                         logger.debug("Order Reply received");
-                        pendingReplies.put(receivedPacket.getReplyingTo(), receivedPacket.getReply());
+                        pendingReplies.put(
+                                receivedPacket.getReplyingTo(), receivedPacket.getReply());
                     }
                     case 5 -> {
                         // synchronize the inputs dictionary
@@ -116,7 +129,6 @@ public class Player implements Runnable {
                             logger.debug("string input received");
                             if (storeInput) {
                                 roomsInput.put(this, (String) receivedPacket.getReply().getValue());
-
                             }
                         }
                     }
@@ -144,17 +156,16 @@ public class Player implements Runnable {
         try {
             objWriter.writeObject(packet);
             objWriter.flush();
-            logger.debug("Sent a packet to {}:{} of type {},{},{}",
+            logger.debug(
+                    "Sent a packet to {}:{} of type {},{},{}",
                     name,
                     socket.getInetAddress(),
                     packetType,
                     orderType,
-                    order
-            );
+                    order);
         } catch (IOException ex) {
             logger.error("Error while sending a packet", ex);
         }
-
     }
 
     public void sendChatMessage(String message) {

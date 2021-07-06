@@ -18,14 +18,18 @@ public class DummyClient {
             ObjectOutputStream out2 = new ObjectOutputStream(socket.getOutputStream());
             System.out.println("starting loop...");
             while (true) {
-//                if (0 < input.available()) {
-                    System.out.println("Data available to read");
-                    Object o = input.readObject();
-                    System.out.println(o);
+                //                if (0 < input.available()) {
+                System.out.println("Data available to read");
+                Object o = input.readObject();
+                System.out.println(o);
                 System.out.println("sending my name");
-                ClientPacket meme = new ClientPacket(PacketType.INITIALISE, ((ServerPacket) o).getOrder(), new Reply<String>("meme"));
+                ClientPacket meme =
+                        new ClientPacket(
+                                PacketType.INITIALISE,
+                                ((ServerPacket) o).getOrder(),
+                                new Reply<String>("meme"));
                 out2.writeObject(meme);
-//                }
+                //                }
             }
         } catch (Exception e) {
             e.printStackTrace();
