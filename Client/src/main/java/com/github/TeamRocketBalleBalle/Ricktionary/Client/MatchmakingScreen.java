@@ -64,9 +64,9 @@ public class MatchmakingScreen extends javax.swing.JPanel {
         // Variables declaration - do not modify
         JLabel BackGround = new JLabel();
 
-//        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1077, 767));
-//        setResizable(false);
+        //        setResizable(false);
 
         Message.setBackground(new java.awt.Color(51, 51, 51));
         Message.setFont(new java.awt.Font("Viner Hand ITC", BOLD, 24)); // NOI18N
@@ -78,26 +78,43 @@ public class MatchmakingScreen extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 1053, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(17, 17, 17))
-//                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-//                                .addContainerGap()
-//                                .addComponent(BackGround, javax.swing.GroupLayout.PREFERRED_SIZE, 1058, javax.swing.GroupLayout.PREFERRED_SIZE)
-//                                .addContainerGap())
-        );
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(
+                                                Message,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                1053,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(17, 17, 17))
+                //                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                // layout.createSequentialGroup()
+                //                                .addContainerGap()
+                //                                .addComponent(BackGround,
+                // javax.swing.GroupLayout.PREFERRED_SIZE, 1058,
+                // javax.swing.GroupLayout.PREFERRED_SIZE)
+                //                                .addContainerGap())
+                );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(Message, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-//                        .addGroup(layout.createSequentialGroup()
-//                                .addGap(10, 10, 10)
-//                                .addComponent(BackGround, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-//                                .addContainerGap())
-        );
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(42, 42, 42)
+                                        .addComponent(
+                                                Message,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                117,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                Short.MAX_VALUE))
+                //                        .addGroup(layout.createSequentialGroup()
+                //                                .addGap(10, 10, 10)
+                //                                .addComponent(BackGround,
+                // javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                // Short.MAX_VALUE)
+                //                                .addContainerGap())
+                );
         Rectangle rectangle = new Rectangle(1077, 767);
         ImageIcon i1;
         i1 = new ImageIcon(("Client/src/main/resources/" + image()));
@@ -108,7 +125,7 @@ public class MatchmakingScreen extends javax.swing.JPanel {
         BackGround.setBounds(rectangle);
         add(BackGround);
 
-//        pack();
+        //        pack();
     } // </editor-fold>
     // End of variables declaration
 }

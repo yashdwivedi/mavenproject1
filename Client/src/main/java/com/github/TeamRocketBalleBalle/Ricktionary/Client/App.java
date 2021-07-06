@@ -5,13 +5,11 @@ import java.awt.*;
 
 public class App {
 
-
-
     public static void main(String[] args) {
         // Don't Know What to Write Here... @RoguedBear
     }
-    public static void switchScene(Component scene)
-    {
+
+    public static void switchScene(Component scene) {
         JFrame frame = new JFrame();
         Rectangle rectangle = new Rectangle(1077, 767);
         frame.setBounds(rectangle);
