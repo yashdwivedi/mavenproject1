@@ -99,7 +99,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
         scoreLabel.setText("Score: -");
 
-        Name.setText(ws.Playername);
+       //Name.setText(ws.Playername);
 
         Score.setText("10000");
 
