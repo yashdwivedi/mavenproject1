@@ -19,4 +19,8 @@ abstract class Packet implements Serializable {
             throw new IllegalArgumentException(packetType + " is not valid packet type");
         }
     }
+
+    public byte getPacketType() {
+        return packetType;
+    }
 }
