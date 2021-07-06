@@ -48,14 +48,10 @@ public class Room implements Runnable {
         Order<String> gameOn = new Order<>("gameOn");
 
         for (Player player : playerArray) {
-            player.send(
-                    PacketType.LOAD_SCENE,
-                    OrderTypeLookupTable.LOAD_SCENE,
-                    gameOn);
+            player.send(PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, gameOn);
             player.setStoreInput(true);
             logger.debug("sent {} to {}", gameOn, player.getName());
         }
-
 
         logger.debug("sent all clients order to change screen");
 
@@ -67,12 +63,12 @@ public class Room implements Runnable {
             if (tick < tickRate) {
                 // TODO: sanitise input. one day
                 tick = (int) (System.currentTimeMillis() - tickStartTime);
-//                logger.debug("waiting for tick -> inside if");
+                //                logger.debug("waiting for tick -> inside if");
             } else {
-//                logger.debug("insdie else block");
+                //                logger.debug("insdie else block");
                 synchronized (inputs) {
                     ArrayList<PlayersInput> playersInputs = new ArrayList<>();
-                    for (PlayersInput input: inputs){
+                    for (PlayersInput input : inputs) {
                         playersInputs.add(inputs.remove());
                     }
 
@@ -82,7 +78,7 @@ public class Room implements Runnable {
                         int new_score = scores.getOrDefault(entry.getKey(), 0) + entry.getValue();
                         scores.put(entry.getKey(), new_score);
                     }
-//                    logger.debug("processed input");
+                    //                    logger.debug("processed input");
                     tellEveryone(playersInputs);
                     tickStartTime = System.currentTimeMillis();
                 }
@@ -106,7 +102,8 @@ public class Room implements Runnable {
             if (!value.getTheirInput().isBlank()) {
                 Order<String> chatMessage = new Order<>(value.getTheirInput());
                 for (Player player : playerArray) {
-                    player.send(PacketType.CHAT_MESSAGE, OrderTypeLookupTable.CHAT_MSG, chatMessage);
+                    player.send(
+                            PacketType.CHAT_MESSAGE, OrderTypeLookupTable.CHAT_MSG, chatMessage);
                 }
                 logger.info("Sent message : {}", chatMessage);
             }
