@@ -283,6 +283,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         ImageIcon resizedImage = new ImageIcon(i2);
         bg.setIcon(resizedImage);
         bg.setBounds(rectangle);
+        //        picture.setText("Hello");
         //        backGround.add(bg);
         //        add(backGround);
         add(bg);

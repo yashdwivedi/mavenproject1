@@ -9,10 +9,6 @@ package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  *
@@ -26,32 +22,33 @@ public class winnerscreen extends javax.swing.JPanel {
     public winnerscreen() {
         initComponents();
     }
-//     public static void moosic(String []args){
-//
-//        String soundName = "yourSound.wav";
-//         AudioInputStream audioInputStream = null;
-//         try {
-//             audioInputStream = AudioSystem.getAudioInputStream(new File("Client/src/main/resources/ph_intro.mp3").getAbsoluteFile());
-//         } catch (UnsupportedAudioFileException e) {
-//             e.printStackTrace();
-//         } catch (IOException e) {
-//             e.printStackTrace();
-//         }
-//         Clip clip = null;
-//         try {
-//             clip = AudioSystem.getClip();
-//         } catch (LineUnavailableException e) {
-//             e.printStackTrace();
-//         }
-//         try {
-//             clip.open(audioInputStream);
-//         } catch (LineUnavailableException e) {
-//             e.printStackTrace();
-//         } catch (IOException e) {
-//             e.printStackTrace();
-//         }
-//         clip.start();
-//    }
+    //     public static void moosic(String []args){
+    //
+    //        String soundName = "yourSound.wav";
+    //         AudioInputStream audioInputStream = null;
+    //         try {
+    //             audioInputStream = AudioSystem.getAudioInputStream(new
+    // File("Client/src/main/resources/ph_intro.mp3").getAbsoluteFile());
+    //         } catch (UnsupportedAudioFileException e) {
+    //             e.printStackTrace();
+    //         } catch (IOException e) {
+    //             e.printStackTrace();
+    //         }
+    //         Clip clip = null;
+    //         try {
+    //             clip = AudioSystem.getClip();
+    //         } catch (LineUnavailableException e) {
+    //             e.printStackTrace();
+    //         }
+    //         try {
+    //             clip.open(audioInputStream);
+    //         } catch (LineUnavailableException e) {
+    //             e.printStackTrace();
+    //         } catch (IOException e) {
+    //             e.printStackTrace();
+    //         }
+    //         clip.start();
+    //    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
         ImageIcon icon = new ImageIcon("Client/src/main/resources/jayant.gif");
