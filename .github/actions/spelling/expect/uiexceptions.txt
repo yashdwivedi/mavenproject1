@@ -1,10 +1,14 @@
 clientip
+clientname
 defaultstate
+gamescreen
 imgscale
 insdie
 lookandfeel
+looserscreen
 Looseimage
 mainmenu
+matchmakingscreen
 NOI
 plaf
 uiswing
