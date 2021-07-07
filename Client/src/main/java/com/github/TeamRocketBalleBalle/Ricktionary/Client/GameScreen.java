@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  * @author Yash
@@ -29,7 +31,9 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
     private javax.swing.JButton send;
     private javax.swing.JLabel bg;
 
-    /** Creates new form NewJFrame */
+    /**
+     * Creates new form NewJFrame
+     */
     public GameScreen() {
         initComponents();
     }
@@ -188,8 +192,8 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                         .addGap(29, 29, 29)
                                         .addGroup(
                                                 layout.createParallelGroup(
-                                                                javax.swing.GroupLayout.Alignment
-                                                                        .LEADING)
+                                                        javax.swing.GroupLayout.Alignment
+                                                                .LEADING)
                                                         .addComponent(
                                                                 jScrollPane1,
                                                                 javax.swing.GroupLayout
@@ -219,8 +223,8 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                         .addGap(26, 26, 26)
                                         .addGroup(
                                                 layout.createParallelGroup(
-                                                                javax.swing.GroupLayout.Alignment
-                                                                        .LEADING)
+                                                        javax.swing.GroupLayout.Alignment
+                                                                .LEADING)
                                                         .addComponent(nameLabel)
                                                         .addComponent(Name)
                                                         .addGroup(
@@ -237,15 +241,15 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                                                                         .PREFERRED_SIZE)))
                                         .addGroup(
                                                 layout.createParallelGroup(
-                                                                javax.swing.GroupLayout.Alignment
-                                                                        .LEADING)
+                                                        javax.swing.GroupLayout.Alignment
+                                                                .LEADING)
                                                         .addComponent(scoreLabel)
                                                         .addComponent(Score))
                                         .addGap(58, 58, 58)
                                         .addGroup(
                                                 layout.createParallelGroup(
-                                                                javax.swing.GroupLayout.Alignment
-                                                                        .LEADING)
+                                                        javax.swing.GroupLayout.Alignment
+                                                                .LEADING)
                                                         .addComponent(
                                                                 jPanel1,
                                                                 javax.swing.GroupLayout
@@ -299,6 +303,13 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         add(bg);
 
         send.addActionListener(this);
+        input.addKeyListener( new KeyAdapter(){
+            public void keyPressed(KeyEvent e){
+                if (e.getKeyCode() == KeyEvent.VK_ENTER){
+                    sendChatMessage();
+                }
+            }
+        });
 
         //        pack();
         //                setVisible(true);
@@ -306,6 +317,16 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        sendChatMessage();
+    }
+
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            System.out.println("ENTER key pressed");
+        }
+    }
+
+    private void sendChatMessage() {
         String inputText = input.getText();
         if (inputText.length() <= 32 && !inputText.isBlank() && !inputText.isEmpty()) {
             PlayerNetworking.send(PacketType.GAME_INPUT, null, new Reply<>(inputText));
@@ -317,6 +338,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
     public static JLabel getPicture() {
         return picture;
     }
+
     public static void changeName(String name) {
         Name.setText(name);
     }

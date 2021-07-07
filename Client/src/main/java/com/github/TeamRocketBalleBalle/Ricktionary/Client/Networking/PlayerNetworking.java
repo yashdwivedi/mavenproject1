@@ -72,7 +72,6 @@ public class PlayerNetworking{
                             case LoadScene.LOSER_SCENE -> test.sceneSwitch("loserscreen");
                         }
                     }
-                    // TODO: do something about loading and displaying image in UI
                     case PacketType.LOAD_IMG -> {
                         String hash = (String) receivedPacket.getOrder().getValue();
                         if (loadImage(hash)) {
@@ -82,7 +81,7 @@ public class PlayerNetworking{
                     case PacketType.CHAT_MESSAGE -> {
                         Map.Entry<String, String> message = (Map.Entry<String,String>) (receivedPacket.getOrder().getValue());
                         logger.debug("Chat message received: {}: {}", message.getKey(), message.getValue());
-                        GameScreen.getDisplay().append(message.getKey() + ": " + message.getValue() + "\n");
+                        GameScreen.getDisplay().append(message.getKey() + ": " + message.getValue() + "\n\n");
 
                     }
                     case PacketType.GAME_STATE -> {
