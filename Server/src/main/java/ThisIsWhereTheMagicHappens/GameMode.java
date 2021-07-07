@@ -30,10 +30,8 @@ public class GameMode {
         for (PlayersInput is : inputs) {
             playerIntegerHashMap.put(
                     is.getThem(),
-                    play(
-                            is
-                                    .getTheirInput())); // TODO --> 2nd parameter will store the
-                                                        // score of player
+                    play(is.getTheirInput())); // TODO --> 2nd parameter will store the
+            // score of player
         }
         return playerIntegerHashMap;
     }
