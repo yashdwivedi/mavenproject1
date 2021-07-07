@@ -36,6 +36,7 @@ public class winnerscreen extends javax.swing.JPanel {
 
         back = new javax.swing.JLabel("hemlo");
         winnergif = new javax.swing.JLabel();
+        JLabel jLabel3 = new JLabel();
         back.setIcon(scaledIcon);
         // setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1077, 767));
@@ -44,6 +45,14 @@ public class winnerscreen extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(450, 450, 450)
+                                        .addComponent(
+                                                jLabel3,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                250,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(
                                 layout.createSequentialGroup()
                                         .addGap(395, 395, 395)
@@ -59,6 +68,14 @@ public class winnerscreen extends javax.swing.JPanel {
                                 javax.swing.GroupLayout.PREFERRED_SIZE));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(
+                                                jLabel3,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                100,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(
                                 layout.createSequentialGroup()
                                         .addGap(773, 773, 773)

@@ -8,8 +8,7 @@ import static java.sql.DriverManager.getConnection;
 public class DbWork {
     static Connection c = null;
     static Statement stmt = null;
-    static String url =
-            "jdbc:sqlite:Resources/src/main/java/com/github/TeamRocketBalleBalle/Ricktionary/Resources/database/sqlite.db";
+    static String url = "jdbc:sqlite::resource:sqlite.db";
 
     public static void main(String[] args) {
         System.out.println(getListOfHashes());
@@ -44,11 +43,10 @@ public class DbWork {
     //        stmt.close();
     //        c.close();
     //    }
-    public static ArrayList getListOfHashes() {
+    public static ArrayList<String> getListOfHashes() {
         connect();
         ArrayList<String> HashList = new ArrayList<String>();
-        try {
-            c = getConnection(url);
+        try (Connection c = getConnection(url)) {
             stmt = c.createStatement();
             String getQuery = "SELECT hash from imagehash";
             ResultSet rs = stmt.executeQuery(getQuery);
@@ -69,8 +67,7 @@ public class DbWork {
         String answer = "";
         String answer1 = "";
         PreparedStatement pstmt = null;
-        try {
-            c = getConnection(url);
+        try (Connection c = getConnection(url)) {
             stmt = c.createStatement();
             answer = "SELECT answer from imagehash where hash == ?";
             pstmt = c.prepareStatement(answer);
@@ -91,8 +88,7 @@ public class DbWork {
         String answer = "";
         String answer1 = "";
         PreparedStatement pstmt = null;
-        try {
-            c = getConnection(url);
+        try (Connection c = getConnection(url)) {
             stmt = c.createStatement();
             answer = "SELECT imageAddress from imagehash where hash == ?";
             pstmt = c.prepareStatement(answer);
