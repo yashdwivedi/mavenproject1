@@ -67,16 +67,13 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-        ImageIcon icon = new ImageIcon("Client/src/main/resources/logo.png");
-        Image img = icon.getImage();
-        Image imgscale = img.getScaledInstance(1077, 767, Image.SCALE_SMOOTH);
-        ImageIcon scaledIcon = new ImageIcon(imgscale);
+
         // Variables declaration - do not modify
 
         JLabel nameLabel = new JLabel();
         JLabel ipLabel = new JLabel();
         JButton sendButton = new JButton();
-        JLabel bg = new JLabel(scaledIcon);
+        JLabel bg = new JLabel();
         JLabel jLabel3 = new javax.swing.JLabel();
         // setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1077, 767));
@@ -87,7 +84,6 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
         ip.setFont(new java.awt.Font("Tw Cen MT Condensed", Font.BOLD | Font.ITALIC, 18)); // NOI18N
         nameLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
         nameLabel.setText("Name");
-
         ipLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
         ipLabel.setText("IP Address ");
 
@@ -206,8 +202,12 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
                 //                                javax.swing.GroupLayout.PREFERRED_SIZE,
                 //                                767,
                 //                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+        );
         bg.setBounds(new Rectangle(1077, 767));
+        ImageIcon icon = new ImageIcon("Client/src/main/resources/logo.png");
+        Image img = icon.getImage();
+        Image imgscale = img.getScaledInstance(1077, 767, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(imgscale);
         bg.setIcon(scaledIcon);
         add(bg);
         sendButton.addActionListener(this::actionPerformed);
