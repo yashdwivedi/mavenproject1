@@ -130,8 +130,10 @@ public class PlayerNetworking {
     }
 
     public static boolean loadImage(String hash) {
-        String imagePath = DbWork.getImagePath(hash);
-        ImageIcon icon = new ImageIcon(imagePath);
+        String imagePath = "/" + DbWork.getImagePath(hash);
+        logger.debug("opening image from path: {}", imagePath);
+        ImageIcon icon = new ImageIcon(PlayerNetworking.class.getResource(imagePath));
+        logger.debug("loaded image height: {}", icon.getIconHeight());
         Image img = icon.getImage();
         Image imgscale = img.getScaledInstance(416, 594, Image.SCALE_DEFAULT);
         ImageIcon scaledIcon = new ImageIcon(imgscale);
