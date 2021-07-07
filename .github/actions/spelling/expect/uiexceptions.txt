@@ -6,6 +6,7 @@ imgscale
 insdie
 lookandfeel
 looserscreen
+loserscreem
 Looseimage
 mainmenu
 matchmakingscreen
