@@ -11,9 +11,9 @@ public class DbWork {
     static String url = "jdbc:sqlite:Resources/src/main/java/com/github/TeamRocketBalleBalle/Ricktionary/Resources/database/sqlite.db";
 
     public static void main(String[] args) {
-        connect();
-//        System.out.println(getListOfHashes());
-//        System.out.println(getAnswer("264BAAB7EEC0F43BDC71"));
+        System.out.println(getListOfHashes());
+        System.out.println(getAnswer("264BAAB7EEC0F43BDC71"));
+        System.out.println(getImagePath("264BAAB7EEC0F43BDC71"));
 
     }
     public static void connect()
@@ -27,8 +27,8 @@ public class DbWork {
         try (Connection c = getConnection(url)) {
             if (c != null) {
                 DatabaseMetaData meta = c.getMetaData();
-                System.out.println("The driver name is " + meta.getDriverName());
-                System.out.println("A new database has been created.");
+//                System.out.println("The driver name is " + meta.getDriverName());
+//                System.out.println("A new database has been created.");
             }
 
         } catch (SQLException e) {
@@ -46,6 +46,7 @@ public class DbWork {
 //        c.close();
 //    }
     public static ArrayList getListOfHashes(){
+        connect();
         ArrayList<String> HashList = new ArrayList<String>();
         try {
             c = getConnection(url);
@@ -64,6 +65,7 @@ public class DbWork {
 //        System.out.println(HashList);
     }
     public static String  getAnswer(String h){
+        connect();
         String answer = "";
         String answer1 = "";
         PreparedStatement pstmt = null;
@@ -74,6 +76,26 @@ public class DbWork {
             pstmt = c.prepareStatement(answer);
             pstmt.setString(1,h);
             answer1 = pstmt.executeQuery().getString("answer");
+
+            //            System.out.println("Output: - ");
+//            String getQuery = "SELECT count(*) > 0 FROM sqlite_master where tbl_name = \"<table_name>\" and type=\"table\""
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return answer1;
+    }
+    public static String getImagePath(String h){
+        connect();
+        String answer = "";
+        String answer1 = "";
+        PreparedStatement pstmt = null;
+        try {
+            c = getConnection(url);
+            stmt = c.createStatement();
+            answer = "SELECT imageAddress from imagehash where hash == ?";
+            pstmt = c.prepareStatement(answer);
+            pstmt.setString(1,h);
+            answer1 = pstmt.executeQuery().getString("imageAddress");
 
             //            System.out.println("Output: - ");
 //            String getQuery = "SELECT count(*) > 0 FROM sqlite_master where tbl_name = \"<table_name>\" and type=\"table\""
