@@ -47,8 +47,7 @@ public class DbWork {
     public static ArrayList<String> getListOfHashes() {
         connect();
         ArrayList<String> HashList = new ArrayList<String>();
-        try {
-            c = getConnection(url);
+        try (Connection c = getConnection(url)) {
             stmt = c.createStatement();
             String getQuery = "SELECT hash from imagehash";
             ResultSet rs = stmt.executeQuery(getQuery);
@@ -69,8 +68,7 @@ public class DbWork {
         String answer = "";
         String answer1 = "";
         PreparedStatement pstmt = null;
-        try {
-            c = getConnection(url);
+        try (Connection c = getConnection(url)) {
             stmt = c.createStatement();
             answer = "SELECT answer from imagehash where hash == ?";
             pstmt = c.prepareStatement(answer);
@@ -91,8 +89,7 @@ public class DbWork {
         String answer = "";
         String answer1 = "";
         PreparedStatement pstmt = null;
-        try {
-            c = getConnection(url);
+        try (Connection c = getConnection(url)) {
             stmt = c.createStatement();
             answer = "SELECT imageAddress from imagehash where hash == ?";
             pstmt = c.prepareStatement(answer);
