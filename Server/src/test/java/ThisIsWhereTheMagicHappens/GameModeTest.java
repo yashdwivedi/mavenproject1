@@ -9,16 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameModeTest {
 
     @Test
-    void playTurn() {
-    }
+    void playTurn() {}
 
     @ParameterizedTest
-    @CsvSource({"theek,1","answer,0"})
-    void playTest(String input , int expectedScore) {
+    @CsvSource({"theek,1", "answer,0"})
+    void playTest(String input, int expectedScore) {
         GameMode g = new GameMode("answer");
         int output = g.play(input);
-        assertEquals(expectedScore , output);
+        assertEquals(expectedScore, output);
     }
-
-
 }
