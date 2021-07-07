@@ -30,6 +30,7 @@ SUMS$
 \.crl$
 \.crt$
 \.csr$
+\.db$
 \.dll$
 \.DS_Store$
 \.eot$
