@@ -8,8 +8,7 @@ import static java.sql.DriverManager.getConnection;
 public class DbWork {
     static Connection c = null;
     static Statement stmt = null;
-    static String url =
-            "jdbc:sqlite::resource:sqlite.db";
+    static String url = "jdbc:sqlite::resource:sqlite.db";
 
     public static void main(String[] args) {
         System.out.println(getListOfHashes());
