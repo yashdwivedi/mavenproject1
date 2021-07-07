@@ -2,27 +2,25 @@ package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Time;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
-public class test extends JFrame{
+public class test extends JFrame {
     static JFrame frame = new JFrame();
 
     public static void main(String[] args) {
-//        sceneSwitch("welcomescreen");
-//        try {
-//            TimeUnit.SECONDS.sleep(10);
-//        }
-//        catch (Exception e){
-//            System.out.println("Error");
-//        }
-//
-//        sceneSwitch("gamescreen");
+        //        sceneSwitch("welcomescreen");
+        //        try {
+        //            TimeUnit.SECONDS.sleep(10);
+        //        }
+        //        catch (Exception e){
+        //            System.out.println("Error");
+        //        }
+        //
+        //        sceneSwitch("gamescreen");
     }
-    public static void sceneSwitch(String scene)
-    {
+
+    public static void sceneSwitch(String scene) {
         frame.setSize(1077, 767);
         frame.getContentPane().removeAll();
         JPanel panel = new JPanel();
@@ -38,7 +36,7 @@ public class test extends JFrame{
         panel.setLayout(cardLayout);
         panel.add(map.get("welcomescreen"), "welcomescreen");
 
-        panel.add(map.get("matchmakingscreen"),"matchmakingscreen");
+        panel.add(map.get("matchmakingscreen"), "matchmakingscreen");
         panel.add(map.get("gamescreen"), "gamescreen");
         panel.add(map.get("winnerscreen"), "winnerscreen");
         panel.add(map.get("loserscreen"), "loserscreen");

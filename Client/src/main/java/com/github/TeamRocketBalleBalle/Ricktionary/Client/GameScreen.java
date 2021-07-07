@@ -290,7 +290,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         send.addActionListener(this);
 
         //        pack();
-//                setVisible(true);
+        //                setVisible(true);
     } // </editor-fold>
 
     @Override
