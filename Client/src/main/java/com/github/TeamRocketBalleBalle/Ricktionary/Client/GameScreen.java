@@ -1,5 +1,10 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 
+import com.github.TeamRocketBalleBalle.Ricktionary.Client.Networking.PlayerNetworking;
+import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.ClientPacket;
+import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.Reply;
+import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.PacketType;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,15 +16,15 @@ import java.awt.event.ActionListener;
 public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
     // Variables declaration - do not modify
-    public javax.swing.JLabel Name;
+    public static javax.swing.JLabel Name;
     private javax.swing.JLabel Score;
     private javax.swing.JLabel Title;
-    private javax.swing.JTextArea display;
+    private static javax.swing.JTextArea display;
     private javax.swing.JTextField input;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JLabel picture;
+    public static javax.swing.JLabel picture;
     private javax.swing.JLabel scoreLabel;
     private javax.swing.JButton send;
     private javax.swing.JLabel bg;
@@ -59,6 +64,10 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(GameScreen::new);
+    }
+
+    public static JTextArea getDisplay() {
+        return display;
     }
 
     /**
@@ -105,6 +114,8 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         Title.setText("Ricktionary");
         display.setLineWrap(true);
 
+        jScrollPane1.setViewportView(display);
+        display.setEditable(false);
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -295,10 +306,18 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String displayText = display.getText();
         String inputText = input.getText();
-        display.setText(displayText + "\n" + Name.getText() + ": -> " + inputText + "\n");
+        if (inputText.length() <= 32 && !inputText.isBlank() && !inputText.isEmpty()) {
+            PlayerNetworking.send(PacketType.GAME_INPUT, null, new Reply<>(inputText));
+        }
         input.setText("");
         input.requestFocus();
+    }
+
+    public static JLabel getPicture() {
+        return picture;
+    }
+    public static void changeName(String name) {
+        Name.setText(name);
     }
 }

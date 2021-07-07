@@ -7,6 +7,7 @@ import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.Order;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.LoadScene;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.OrderTypeLookupTable;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.PacketType;
+import com.github.TeamRocketBalleBalle.Ricktionary.Resources.database.DbWork;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +31,7 @@ public class Room implements Runnable {
         playerArray.add(player);
         player.addUserInputTo(inputs);
         player.send(
-                PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, new Order<String>("wait"));
+                PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, new Order<Byte>((byte) LoadScene.MATCHMAKING_SCENE));
         logger.debug("added {} to this room", player.getName());
     }
 
@@ -46,7 +47,7 @@ public class Room implements Runnable {
         startSetup();
 
         // send game scenes
-        Order<String> gameOn = new Order<>("gameOn");
+        Order<Byte> gameOn = new Order<Byte>((byte) LoadScene.GAME_SCENE);
 
         for (Player player : playerArray) {
             player.send(PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, gameOn);
@@ -60,7 +61,7 @@ public class Room implements Runnable {
         int tick = 0;
         logger.debug("Starting game loop");
         // Game Loop is ON 🔥🔥🔥🔥
-        while (!gameMode.ended()) {
+        while (!gameMode.ended() && playerArray.size() != 0) {
             if (tick < tickRate) {
                 // TODO: sanitise input. one day
                 tick = (int) (System.currentTimeMillis() - tickStartTime);
@@ -101,10 +102,10 @@ public class Room implements Runnable {
     private void tellEveryone(ArrayList<PlayersInput> playersInputs) {
         for (PlayersInput value : playersInputs) {
             if (!value.getTheirInput().isBlank()) {
-                Order<String> chatMessage = new Order<>(value.getTheirInput());
+                AbstractMap.SimpleEntry<String, String> chatMessage = new AbstractMap.SimpleEntry<>(value.getThem().getName(), value.getTheirInput());
                 for (Player player : playerArray) {
                     player.send(
-                            PacketType.CHAT_MESSAGE, OrderTypeLookupTable.CHAT_MSG, chatMessage);
+                            PacketType.CHAT_MESSAGE, OrderTypeLookupTable.CHAT_MSG, new Order<>(chatMessage));
                 }
                 logger.info("Sent message : {}", chatMessage);
             }
@@ -121,11 +122,12 @@ public class Room implements Runnable {
                 winner = candidate.getKey();
             }
         }
-        assert winner != null;
-        winner.send(
-                PacketType.LOAD_SCENE,
-                OrderTypeLookupTable.LOAD_SCENE,
-                new Order<Integer>(LoadScene.WINNER_SCENE));
+        if (winner != null) {
+            winner.send(
+                    PacketType.LOAD_SCENE,
+                    OrderTypeLookupTable.LOAD_SCENE,
+                    new Order<Integer>(LoadScene.WINNER_SCENE));
+        }
         for (Player player : playerArray) {
             if (!player.equals(winner)) {
                 player.send(
@@ -139,21 +141,20 @@ public class Room implements Runnable {
     public String getImageHash() {
         Random rand = new Random();
 
-        //        String[] hash = Database.getAllImageHash(); // function to be implemented that
-        // will send an array of all the hashes of images from the database
-        //        int lengthOfHash = hash.length;
-        //
-        //        String choosenHash = hash[rand.nextInt(lengthOfHash)];
+        ArrayList<String> hash = DbWork.getListOfHashes(); // function to be implemented that
+//         will send an array of all the hashes of images from the database
+        int lengthOfHash = hash.size();
 
-        //        return choosenHash;
-        //        logger.debug("choosenHash {}", choosenHash);
-        //
-        //        return choosenHash;
-        return ("");
+        String choosenHash = hash.get(rand.nextInt(lengthOfHash));
+
+        logger.debug("choosenHash {}", choosenHash);
+        return choosenHash;
+
     }
 
     public void startSetup() {
         hash = getImageHash();
+        logger.info("Choosen image hash: {}", hash);
         Order<String> imageOrder = new Order<>(hash);
         for (Player player : playerArray) {
             player.send(PacketType.LOAD_IMG, OrderTypeLookupTable.LOAD_IMAGE, imageOrder);

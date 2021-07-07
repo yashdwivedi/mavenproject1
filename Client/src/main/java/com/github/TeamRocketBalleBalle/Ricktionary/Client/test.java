@@ -7,6 +7,15 @@ import java.util.Map;
 
 public class test extends JFrame {
     static JFrame frame = new JFrame();
+    static Map<String, JPanel> map = new HashMap<String, JPanel>();
+
+    static {
+        map.put("gamescreen", new GameScreen());
+        map.put("loserscreen", new LoserScreen());
+        map.put("matchmakingscreen", new MatchmakingScreen());
+        map.put("winnerscreen", new winnerscreen());
+        map.put("welcomescreen", new welcomescreen());
+    }
 
     public static void main(String[] args) {
         //        sceneSwitch("welcomescreen");
@@ -24,14 +33,10 @@ public class test extends JFrame {
         frame.setSize(1077, 767);
         frame.getContentPane().removeAll();
         JPanel panel = new JPanel();
-        Map<String, JPanel> map = new HashMap<String, JPanel>();
+//        Map<String, JPanel> map = new HashMap<String, JPanel>();
         CardLayout cardLayout = new CardLayout();
 
-        map.put("gamescreen", new GameScreen());
-        map.put("loserscreen", new LoserScreen());
-        map.put("matchmakingscreen", new MatchmakingScreen());
-        map.put("winnerscreen", new winnerscreen());
-        map.put("welcomescreen", new welcomescreen());
+
 
         panel.setLayout(cardLayout);
         panel.add(map.get("welcomescreen"), "welcomescreen");
@@ -41,7 +46,7 @@ public class test extends JFrame {
         panel.add(map.get("winnerscreen"), "winnerscreen");
         panel.add(map.get("loserscreen"), "loserscreen");
 
-        frame.setSize(1077, 767);
+        frame.setSize(1077, 805);
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);

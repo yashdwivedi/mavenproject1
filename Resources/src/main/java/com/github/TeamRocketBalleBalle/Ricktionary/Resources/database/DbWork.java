@@ -44,7 +44,7 @@ public class DbWork {
     //        stmt.close();
     //        c.close();
     //    }
-    public static ArrayList getListOfHashes() {
+    public static ArrayList<String> getListOfHashes() {
         connect();
         ArrayList<String> HashList = new ArrayList<String>();
         try {
