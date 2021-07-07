@@ -9,7 +9,7 @@ public class DbWork {
     static Connection c = null;
     static Statement stmt = null;
     static String url =
-            "jdbc:sqlite:Resources/src/main/java/com/github/TeamRocketBalleBalle/Ricktionary/Resources/database/sqlite.db";
+            "jdbc:sqlite::resource:sqlite.db";
 
     public static void main(String[] args) {
         System.out.println(getListOfHashes());
