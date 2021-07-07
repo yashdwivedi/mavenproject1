@@ -8,20 +8,20 @@ import static java.sql.DriverManager.getConnection;
 public class DbWork {
     static Connection c = null;
     static Statement stmt = null;
-    static String url = "jdbc:sqlite:Resources/src/main/java/com/github/TeamRocketBalleBalle/Ricktionary/Resources/database/sqlite.db";
+    static String url =
+            "jdbc:sqlite:Resources/src/main/java/com/github/TeamRocketBalleBalle/Ricktionary/Resources/database/sqlite.db";
 
     public static void main(String[] args) {
         connect();
-//        System.out.println(getListOfHashes());
-//        System.out.println(getAnswer("264BAAB7EEC0F43BDC71"));
+        //        System.out.println(getListOfHashes());
+        //        System.out.println(getAnswer("264BAAB7EEC0F43BDC71"));
 
     }
-    public static void connect()
-    {
+
+    public static void connect() {
         try {
             Class.forName("org.sqlite.JDBC");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         try (Connection c = getConnection(url)) {
@@ -35,17 +35,17 @@ public class DbWork {
             System.out.println(e.getMessage());
         }
     }
-//    public static void drop_and_create_table() throws SQLException {
-//        c = getConnection(url);
-//        stmt = c.createStatement();
-//        String dropStatement = " SELECT * FROM sqlite_master where tbl_name = 'imagehash'";
-//        System.out.println((stmt.executeUpdate(dropStatement)));
-//
-//
-//        stmt.close();
-//        c.close();
-//    }
-    public static ArrayList getListOfHashes(){
+    //    public static void drop_and_create_table() throws SQLException {
+    //        c = getConnection(url);
+    //        stmt = c.createStatement();
+    //        String dropStatement = " SELECT * FROM sqlite_master where tbl_name = 'imagehash'";
+    //        System.out.println((stmt.executeUpdate(dropStatement)));
+    //
+    //
+    //        stmt.close();
+    //        c.close();
+    //    }
+    public static ArrayList getListOfHashes() {
         ArrayList<String> HashList = new ArrayList<String>();
         try {
             c = getConnection(url);
@@ -53,7 +53,7 @@ public class DbWork {
             String getQuery = "SELECT hash from imagehash";
             ResultSet rs = stmt.executeQuery(getQuery);
 
-            while (rs.next()){
+            while (rs.next()) {
                 HashList.add(rs.getString("hash"));
             }
 
@@ -61,9 +61,10 @@ public class DbWork {
             throwables.printStackTrace();
         }
         return HashList;
-//        System.out.println(HashList);
+        //        System.out.println(HashList);
     }
-    public static String  getAnswer(String h){
+
+    public static String getAnswer(String h) {
         String answer = "";
         String answer1 = "";
         PreparedStatement pstmt = null;
@@ -72,11 +73,12 @@ public class DbWork {
             stmt = c.createStatement();
             answer = "SELECT answer from imagehash where hash == ?";
             pstmt = c.prepareStatement(answer);
-            pstmt.setString(1,h);
+            pstmt.setString(1, h);
             answer1 = pstmt.executeQuery().getString("answer");
 
             //            System.out.println("Output: - ");
-//            String getQuery = "SELECT count(*) > 0 FROM sqlite_master where tbl_name = \"<table_name>\" and type=\"table\""
+            //            String getQuery = "SELECT count(*) > 0 FROM sqlite_master where tbl_name =
+            // \"<table_name>\" and type=\"table\""
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
