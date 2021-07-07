@@ -74,4 +74,4 @@ SUMS$
 \.zip$
 
 # Don't bother checking Database directory
-^Resources/src/main/java/com/github/TeamRocketBalleBalle/Ricktionary/Resources/DbWork\.java$
+^Resources/src/main/java/com/github/TeamRocketBalleBalle/Ricktionary/Resources/database/DbWork\.java$
