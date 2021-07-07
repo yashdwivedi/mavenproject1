@@ -1,6 +1,5 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Server;
 
-// TODO: implement this
 
 import ThisIsWhereTheMagicHappens.GameMode;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.Order;
@@ -18,7 +17,7 @@ public class Room implements Runnable {
     private final ArrayList<Player> playerArray = new ArrayList<Player>();
     private String hash;
     private final int tickRate = 1000;
-    private final GameMode gameMode = new GameMode(); // TODO: do something about this.
+    private final GameMode gameMode = new GameMode("answer ki string value here"); // TODO: do something about this.
     private final Queue<PlayersInput> inputs = new LinkedList<>();
     private final HashMap<Player, Integer> scores = new HashMap<>();
 
