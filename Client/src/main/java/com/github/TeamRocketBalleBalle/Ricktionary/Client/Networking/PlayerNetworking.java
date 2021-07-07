@@ -22,7 +22,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class PlayerNetworking{
+public class PlayerNetworking {
     private static Socket socket;
     private static Logger logger;
 
@@ -34,7 +34,7 @@ public class PlayerNetworking{
 
     private static boolean disconnected = false;
 
-    public static void setUpNetworking (String hostName, int port) throws IOException {
+    public static void setUpNetworking(String hostName, int port) throws IOException {
         socket = new Socket(hostName, port);
         logger = LoggerFactory.getLogger("Ricktionary.Client");
 
@@ -44,7 +44,7 @@ public class PlayerNetworking{
         new Thread(PlayerNetworking::read).start();
     }
 
-    public static void read(){
+    public static void read() {
         logger.debug("Read thread started");
         while (!socket.isClosed()) {
             try {
@@ -52,18 +52,20 @@ public class PlayerNetworking{
                 logger.debug(
                         "Data received: {},{}",
                         receivedPacket.getPacketType(),
-                        receivedPacket.getOrder()
-                );
+                        receivedPacket.getOrder());
 
-                switch (receivedPacket.getPacketType()){
+                switch (receivedPacket.getPacketType()) {
                     case PacketType.INITIALISE -> {
                         synchronized (pendingOrders) {
-                            pendingOrders.add(new AbstractMap.SimpleEntry<>(PacketType.INITIALISE, receivedPacket.getOrder()));
+                            pendingOrders.add(
+                                    new AbstractMap.SimpleEntry<>(
+                                            PacketType.INITIALISE, receivedPacket.getOrder()));
                         }
                     }
                     case PacketType.LOAD_SCENE -> {
                         switch ((Byte) receivedPacket.getOrder().getValue()) {
-                            case LoadScene.MATCHMAKING_SCENE -> test.sceneSwitch("matchmakingscreen");
+                            case LoadScene.MATCHMAKING_SCENE -> test.sceneSwitch(
+                                    "matchmakingscreen");
 
                             case LoadScene.GAME_SCENE -> test.sceneSwitch("gamescreen");
 
@@ -79,14 +81,21 @@ public class PlayerNetworking{
                         }
                     }
                     case PacketType.CHAT_MESSAGE -> {
-                        Map.Entry<String, String> message = (Map.Entry<String,String>) (receivedPacket.getOrder().getValue());
-                        logger.debug("Chat message received: {}: {}", message.getKey(), message.getValue());
-                        GameScreen.getDisplay().append(message.getKey() + ": " + message.getValue() + "\n\n");
-
+                        Map.Entry<String, String> message =
+                                (Map.Entry<String, String>) (receivedPacket.getOrder().getValue());
+                        logger.debug(
+                                "Chat message received: {}: {}",
+                                message.getKey(),
+                                message.getValue());
+                        GameScreen.getDisplay()
+                                .append(message.getKey() + ": " + message.getValue() + "\n\n");
                     }
                     case PacketType.GAME_STATE -> {
-                        synchronized (pendingOrders){
-                            pendingOrders.add(new AbstractMap.SimpleEntry<>(receivedPacket.getPacketType(),(Order<?>) receivedPacket.getOrder().getValue()));
+                        synchronized (pendingOrders) {
+                            pendingOrders.add(
+                                    new AbstractMap.SimpleEntry<>(
+                                            receivedPacket.getPacketType(),
+                                            (Order<?>) receivedPacket.getOrder().getValue()));
                         }
                     }
                 }
@@ -99,6 +108,7 @@ public class PlayerNetworking{
             }
         }
     }
+
     public static void send(byte packetType, Order<?> replyingTo, Reply<?> reply) {
         ClientPacket packet = new ClientPacket(packetType, replyingTo, reply);
         try {
@@ -119,11 +129,11 @@ public class PlayerNetworking{
         return disconnected;
     }
 
-    public static boolean loadImage(String hash){
+    public static boolean loadImage(String hash) {
         String imagePath = DbWork.getImagePath(hash);
         ImageIcon icon = new ImageIcon(imagePath);
         Image img = icon.getImage();
-        Image imgscale = img.getScaledInstance(416,594,Image.SCALE_DEFAULT);
+        Image imgscale = img.getScaledInstance(416, 594, Image.SCALE_DEFAULT);
         ImageIcon scaledIcon = new ImageIcon(imgscale);
         GameScreen.picture.setIcon(scaledIcon);
         return true;
@@ -132,7 +142,7 @@ public class PlayerNetworking{
     public static Order<?> getOrder(byte packetType) {
         logger.debug("getting [{}] packet", packetType);
         Order<?> foundOrder = null;
-        while (foundOrder == null){
+        while (foundOrder == null) {
             int index = 0;
             for (int i = 0; i < pendingOrders.size(); i++) {
                 synchronized (pendingOrders) {

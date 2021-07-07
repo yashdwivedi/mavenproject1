@@ -38,10 +38,8 @@ public class test extends JFrame {
         frame.setSize(1077, 767);
         frame.getContentPane().removeAll();
         JPanel panel = new JPanel();
-//        Map<String, JPanel> map = new HashMap<String, JPanel>();
+        //        Map<String, JPanel> map = new HashMap<String, JPanel>();
         CardLayout cardLayout = new CardLayout();
-
-
 
         panel.setLayout(cardLayout);
         panel.add(map.get("welcomescreen"), "welcomescreen");

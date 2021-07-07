@@ -31,7 +31,9 @@ public class Room implements Runnable {
         playerArray.add(player);
         player.addUserInputTo(inputs);
         player.send(
-                PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, new Order<Byte>((byte) LoadScene.MATCHMAKING_SCENE));
+                PacketType.LOAD_SCENE,
+                OrderTypeLookupTable.LOAD_SCENE,
+                new Order<Byte>((byte) LoadScene.MATCHMAKING_SCENE));
         logger.debug("added {} to this room", player.getName());
     }
 
@@ -102,10 +104,14 @@ public class Room implements Runnable {
     private void tellEveryone(ArrayList<PlayersInput> playersInputs) {
         for (PlayersInput value : playersInputs) {
             if (!value.getTheirInput().isBlank()) {
-                AbstractMap.SimpleEntry<String, String> chatMessage = new AbstractMap.SimpleEntry<>(value.getThem().getName(), value.getTheirInput());
+                AbstractMap.SimpleEntry<String, String> chatMessage =
+                        new AbstractMap.SimpleEntry<>(
+                                value.getThem().getName(), value.getTheirInput());
                 for (Player player : playerArray) {
                     player.send(
-                            PacketType.CHAT_MESSAGE, OrderTypeLookupTable.CHAT_MSG, new Order<>(chatMessage));
+                            PacketType.CHAT_MESSAGE,
+                            OrderTypeLookupTable.CHAT_MSG,
+                            new Order<>(chatMessage));
                 }
                 logger.info("Sent message : {}", chatMessage);
             }
@@ -142,14 +148,13 @@ public class Room implements Runnable {
         Random rand = new Random();
 
         ArrayList<String> hash = DbWork.getListOfHashes(); // function to be implemented that
-//         will send an array of all the hashes of images from the database
+        //         will send an array of all the hashes of images from the database
         int lengthOfHash = hash.size();
 
         String choosenHash = hash.get(rand.nextInt(lengthOfHash));
 
         logger.debug("choosenHash {}", choosenHash);
         return choosenHash;
-
     }
 
     public void startSetup() {

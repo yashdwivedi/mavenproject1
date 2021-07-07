@@ -1,7 +1,6 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 
 import com.github.TeamRocketBalleBalle.Ricktionary.Client.Networking.PlayerNetworking;
-import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.ClientPacket;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.Reply;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.PacketType;
 
@@ -192,8 +191,8 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                         .addGap(29, 29, 29)
                                         .addGroup(
                                                 layout.createParallelGroup(
-                                                        javax.swing.GroupLayout.Alignment
-                                                                .LEADING)
+                                                                javax.swing.GroupLayout.Alignment
+                                                                        .LEADING)
                                                         .addComponent(
                                                                 jScrollPane1,
                                                                 javax.swing.GroupLayout
@@ -223,8 +222,8 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                         .addGap(26, 26, 26)
                                         .addGroup(
                                                 layout.createParallelGroup(
-                                                        javax.swing.GroupLayout.Alignment
-                                                                .LEADING)
+                                                                javax.swing.GroupLayout.Alignment
+                                                                        .LEADING)
                                                         .addComponent(nameLabel)
                                                         .addComponent(Name)
                                                         .addGroup(
@@ -241,15 +240,15 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                                                                         .PREFERRED_SIZE)))
                                         .addGroup(
                                                 layout.createParallelGroup(
-                                                        javax.swing.GroupLayout.Alignment
-                                                                .LEADING)
+                                                                javax.swing.GroupLayout.Alignment
+                                                                        .LEADING)
                                                         .addComponent(scoreLabel)
                                                         .addComponent(Score))
                                         .addGap(58, 58, 58)
                                         .addGroup(
                                                 layout.createParallelGroup(
-                                                        javax.swing.GroupLayout.Alignment
-                                                                .LEADING)
+                                                                javax.swing.GroupLayout.Alignment
+                                                                        .LEADING)
                                                         .addComponent(
                                                                 jPanel1,
                                                                 javax.swing.GroupLayout
@@ -303,13 +302,14 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         add(bg);
 
         send.addActionListener(this);
-        input.addKeyListener( new KeyAdapter(){
-            public void keyPressed(KeyEvent e){
-                if (e.getKeyCode() == KeyEvent.VK_ENTER){
-                    sendChatMessage();
-                }
-            }
-        });
+        input.addKeyListener(
+                new KeyAdapter() {
+                    public void keyPressed(KeyEvent e) {
+                        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                            sendChatMessage();
+                        }
+                    }
+                });
 
         //        pack();
         //                setVisible(true);
