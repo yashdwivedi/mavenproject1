@@ -16,13 +16,11 @@ import java.awt.event.ActionListener;
  * @author tiwar
  */
 public class welcomescreen extends javax.swing.JPanel implements ActionListener {
-    public JTextField name = new JTextField();
-    public JTextField ip = new JTextField();
-    public JLabel nameLabel = new JLabel();
-    public JLabel ipLabel = new JLabel();
-    public JButton sendButton = new JButton();
-    public String clientName;
-    public String clientip;
+    JTextField name = new JTextField("Enter Your Name...");
+    JTextField ip = new JTextField("Enter IP...");
+
+    static String clientname = "";
+    static String clientip = "";
 
     /**
      * Creates new form NewJFrame
@@ -75,15 +73,18 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
         ImageIcon scaledIcon = new ImageIcon(imgscale);
         // Variables declaration - do not modify
 
+        JLabel nameLabel = new JLabel();
+        JLabel ipLabel = new JLabel();
+        JButton sendButton = new JButton();
         JLabel bg = new JLabel(scaledIcon);
-
+        JLabel jLabel3 = new javax.swing.JLabel();
         // setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1077, 767));
 
         name.setFont(
                 new java.awt.Font("Tw Cen MT Condensed", Font.BOLD | Font.ITALIC, 18)); // NOI18N
         name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
+        ip.setFont(new java.awt.Font("Tw Cen MT Condensed", Font.BOLD | Font.ITALIC, 18)); // NOI18N
         nameLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
         nameLabel.setText("Name");
 
@@ -96,6 +97,14 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(450, 450, 450)
+                                        .addComponent(
+                                                jLabel3,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                250,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(
                                 layout.createSequentialGroup()
                                         .addGap(310, 310, 310)
@@ -134,13 +143,22 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 130,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(
-                                bg,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                1077,
-                                javax.swing.GroupLayout.PREFERRED_SIZE));
+                //                        .addComponent(
+                //                                bg,
+                //                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                //                                1077,
+                //                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(
+                                                jLabel3,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                100,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(
                                 layout.createSequentialGroup()
                                         .addGap(270, 270, 270)
@@ -183,12 +201,15 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 60,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(
-                                bg,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                767,
-                                javax.swing.GroupLayout.PREFERRED_SIZE));
-
+                //                        .addComponent(
+                //                                bg,
+                //                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                //                                767,
+                //                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                );
+        bg.setBounds(new Rectangle(1077, 767));
+        add(bg);
+        sendButton.addActionListener(this::actionPerformed);
         // pack();
         //        setVisible(true);
     }
@@ -196,7 +217,10 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
     @Override
     public void actionPerformed(ActionEvent e) {
         clientip = ip.getText();
-        clientName = name.getText();
+        clientname = name.getText();
+        System.out.println(clientname + " " + clientip);
+        //        new GameScreen().Name.setText(clientname);
+
     }
 
     // End of variables declaration

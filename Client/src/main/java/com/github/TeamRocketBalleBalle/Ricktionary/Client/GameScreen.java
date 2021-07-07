@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
     // Variables declaration - do not modify
-    private javax.swing.JLabel Name;
+    public javax.swing.JLabel Name;
     private javax.swing.JLabel Score;
     private javax.swing.JLabel Title;
     private javax.swing.JTextArea display;
@@ -67,8 +67,6 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-        welcomescreen ws = new welcomescreen();
-
         nameLabel = new javax.swing.JLabel();
         scoreLabel = new javax.swing.JLabel();
 
@@ -82,6 +80,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         input = new javax.swing.JTextField();
         send = new javax.swing.JButton();
         bg = new javax.swing.JLabel();
+        JLabel jLabel3 = new JLabel();
         //        backGround = new javax.swing.JPanel();
         nameLabel.setForeground(Color.WHITE);
         scoreLabel.setForeground(Color.white);
@@ -99,7 +98,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
         scoreLabel.setText("Score: -");
 
-        Name.setText(ws.clientName);
+        Name.setText(welcomescreen.clientname);
 
         Score.setText("10000");
 
@@ -139,6 +138,14 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(450, 450, 450)
+                                        .addComponent(
+                                                jLabel3,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                250,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(
                                 layout.createSequentialGroup()
                                         .addGap(29, 29, 29)
@@ -188,6 +195,14 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                                                         .PREFERRED_SIZE))));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(
+                                                jLabel3,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                100,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(
                                 layout.createSequentialGroup()
                                         .addGap(26, 26, 26)
@@ -275,7 +290,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         send.addActionListener(this);
 
         //        pack();
-        //        setVisible(true)
+        //                setVisible(true);
     } // </editor-fold>
 
     @Override
