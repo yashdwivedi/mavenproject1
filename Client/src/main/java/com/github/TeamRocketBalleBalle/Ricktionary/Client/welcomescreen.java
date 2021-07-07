@@ -8,12 +8,19 @@ package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author tiwar
  */
-public class welcomescreen extends javax.swing.JPanel {
+public class welcomescreen extends javax.swing.JPanel implements ActionListener {
+    JTextField name = new JTextField("Enter Your Name...");
+    JTextField ip = new JTextField("Enter IP...");
+
+    static String clientname = "";
+    static String clientip = "";
 
     /**
      * Creates new form NewJFrame
@@ -65,8 +72,7 @@ public class welcomescreen extends javax.swing.JPanel {
         Image imgscale = img.getScaledInstance(1077, 767, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(imgscale);
         // Variables declaration - do not modify
-        JTextField name = new JTextField();
-        JTextField ip = new JTextField();
+
         JLabel nameLabel = new JLabel();
         JLabel ipLabel = new JLabel();
         JButton sendButton = new JButton();
@@ -78,7 +84,8 @@ public class welcomescreen extends javax.swing.JPanel {
         name.setFont(
                 new java.awt.Font("Tw Cen MT Condensed", Font.BOLD | Font.ITALIC, 18)); // NOI18N
         name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
+        ip.setFont(
+                new java.awt.Font("Tw Cen MT Condensed", Font.BOLD | Font.ITALIC, 18)); // NOI18N
         nameLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
         nameLabel.setText("Name");
 
@@ -137,11 +144,12 @@ public class welcomescreen extends javax.swing.JPanel {
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 130,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(
-                                bg,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                1077,
-                                javax.swing.GroupLayout.PREFERRED_SIZE));
+//                        .addComponent(
+//                                bg,
+//                                javax.swing.GroupLayout.PREFERRED_SIZE,
+//                                1077,
+//                                javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(
@@ -194,14 +202,26 @@ public class welcomescreen extends javax.swing.JPanel {
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 60,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(
-                                bg,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                767,
-                                javax.swing.GroupLayout.PREFERRED_SIZE));
-
+//                        .addComponent(
+//                                bg,
+//                                javax.swing.GroupLayout.PREFERRED_SIZE,
+//                                767,
+//                                javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        bg.setBounds(new Rectangle(1077, 767));
+        add(bg);
+        sendButton.addActionListener(this::actionPerformed);
         // pack();
         //        setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        clientip = ip.getText();
+        clientname = name.getText();
+        System.out.println(clientname +" "+ clientip);
+//        new GameScreen().Name.setText(clientname);
+
     }
 
     // End of variables declaration
