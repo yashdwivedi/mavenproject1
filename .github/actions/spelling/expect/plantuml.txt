@@ -1,0 +1,6 @@
+elseif
+endif
+endswitch
+enduml
+endwhile
+startuml

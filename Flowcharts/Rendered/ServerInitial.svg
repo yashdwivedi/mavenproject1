@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="956px" preserveAspectRatio="none" style="width:407px;height:956px;background:#FFFFFF;" version="1.1" viewBox="0 0 407 956" width="407px" zoomAndPan="magnify"><defs><filter height="300%" id="f15ga848cec3uv" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><ellipse cx="180" cy="20" fill="#000000" filter="url(#f15ga848cec3uv)" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><rect fill="#FEFECE" filter="url(#f15ga848cec3uv)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="236" x="62" y="50"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="216" x="72" y="71.1387">Server loads config from a yaml file</text><rect fill="#FEFECE" filter="url(#f15ga848cec3uv)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="201" x="79.5" y="103.9688"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="181" x="89.5" y="125.1074">Server starts listening on port</text><rect fill="#FEFECE" filter="url(#f15ga848cec3uv)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="237" x="61.5" y="157.9375"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="217" x="71.5" y="179.0762">Create an ArrayList of Room objects</text><rect fill="#FEFECE" filter="url(#f15ga848cec3uv)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="221" x="69.5" y="211.9063"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="201" x="79.5" y="233.0449">Add one instance of Room object</text><rect fill="#FEFECE" filter="url(#f15ga848cec3uv)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="131" x="114.5" y="309.875"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="111" x="124.5" y="331.0137">servSock.accept()</text><rect fill="#FEFECE" filter="url(#f15ga848cec3uv)" height="47.9375" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="237" x="61.5" y="363.8438"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="128" x="71.5" y="384.9824">Create an instance of</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="85" x="203.5" y="384.9824">ClientSocket()</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="129" x="71.5" y="398.9512">passing in the socket</text><rect fill="#FEFECE" filter="url(#f15ga848cec3uv)" height="75.875" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="243" x="58.5" y="431.7813"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="145" x="68.5" y="452.9199">Room.add(ClientSocket)</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="148" x="68.5" y="466.8887">Send a waiting message</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="71" x="220.5" y="466.8887">to the client</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="218" x="68.5" y="480.8574">So the client can display the Waiting</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="95" x="68.5" y="494.8262">screen in the UI</text><line style="stroke:#A80036;stroke-width:1.5;" x1="86.5" x2="269.5" y1="590.5234" y2="590.5234"/><rect fill="#FEFECE" filter="url(#f15ga848cec3uv)" height="33.9688" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="151" x="11" y="624.4922"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="131" x="21" y="645.6309">start the Room thread</text><rect fill="#FEFECE" filter="url(#f15ga848cec3uv)" height="61.9063" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="159" x="190" y="610.5234"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="134" x="200" y="631.6621">Add a new instance of</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="139" x="200" y="645.6309">Room() to the ArrayList</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="60" x="200" y="659.5996">at 0 index</text><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="269.5" y1="692.4297" y2="692.4297"/><polygon fill="#FEFECE" filter="url(#f15ga848cec3uv)" points="83,542.1211,277,542.1211,289,554.1211,277,566.1211,83,566.1211,71,554.1211,83,542.1211" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="21" x="184" y="576.3315">yes</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="194" x="83" y="557.9292">Room.ready()? (8 players in room)</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="14" x="289" y="551.5269">no</text><polygon fill="#FEFECE" filter="url(#f15ga848cec3uv)" points="180,712.4297,192,724.4297,180,736.4297,168,724.4297,180,712.4297" style="stroke:#A80036;stroke-width:1.5;"/><polygon fill="#FEFECE" filter="url(#f15ga848cec3uv)" points="180,265.875,192,277.875,180,289.875,168,277.875,180,265.875" style="stroke:#A80036;stroke-width:1.5;"/><polygon fill="#FEFECE" filter="url(#f15ga848cec3uv)" points="97.5,756.4297,262.5,756.4297,274.5,768.4297,262.5,780.4297,97.5,780.4297,85.5,768.4297,97.5,756.4297" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="165" x="97.5" y="772.2378">forever till KeyboardInterrupt</text><rect fill="#FEFECE" filter="url(#f15ga848cec3uv)" height="75.875" rx="12.5" ry="12.5" style="stroke:#A80036;stroke-width:1.5;" width="169" x="95.5" y="821.8286"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="145" x="105.5" y="842.9673">Iterate through ArrayList</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="117" x="105.5" y="856.936">call the Room.end()</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="63" x="105.5" y="870.9048">function to</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" text-decoration="underline" textLength="59" x="172.5" y="870.9048">gracefully</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="0" x="235.5" y="870.9048"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="149" x="105.5" y="884.8735">disconnect all the clients</text><ellipse cx="180" cy="928.7036" fill="#FFFFFF" filter="url(#f15ga848cec3uv)" rx="11" ry="11" style="stroke:#000000;stroke-width:1.0;"/><ellipse cx="180" cy="928.7036" fill="#000000" rx="6" ry="6" style="stroke:#7F7F7F;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="30" y2="50"/><polygon fill="#A80036" points="176,40,180,50,184,40,180,44" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="83.9688" y2="103.9688"/><polygon fill="#A80036" points="176,93.9688,180,103.9688,184,93.9688,180,97.9688" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="137.9375" y2="157.9375"/><polygon fill="#A80036" points="176,147.9375,180,157.9375,184,147.9375,180,151.9375" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="191.9063" y2="211.9063"/><polygon fill="#A80036" points="176,201.9063,180,211.9063,184,201.9063,180,205.9063" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="343.8438" y2="363.8438"/><polygon fill="#A80036" points="176,353.8438,180,363.8438,184,353.8438,180,357.8438" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="411.7813" y2="431.7813"/><polygon fill="#A80036" points="176,421.7813,180,431.7813,184,421.7813,180,425.7813" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="86.5" x2="86.5" y1="592.0234" y2="624.4922"/><polygon fill="#A80036" points="82.5,614.4922,86.5,624.4922,90.5,614.4922,86.5,618.4922" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="269.5" x2="269.5" y1="592.0234" y2="610.5234"/><polygon fill="#A80036" points="265.5,600.5234,269.5,610.5234,273.5,600.5234,269.5,604.5234" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="269.5" x2="269.5" y1="672.4297" y2="692.4297"/><polygon fill="#A80036" points="265.5,682.4297,269.5,692.4297,273.5,682.4297,269.5,686.4297" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="566.1211" y2="590.5234"/><polygon fill="#A80036" points="176,580.5234,180,590.5234,184,580.5234,180,584.5234" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="289" x2="363" y1="554.1211" y2="554.1211"/><polygon fill="#A80036" points="359,631.4766,363,641.4766,367,631.4766,363,635.4766" style="stroke:#A80036;stroke-width:1.5;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="363" x2="363" y1="554.1211" y2="724.4297"/><line style="stroke:#A80036;stroke-width:1.5;" x1="363" x2="192" y1="724.4297" y2="724.4297"/><polygon fill="#A80036" points="202,720.4297,192,724.4297,202,728.4297,198,724.4297" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="693.9297" y2="712.4297"/><polygon fill="#A80036" points="176,702.4297,180,712.4297,184,702.4297,180,706.4297" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="507.6563" y2="542.1211"/><polygon fill="#A80036" points="176,532.1211,180,542.1211,184,532.1211,180,536.1211" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="289.875" y2="309.875"/><polygon fill="#A80036" points="176,299.875,180,309.875,184,299.875,180,303.875" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="274.5" x2="381" y1="768.4297" y2="768.4297"/><polygon fill="#A80036" points="377,522.1211,381,512.1211,385,522.1211,381,518.1211" style="stroke:#A80036;stroke-width:1.5;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="381" x2="381" y1="277.875" y2="768.4297"/><line style="stroke:#A80036;stroke-width:1.5;" x1="381" x2="192" y1="277.875" y2="277.875"/><polygon fill="#A80036" points="202,273.875,192,277.875,202,281.875,198,277.875" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="736.4297" y2="756.4297"/><polygon fill="#A80036" points="176,746.4297,180,756.4297,184,746.4297,180,750.4297" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="245.875" y2="265.875"/><polygon fill="#A80036" points="176,255.875,180,265.875,184,255.875,180,259.875" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="780.4297" y2="821.8286"/><polygon fill="#A80036" points="176,811.8286,180,821.8286,184,811.8286,180,815.8286" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="32" x="184" y="801.7344">ctrl+c</text><line style="stroke:#A80036;stroke-width:1.5;" x1="180" x2="180" y1="897.7036" y2="917.7036"/><polygon fill="#A80036" points="176,907.7036,180,917.7036,184,907.7036,180,911.7036" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[0ac58f2f24819c21f943520b2038ff15]
+@startuml
+start
+:Server loads config from a yaml file; 
+:Server starts listening on port;
+:Create an ArrayList of Room objects;
+:Add one instance of Room object;
+repeat
+    :servSock.accept();
+    :Create an instance of __ClientSocket()__
+    passing in the socket;
+    :Room.add(ClientSocket)
+    __Send a waiting message__ to the client
+    So the client can display the Waiting
+    screen in the UI;
+    ' For the message mesa was thinking, ki send integer values w/ descriptive variable names just like how BorderLayout.CENTER constants work
+
+    if (Room.ready()? (8 players in room)) then (yes)
+        split 
+            :start the Room thread;
+            detach
+        split again
+            :Add a new instance of
+            Room() to the ArrayList
+            at 0 index;
+        end split
+    else (no)
+    endif
+repeat while (forever till KeyboardInterrupt)
+-> ctrl+c;
+:Iterate through ArrayList
+call the Room.end()
+function to __gracefully__ 
+disconnect all the clients;
+stop
+' Test case idea: start the connection, make and connect sockets to the server, and check whether ArrayList is created and stuff
+@enduml
+
+@startuml
+start
+:Server loads config from a yaml file; 
+:Server starts listening on port;
+:Create an ArrayList of Room objects;
+:Add one instance of Room object;
+repeat
+    :servSock.accept();
+    :Create an instance of __ClientSocket()__
+    passing in the socket;
+    :Room.add(ClientSocket)
+    __Send a waiting message__ to the client
+    So the client can display the Waiting
+    screen in the UI;
+
+    if (Room.ready()? (8 players in room)) then (yes)
+        split 
+            :start the Room thread;
+            detach
+        split again
+            :Add a new instance of
+            Room() to the ArrayList
+            at 0 index;
+        end split
+    else (no)
+    endif
+repeat while (forever till KeyboardInterrupt)
+-> ctrl+c;
+:Iterate through ArrayList
+call the Room.end()
+function to __gracefully__ 
+disconnect all the clients;
+stop
+@enduml
+
+PlantUML version 1.2021.9beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
