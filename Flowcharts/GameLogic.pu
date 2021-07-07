@@ -32,7 +32,7 @@ endif
 
 endwhile(Yes)
 
-:Declare Winner and Lossers;
-:Show Scenes as per requirememnt;
+:Declare Winner and Loosers;
+:Show Scenes as per requirement;
 end
 @enduml

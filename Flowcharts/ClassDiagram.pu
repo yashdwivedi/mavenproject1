@@ -4,7 +4,7 @@ class Room{
     - ImageHash : randomly selected
     - answer: the answer.
         if chat input matches with answer
-        no sendey. okay?
+        no send-ey. okay?
     - UsersArray
 
     -- methods --
@@ -25,10 +25,10 @@ abstract class GameMode {
     + ProvideNextPicture
     + EndGame 
     (gets users game data 
-    and sends bak winner sorted list)
+    and sends back winner sorted list)
 }
 class User {
-    -- Atributes --
+    -- Attributes --
     - name
     - how to connect IP or something
     - score
