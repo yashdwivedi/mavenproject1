@@ -100,7 +100,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
         Name.setText(welcomescreen.clientname);
 
-       // Score.setText("");
+        // Score.setText("");
 
         Title.setText("");
         display.setLineWrap(true);
