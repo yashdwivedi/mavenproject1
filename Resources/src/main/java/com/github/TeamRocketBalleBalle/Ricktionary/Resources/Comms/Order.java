@@ -13,6 +13,15 @@ public class Order<T extends Serializable> extends CommData<T> {
     }
 
     @Override
+    public int hashCode() {
+        if (hashCode == 0) {
+            int result = 104 * super.hashCode();
+            hashCode = result;
+        }
+        return hashCode;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Order)) {
             return false;

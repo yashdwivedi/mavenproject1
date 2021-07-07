@@ -1,0 +1,18 @@
+@startuml
+== Initialisation ==
+Room -> Room: Room.add(Player)
+Room --> Player: Player.initialise();
+actor Client
+Player -> Client: Order("INITIALISE")
+Client -> Player: Okay, here's my INIT\n object response\n(Contains name)
+Player -> Player: added name
+Player -> Room: done
+== Game Part ==
+Room --> Player: LoadScene.GAME_SCREEN
+Player -> Client: Order(LoadScene.GAME_SCREEN)
+Client --> Player: BufferedReader() input
+Player -> Room: sends New input from client
+' Some useful sources:
+' - https://stackoverflow.com/q/14639003
+' - https://stackoverflow.com/q/49654735
+@enduml

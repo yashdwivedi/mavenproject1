@@ -104,7 +104,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
         Score.setText("10000");
 
-        Title.setText("Riktionary");
+        Title.setText("Ricktionary");
         display.setLineWrap(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
