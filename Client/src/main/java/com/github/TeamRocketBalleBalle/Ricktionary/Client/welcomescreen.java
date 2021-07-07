@@ -208,8 +208,10 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
                 //                                javax.swing.GroupLayout.PREFERRED_SIZE)
                 );
         bg.setBounds(new Rectangle(1077, 767));
+        bg.setIcon(scaledIcon);
         add(bg);
         sendButton.addActionListener(this::actionPerformed);
+
         // pack();
         //        setVisible(true);
     }

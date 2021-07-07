@@ -1,4 +1,4 @@
-package com.github.TeamRocketBalleBalle.Ricktionary.Resources;
+package com.github.TeamRocketBalleBalle.Ricktionary.Resources.ImageDatabase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
