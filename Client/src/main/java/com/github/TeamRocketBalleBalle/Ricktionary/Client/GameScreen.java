@@ -100,9 +100,9 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
         Name.setText(welcomescreen.clientname);
 
-        Score.setText("10000");
+       // Score.setText("");
 
-        Title.setText("Ricktionary");
+        Title.setText("");
         display.setLineWrap(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -274,7 +274,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         Rectangle rectangle = new Rectangle(1077, 767);
         nameLabel.getAccessibleContext().setAccessibleDescription("");
         ImageIcon i1;
-        i1 = new ImageIcon(("Client/src/main/resources/gameScreenBg.gif"));
+        i1 = new ImageIcon(("Client/src/main/resources/bggame2.gif"));
 
         // resize an image
         //        backGround.setBounds(rectangle);

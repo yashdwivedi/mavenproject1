@@ -41,7 +41,7 @@ public class test extends JFrame {
         panel.add(map.get("winnerscreen"), "winnerscreen");
         panel.add(map.get("loserscreen"), "loserscreen");
 
-        frame.setSize(1077, 767);
+        frame.setSize(1077, 805);
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
