@@ -73,4 +73,4 @@ SUMS$
 \.zip$
 
 # Don't bother checking Database directory
-(?:^|/)database/
+^Resources/src/main/java/com/github/TeamRocketBalleBalle/Ricktionary/Resources/
