@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="386px" preserveAspectRatio="none" style="width:507px;height:386px;background:#FFFFFF;" version="1.1" viewBox="0 0 507 386" width="507px" zoomAndPan="magnify"><defs><filter height="300%" id="fm1l9dzefelee" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[d218c48b946d362ff1ecd879cabebcad]
+class Room--><rect codeLine="1" fill="#FEFECE" filter="url(#fm1l9dzefelee)" height="210.4609" id="Room" style="stroke:#A80036;stroke-width:1.5;" width="230" x="7" y="7"/><ellipse cx="100.75" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M103.0938,18.6719 C102.1563,18.2344 101.5625,18.0938 100.6875,18.0938 C98.0625,18.0938 96.0625,20.1719 96.0625,22.8906 L96.0625,24.0156 C96.0625,26.5938 98.1719,28.4844 101.0625,28.4844 C102.2813,28.4844 103.4375,28.1875 104.1875,27.6406 C104.7656,27.2344 105.0938,26.7813 105.0938,26.3906 C105.0938,25.9375 104.7031,25.5469 104.2344,25.5469 C104.0156,25.5469 103.8125,25.625 103.625,25.8125 C103.1719,26.2969 103.1719,26.2969 102.9844,26.3906 C102.5625,26.6563 101.875,26.7813 101.1094,26.7813 C99.0625,26.7813 97.7656,25.6875 97.7656,23.9844 L97.7656,22.8906 C97.7656,21.1094 99.0156,19.7969 100.75,19.7969 C101.3281,19.7969 101.9375,19.9531 102.4063,20.2031 C102.8906,20.4844 103.0625,20.7031 103.1563,21.1094 C103.2188,21.5156 103.25,21.6406 103.3906,21.7656 C103.5313,21.9063 103.7656,22.0156 103.9844,22.0156 C104.25,22.0156 104.5156,21.875 104.6875,21.6563 C104.7969,21.5 104.8281,21.3125 104.8281,20.8906 L104.8281,19.4688 C104.8281,19.0313 104.8125,18.9063 104.7188,18.75 C104.5625,18.4844 104.2813,18.3438 103.9844,18.3438 C103.6875,18.3438 103.4844,18.4375 103.2656,18.75 L103.0938,18.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="34" x="121.25" y="27.1543">Room</text><line style="stroke:#A80036;stroke-width:1.5;" x1="8" x2="236" y1="39" y2="39"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="47"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="173" x="27" y="53.2104">noOfPlayers : int -&gt; 8 players?</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="59.8047"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="182" x="27" y="66.0151">ImageHash : randomly selected</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="72.6094"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="115" x="27" y="78.8198">answer: the answer.</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="192" x="27" y="91.6245">if chat input matches with answer</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="105" x="27" y="104.4292">no send-ey. okay?</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="111.0234"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="62" x="27" y="117.2339">UsersArray</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="31" y="130.0386"/><ellipse cx="18" cy="156.4375" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="33" x="27" y="159.6479">Timer</text><ellipse cx="18" cy="169.2422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="163" x="27" y="172.4526">VictoryMessage (end phase)</text><ellipse cx="18" cy="182.0469" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="67" x="27" y="185.2573">Track Score</text><ellipse cx="18" cy="194.8516" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="204" x="27" y="198.062">getInputs and feed into GameMode</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="0" x="31" y="210.8667"/><line style="stroke:#A80036;stroke-width:1.0;" x1="8" x2="97" y1="143.0352" y2="143.0352"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="50" x="97" y="146.3433">methods</text><line style="stroke:#A80036;stroke-width:1.0;" x1="147" x2="236" y1="143.0352" y2="143.0352"/><!--MD5=[5eb2ac03d0c371fca296cb0d00e756e3]
+class GameMode--><rect codeLine="16" fill="#FEFECE" filter="url(#fm1l9dzefelee)" height="188.8516" id="GameMode" style="stroke:#A80036;stroke-width:1.5;" width="221" x="272.5" y="17.5"/><ellipse cx="345.25" cy="33.5" fill="#A9DCDF" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M347.3281,35.3125 L347.7188,36.2969 L347.3281,36.2969 C346.875,36.2969 346.7656,36.3125 346.6094,36.4219 C346.3594,36.5781 346.2031,36.8594 346.2031,37.1563 C346.2031,37.4219 346.3438,37.6719 346.5625,37.8281 C346.7031,37.9531 346.9063,38 347.3281,38 L349.6875,38 C350.0469,38 350.2656,37.9688 350.4063,37.875 C350.6563,37.7344 350.8125,37.4375 350.8125,37.1563 C350.8125,36.875 350.6719,36.625 350.4531,36.4688 C350.2813,36.3281 350.125,36.2969 349.6563,36.2969 L346.2656,28.0938 L342.5938,28.0938 C342.1406,28.0938 342.0156,28.1094 341.8594,28.2031 C341.6094,28.375 341.4531,28.6563 341.4531,28.9375 C341.4531,29.2188 341.5938,29.4688 341.8125,29.6406 C341.9844,29.75 342.1563,29.7813 342.5938,29.7813 L343.6719,29.7813 L341.0313,36.2969 C340.6094,36.2969 340.4531,36.3125 340.2969,36.4219 C340.0469,36.5781 339.8906,36.8594 339.8906,37.1563 C339.8906,37.7188 340.2656,38 341.0156,38 L343.2813,38 C343.6406,38 343.8594,37.9688 343.9844,37.875 C344.25,37.7344 344.3906,37.4375 344.3906,37.1563 C344.3906,36.875 344.2656,36.625 344.0469,36.4531 C343.875,36.3281 343.7344,36.2969 343.2813,36.2969 L342.8906,36.2969 L343.2813,35.3125 L347.3281,35.3125 Z M346.625,33.6094 L343.9531,33.6094 L345.2969,30.3438 L346.625,33.6094 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="67" x="365.75" y="37.6543">GameMode</text><line style="stroke:#A80036;stroke-width:1.5;" x1="273.5" x2="492.5" y1="49.5" y2="49.5"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="280.5" y="74.3047"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="168" x="292.5" y="80.5151">boolean GameEnded = False</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="280.5" y="87.1094"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="40" x="292.5" y="93.3198">Winner</text><line style="stroke:#A80036;stroke-width:1.0;" x1="273.5" x2="355.5" y1="63.9023" y2="63.9023"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="55" x="355.5" y="67.2104">Attributes</text><line style="stroke:#A80036;stroke-width:1.0;" x1="410.5" x2="492.5" y1="63.9023" y2="63.9023"/><ellipse cx="283.5" cy="119.7188" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="97" x="292.5" y="122.9292">abstract PlayTurn</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="162" x="292.5" y="135.7339">(after each tick, check input)</text><rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="280.5" y="142.3281"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="95" x="292.5" y="148.5386">checkInput(User)</text><ellipse cx="283.5" cy="158.1328" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="107" x="292.5" y="161.3433">ProvideNextPicture</text><ellipse cx="283.5" cy="170.9375" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;fill:none;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="56" x="292.5" y="174.1479">EndGame</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="130" x="292.5" y="186.9526">(gets users game data</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="195" x="292.5" y="199.7573">and sends back winner sorted list)</text><line style="stroke:#A80036;stroke-width:1.0;" x1="273.5" x2="359" y1="106.3164" y2="106.3164"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="48" x="359" y="109.6245">Methods</text><line style="stroke:#A80036;stroke-width:1.0;" x1="407" x2="492.5" y1="106.3164" y2="106.3164"/><!--MD5=[3fd616f346a44cd59a91eb10b19e157c]
+class User--><rect codeLine="29" fill="#FEFECE" filter="url(#fm1l9dzefelee)" height="95.2188" id="User" style="stroke:#A80036;stroke-width:1.5;" width="205" x="19.5" y="277"/><ellipse cx="103.25" cy="293" fill="#ADD1B2" rx="11" ry="11" style="stroke:#A80036;stroke-width:1.0;"/><path d="M105.5938,288.6719 C104.6563,288.2344 104.0625,288.0938 103.1875,288.0938 C100.5625,288.0938 98.5625,290.1719 98.5625,292.8906 L98.5625,294.0156 C98.5625,296.5938 100.6719,298.4844 103.5625,298.4844 C104.7813,298.4844 105.9375,298.1875 106.6875,297.6406 C107.2656,297.2344 107.5938,296.7813 107.5938,296.3906 C107.5938,295.9375 107.2031,295.5469 106.7344,295.5469 C106.5156,295.5469 106.3125,295.625 106.125,295.8125 C105.6719,296.2969 105.6719,296.2969 105.4844,296.3906 C105.0625,296.6563 104.375,296.7813 103.6094,296.7813 C101.5625,296.7813 100.2656,295.6875 100.2656,293.9844 L100.2656,292.8906 C100.2656,291.1094 101.5156,289.7969 103.25,289.7969 C103.8281,289.7969 104.4375,289.9531 104.9063,290.2031 C105.3906,290.4844 105.5625,290.7031 105.6563,291.1094 C105.7188,291.5156 105.75,291.6406 105.8906,291.7656 C106.0313,291.9063 106.2656,292.0156 106.4844,292.0156 C106.75,292.0156 107.0156,291.875 107.1875,291.6563 C107.2969,291.5 107.3281,291.3125 107.3281,290.8906 L107.3281,289.4688 C107.3281,289.0313 107.3125,288.9063 107.2188,288.75 C107.0625,288.4844 106.7813,288.3438 106.4844,288.3438 C106.1875,288.3438 105.9844,288.4375 105.7656,288.75 L105.5938,288.6719 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="29" x="123.75" y="297.1543">User</text><line style="stroke:#A80036;stroke-width:1.5;" x1="20.5" x2="223.5" y1="309" y2="309"/><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="27.5" y="333.8047"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="33" x="39.5" y="340.0151">name</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="27.5" y="346.6094"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="179" x="39.5" y="352.8198">how to connect IP or something</text><rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="27.5" y="359.4141"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="31" x="39.5" y="365.6245">score</text><line style="stroke:#A80036;stroke-width:1.0;" x1="20.5" x2="94.5" y1="323.4023" y2="323.4023"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="55" x="94.5" y="326.7104">Attributes</text><line style="stroke:#A80036;stroke-width:1.0;" x1="149.5" x2="223.5" y1="323.4023" y2="323.4023"/><!--MD5=[60f26df19b36a728ef2790d0008fd3a7]
+link Room to GameMode--><!--MD5=[e79d6028932d484b8f73e0ea5ce1dfe2]
+link Room to User--><!--MD5=[83d0a31258410cf844f65998c60cdf54]
+@startuml
+class Room{
+    - noOfPlayers : int -> 8 players?
+    - ImageHash : randomly selected
+    - answer: the answer.
+        if chat input matches with answer
+        no send-ey. okay?
+    - UsersArray
+
+    - - methods - -
+    + Timer
+    + VictoryMessage (end phase)
+    + Track Score
+    + getInputs and feed into GameMode
+
+}
+abstract class GameMode {
+    - - Attributes - -
+    - boolean GameEnded = False
+    - Winner
+    - - Methods - -
+    + abstract PlayTurn 
+    (after each tick, check input)
+    - checkInput(User)
+    + ProvideNextPicture
+    + EndGame 
+    (gets users game data 
+    and sends back winner sorted list)
+}
+class User {
+    - - Attributes - -
+    - name
+    - how to connect IP or something
+    - score
+}
+' note left of GameMode::PlayTurn
+' Processing the input from user....
+' endnote
+' note left of GameMode::InputPhase
+' Server takes Data Packet 
+' Introduction of TickRate
+' Stores it in Server queue
+' endnote
+@enduml
+
+@startuml
+class Room{
+    - noOfPlayers : int -> 8 players?
+    - ImageHash : randomly selected
+    - answer: the answer.
+        if chat input matches with answer
+        no send-ey. okay?
+    - UsersArray
+
+    - - methods - -
+    + Timer
+    + VictoryMessage (end phase)
+    + Track Score
+    + getInputs and feed into GameMode
+
+}
+abstract class GameMode {
+    - - Attributes - -
+    - boolean GameEnded = False
+    - Winner
+    - - Methods - -
+    + abstract PlayTurn 
+    (after each tick, check input)
+    - checkInput(User)
+    + ProvideNextPicture
+    + EndGame 
+    (gets users game data 
+    and sends back winner sorted list)
+}
+class User {
+    - - Attributes - -
+    - name
+    - how to connect IP or something
+    - score
+}
+@enduml
+
+PlantUML version 1.2021.9beta2(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

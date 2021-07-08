@@ -1,12 +1,11 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Server;
 
-// TODO: implement this
-
 import ThisIsWhereTheMagicHappens.GameMode;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.Order;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.LoadScene;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.OrderTypeLookupTable;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.PacketType;
+import com.github.TeamRocketBalleBalle.Ricktionary.Resources.database.DbWork;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +17,8 @@ public class Room implements Runnable {
     private final ArrayList<Player> playerArray = new ArrayList<Player>();
     private String hash;
     private final int tickRate = 1000;
-    private final GameMode gameMode = new GameMode(); // TODO: do something about this.
+    private final GameMode gameMode =
+            new GameMode("answer ki string value here"); // TODO: do something about this.
     private final Queue<PlayersInput> inputs = new LinkedList<>();
     private final HashMap<Player, Integer> scores = new HashMap<>();
 
@@ -30,7 +30,9 @@ public class Room implements Runnable {
         playerArray.add(player);
         player.addUserInputTo(inputs);
         player.send(
-                PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, new Order<String>("wait"));
+                PacketType.LOAD_SCENE,
+                OrderTypeLookupTable.LOAD_SCENE,
+                new Order<>(LoadScene.MATCHMAKING_SCENE));
         logger.debug("added {} to this room", player.getName());
     }
 
@@ -46,7 +48,7 @@ public class Room implements Runnable {
         startSetup();
 
         // send game scenes
-        Order<String> gameOn = new Order<>("gameOn");
+        Order<Integer> gameOn = new Order<Integer>(LoadScene.GAME_SCENE);
 
         for (Player player : playerArray) {
             player.send(PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, gameOn);
@@ -60,8 +62,8 @@ public class Room implements Runnable {
         int tick = 0;
         logger.debug("Starting game loop");
         // Game Loop is ON 🔥🔥🔥🔥
-        while (!gameMode.ended()) {
-            if (tick < tickRate) {
+        while (!gameMode.ended() && playerArray.size() != 0) {
+            if (tick <= tickRate) {
                 // TODO: sanitise input. one day
                 tick = (int) (System.currentTimeMillis() - tickStartTime);
                 //                logger.debug("waiting for tick -> inside if");
@@ -69,7 +71,7 @@ public class Room implements Runnable {
                 //                logger.debug("insdie else block");
                 synchronized (inputs) {
                     ArrayList<PlayersInput> playersInputs = new ArrayList<>();
-                    for (PlayersInput input : inputs) {
+                    for (PlayersInput ignored : inputs) { // change based on IDE suggestion
                         playersInputs.add(inputs.remove());
                     }
 
@@ -79,9 +81,14 @@ public class Room implements Runnable {
                         int new_score = scores.getOrDefault(entry.getKey(), 0) + entry.getValue();
                         scores.put(entry.getKey(), new_score);
                     }
-                    //                    logger.debug("processed input");
                     tellEveryone(playersInputs);
+                    // load next image if someone has guessed the answer
+                    if (gameMode.isNextImage()) {
+                        startSetup();
+                        gameMode.setNextImage(false);
+                    }
                     tickStartTime = System.currentTimeMillis();
+                    tick = 0;
                 }
             }
             try {
@@ -101,10 +108,18 @@ public class Room implements Runnable {
     private void tellEveryone(ArrayList<PlayersInput> playersInputs) {
         for (PlayersInput value : playersInputs) {
             if (!value.getTheirInput().isBlank()) {
-                Order<String> chatMessage = new Order<>(value.getTheirInput());
+                // check if this player is a winner winner?
+                String name = value.isSpecialMessage() ? "SERVER" : value.getThem().getName();
+
+                AbstractMap.SimpleEntry<String, String> chatMessage =
+                        new AbstractMap.SimpleEntry<>(name, value.getTheirInput());
+
+                value.setSpecialMessage(false);
                 for (Player player : playerArray) {
                     player.send(
-                            PacketType.CHAT_MESSAGE, OrderTypeLookupTable.CHAT_MSG, chatMessage);
+                            PacketType.CHAT_MESSAGE,
+                            OrderTypeLookupTable.CHAT_MSG,
+                            new Order<>(chatMessage));
                 }
                 logger.info("Sent message : {}", chatMessage);
             }
@@ -121,11 +136,12 @@ public class Room implements Runnable {
                 winner = candidate.getKey();
             }
         }
-        assert winner != null;
-        winner.send(
-                PacketType.LOAD_SCENE,
-                OrderTypeLookupTable.LOAD_SCENE,
-                new Order<Integer>(LoadScene.WINNER_SCENE));
+        if (winner != null) {
+            winner.send(
+                    PacketType.LOAD_SCENE,
+                    OrderTypeLookupTable.LOAD_SCENE,
+                    new Order<Integer>(LoadScene.WINNER_SCENE));
+        }
         for (Player player : playerArray) {
             if (!player.equals(winner)) {
                 player.send(
@@ -139,21 +155,21 @@ public class Room implements Runnable {
     public String getImageHash() {
         Random rand = new Random();
 
-        //        String[] hash = Database.getAllImageHash(); // function to be implemented that
-        // will send an array of all the hashes of images from the database
-        //        int lengthOfHash = hash.length;
-        //
-        //        String choosenHash = hash[rand.nextInt(lengthOfHash)];
+        ArrayList<String> hash = DbWork.getListOfHashes(); // function to be implemented that
+        //         will send an array of all the hashes of images from the database
+        int lengthOfHash = hash.size();
 
-        //        return choosenHash;
-        //        logger.debug("choosenHash {}", choosenHash);
-        //
-        //        return choosenHash;
-        return ("");
+        String choosenHash = hash.get(rand.nextInt(lengthOfHash));
+
+        logger.debug("choosenHash {}", choosenHash);
+        return choosenHash;
     }
 
     public void startSetup() {
         hash = getImageHash();
+        logger.info("Choosen image hash: {}", hash);
+        // set game mode answer
+        gameMode.setAnswer(DbWork.getAnswer(hash));
         Order<String> imageOrder = new Order<>(hash);
         for (Player player : playerArray) {
             player.send(PacketType.LOAD_IMG, OrderTypeLookupTable.LOAD_IMAGE, imageOrder);
@@ -187,7 +203,7 @@ public class Room implements Runnable {
                                 }
 
                                 try {
-                                    Thread.sleep(100);
+                                    Thread.sleep(10);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }

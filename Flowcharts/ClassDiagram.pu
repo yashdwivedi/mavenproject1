@@ -1,0 +1,44 @@
+@startuml
+class Room{
+    - noOfPlayers : int -> 8 players?
+    - ImageHash : randomly selected
+    - answer: the answer.
+        if chat input matches with answer
+        no send-ey. okay?
+    - UsersArray
+
+    -- methods --
+    + Timer
+    + VictoryMessage (end phase)
+    + Track Score
+    + getInputs and feed into GameMode
+
+}
+abstract class GameMode {
+    -- Attributes --
+    - boolean GameEnded = False
+    - Winner
+    -- Methods --
+    + abstract PlayTurn 
+    (after each tick, check input)
+    - checkInput(User)
+    + ProvideNextPicture
+    + EndGame 
+    (gets users game data 
+    and sends back winner sorted list)
+}
+class User {
+    -- Attributes --
+    - name
+    - how to connect IP or something
+    - score
+}
+' note left of GameMode::PlayTurn
+' Processing the input from user....
+' endnote
+' note left of GameMode::InputPhase
+' Server takes Data Packet 
+' Introduction of TickRate
+' Stores it in Server queue
+' endnote 
+@enduml

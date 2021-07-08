@@ -1,0 +1,21 @@
+@startuml
+start
+:GameMode;
+split
+    :GameMode.playTurn(ArrayList);
+    :multiplier = 10;
+    while (for PlayerInput in inputList) is (playerInput)
+        :GameMode.play(PlayerInput);
+        :multiplier /= 2;
+    endwhile (done) 
+    :return this turn scores;
+    end
+split again
+    :GameMode.play(PlayerInput);
+    if (input == answer?) then (update score)
+        :HashMap<Player, Integer>.put(multiplier * score);
+    else 
+    endif
+    end
+end split
+@enduml

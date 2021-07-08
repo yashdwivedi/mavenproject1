@@ -64,5 +64,16 @@
             <artifactId>Resources</artifactId>
             <version>0.0</version>
         </dependency>
+<!--        TODO: remove this when client-networking is done-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.fusesource.jansi</groupId>
+            <artifactId>jansi</artifactId>
+            <version>2.3.3</version>
+        </dependency>
     </dependencies>
 </project>

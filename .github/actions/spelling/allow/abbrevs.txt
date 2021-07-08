@@ -6,6 +6,7 @@ idk
 inet
 jdbc
 jpg
+Loosers
 meme
 params
 png
