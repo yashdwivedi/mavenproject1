@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 
 /**
  * @author Yash
@@ -13,7 +14,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
     // Variables declaration - do not modify
     public javax.swing.JLabel Name;
     private javax.swing.JLabel Score;
-    private javax.swing.JLabel Title;
+    public static javax.swing.JLabel topThree;
     private javax.swing.JTextArea display;
     private javax.swing.JTextField input;
     private javax.swing.JPanel jPanel1;
@@ -72,7 +73,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
         Name = new javax.swing.JLabel();
         Score = new javax.swing.JLabel();
-        Title = new javax.swing.JLabel();
+        topThree = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         picture = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -86,7 +87,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         scoreLabel.setForeground(Color.white);
         Name.setForeground(Color.white);
         Score.setForeground(Color.white);
-        Title.setForeground(Color.white);
+        topThree.setForeground(Color.yellow);
 
         // setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,9 +101,6 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
         Name.setText(welcomescreen.clientname);
 
-        Score.setText("10000");
-
-        Title.setText("Ricktionary");
         display.setLineWrap(true);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -154,7 +152,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                         .addComponent(Name)
                                         .addGap(295, 295, 295)
                                         .addComponent(
-                                                Title,
+                                                topThree,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 550,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -216,11 +214,11 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                                                 layout.createSequentialGroup()
                                                                         .addGap(10, 10, 10)
                                                                         .addComponent(
-                                                                                Title,
+                                                                                topThree,
                                                                                 javax.swing
                                                                                         .GroupLayout
                                                                                         .PREFERRED_SIZE,
-                                                                                40,
+                                                                                100,
                                                                                 javax.swing
                                                                                         .GroupLayout
                                                                                         .PREFERRED_SIZE)))
@@ -274,7 +272,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         Rectangle rectangle = new Rectangle(1077, 767);
         nameLabel.getAccessibleContext().setAccessibleDescription("");
         ImageIcon i1;
-        i1 = new ImageIcon(("Client/src/main/resources/gameScreenBg.gif"));
+        i1 = new ImageIcon(("Client/src/main/resources/bggame2.gif"));
 
         // resize an image
         //        backGround.setBounds(rectangle);
@@ -283,6 +281,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         ImageIcon resizedImage = new ImageIcon(i2);
         bg.setIcon(resizedImage);
         bg.setBounds(rectangle);
+        //        picture.setText("Hello");
         //        backGround.add(bg);
         //        add(backGround);
         add(bg);
@@ -300,5 +299,27 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         display.setText(displayText + "\n" + Name.getText() + ": -> " + inputText + "\n");
         input.setText("");
         input.requestFocus();
+    }
+
+    public static String displayTopThree(
+            Map.Entry<String, Integer> Player1,
+            Map.Entry<String, Integer> Player2,
+            Map.Entry<String, Integer> Player3) {
+        String displayPlayers =
+                "<html>"
+                        + Player1.getKey()
+                        + " : "
+                        + Player1.getValue()
+                        + "<br/>"
+                        + Player2.getKey()
+                        + " : "
+                        + Player2.getValue()
+                        + "<br/>"
+                        + Player3.getKey()
+                        + " : "
+                        + Player3.getValue()
+                        + "</html>";
+        topThree.setText(displayPlayers);
+        return displayPlayers;
     }
 }
