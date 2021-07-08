@@ -9,7 +9,9 @@ jpg
 Loosers
 meme
 params
+png
 prolly
 src
+wav
 whos
 yaml

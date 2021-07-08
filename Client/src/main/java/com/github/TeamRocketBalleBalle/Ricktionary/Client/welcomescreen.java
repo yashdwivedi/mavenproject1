@@ -75,7 +75,7 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-        ImageIcon icon = new ImageIcon("Client/src/main/resources/image0.gif");
+        ImageIcon icon = new ImageIcon("Client/src/main/resources/logo.png");
         Image img = icon.getImage();
         Image imgscale = img.getScaledInstance(1077, 767, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(imgscale);
@@ -85,7 +85,7 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
         JLabel ipLabel = new JLabel();
         JButton sendButton = new JButton();
         JLabel bg = new JLabel(scaledIcon);
-        JLabel jLabel3 = new javax.swing.JLabel();
+        // JLabel jLabel3 = new javax.swing.JLabel();
         // setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1077, 767));
 
@@ -95,6 +95,9 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
         ip.setFont(new java.awt.Font("Tw Cen MT Condensed", Font.BOLD | Font.ITALIC, 18)); // NOI18N
         nameLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
         nameLabel.setText("Name");
+        //        nameLabel.setForeground(Color.decode("#037AA4"));
+        //        nameLabel.setOpaque(true);
+        //        nameLabel.setBackground(Color.black);
 
         ipLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
         ipLabel.setText("IP Address ");
@@ -105,14 +108,16 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
         this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(
-                                layout.createSequentialGroup()
-                                        .addGap(450, 450, 450)
-                                        .addComponent(
-                                                jLabel3,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                250,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                        //                        .addGroup(
+                        //                                layout.createSequentialGroup()
+                        //                                        .addGap(450, 450, 450)
+                        //                                        .addComponent(
+                        //                                                jLabel3,
+                        //
+                        // javax.swing.GroupLayout.PREFERRED_SIZE,
+                        //                                                250,
+                        //
+                        // javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(
                                 layout.createSequentialGroup()
                                         .addGap(310, 310, 310)
@@ -159,17 +164,19 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
                 );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        //                        .addGroup(
+                        //                                layout.createSequentialGroup()
+                        //                                        .addGap(10, 10, 10)
+                        //                                        .addComponent(
+                        //                                                jLabel3,
+                        //
+                        // javax.swing.GroupLayout.PREFERRED_SIZE,
+                        //                                                100,
+                        //
+                        // javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(
                                 layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(
-                                                jLabel3,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                100,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(
-                                layout.createSequentialGroup()
-                                        .addGap(270, 270, 270)
+                                        .addGap(310, 310, 310)
                                         .addGroup(
                                                 layout.createParallelGroup(
                                                                 javax.swing.GroupLayout.Alignment
@@ -195,7 +202,7 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(
                                 layout.createSequentialGroup()
-                                        .addGap(320, 320, 320)
+                                        .addGap(350, 350, 350)
                                         .addComponent(
                                                 ip,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -216,8 +223,10 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
                 //                                javax.swing.GroupLayout.PREFERRED_SIZE)
                 );
         bg.setBounds(new Rectangle(1077, 767));
+        bg.setIcon(scaledIcon);
         add(bg);
         sendButton.addActionListener(this::actionPerformed);
+
         // pack();
         //        setVisible(true);
     }
