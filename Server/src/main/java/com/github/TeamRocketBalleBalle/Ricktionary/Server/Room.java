@@ -37,7 +37,7 @@ public class Room implements Runnable {
     }
 
     public boolean isReady() {
-        return playerArray.toArray().length == 1;
+        return playerArray.toArray().length == 2;
     }
 
     public void run() {
@@ -74,14 +74,16 @@ public class Room implements Runnable {
                     for (PlayersInput ignored : inputs) { // change based on IDE suggestion
                         playersInputs.add(inputs.remove());
                     }
-
-                    logger.debug("processing: {}", playersInputs);
+                    if ( 0 < inputs.size()) {
+                        logger.debug("processing: {}", playersInputs);
+                    }
                     for (Map.Entry<Player, Integer> entry :
                             gameMode.playTurn(playersInputs).entrySet()) {
                         int new_score = scores.getOrDefault(entry.getKey(), 0) + entry.getValue();
                         scores.put(entry.getKey(), new_score);
                     }
                     tellEveryone(playersInputs);
+                    tellScores(scores);
                     // load next image if someone has guessed the answer
                     if (gameMode.isNextImage()) {
                         startSetup();
@@ -103,6 +105,20 @@ public class Room implements Runnable {
         // start tick count
         // while gamemode.ended!=true
 
+    }
+
+    private void tellScores(HashMap<Player, Integer> scores) {
+        if (0 < scores.size()){
+            ArrayList<Map.Entry<String, Integer>> scoreList = new ArrayList<>();
+            for (Map.Entry<Player, Integer> score :
+                    scores.entrySet()) {
+                scoreList.add(new AbstractMap.SimpleEntry<>(score.getKey().getName(), score.getValue()));
+            }
+            for (Player player :
+                    playerArray) {
+                player.send(PacketType.GAME_STATE, OrderTypeLookupTable.GAME_STATE, new Order<>(scoreList));
+            }
+        }
     }
 
     private void tellEveryone(ArrayList<PlayersInput> playersInputs) {
