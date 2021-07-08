@@ -9,9 +9,9 @@ import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Map;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Map;
 
 /**
  * @author Yash
@@ -233,7 +233,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                                                                 javax.swing
                                                                                         .GroupLayout
                                                                                         .PREFERRED_SIZE,
-                                                                                100,
+                                                                                40,
                                                                                 javax.swing
                                                                                         .GroupLayout
                                                                                         .PREFERRED_SIZE)))
