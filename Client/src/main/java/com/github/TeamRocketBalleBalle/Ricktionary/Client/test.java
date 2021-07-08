@@ -1,5 +1,8 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
@@ -7,6 +10,16 @@ import java.util.Map;
 
 public class test extends JFrame {
     static JFrame frame = new JFrame();
+    static Map<String, JPanel> map = new HashMap<String, JPanel>();
+    static Logger logger = LoggerFactory.getLogger("Ricktionary.SceneSwitcher");
+
+    static {
+        map.put("gamescreen", new GameScreen());
+        map.put("loserscreen", new LoserScreen());
+        map.put("matchmakingscreen", new MatchmakingScreen());
+        map.put("winnerscreen", new winnerscreen());
+        map.put("welcomescreen", new welcomescreen());
+    }
 
     public static void main(String[] args) {
         //        sceneSwitch("welcomescreen");
@@ -21,17 +34,12 @@ public class test extends JFrame {
     }
 
     public static void sceneSwitch(String scene) {
+        logger.info("switching scene to: {}", scene);
         frame.setSize(1077, 767);
         frame.getContentPane().removeAll();
         JPanel panel = new JPanel();
-        Map<String, JPanel> map = new HashMap<String, JPanel>();
+        //        Map<String, JPanel> map = new HashMap<String, JPanel>();
         CardLayout cardLayout = new CardLayout();
-
-        map.put("gamescreen", new GameScreen());
-        map.put("loserscreen", new LoserScreen());
-        map.put("matchmakingscreen", new MatchmakingScreen());
-        map.put("winnerscreen", new winnerscreen());
-        map.put("welcomescreen", new welcomescreen());
 
         panel.setLayout(cardLayout);
         panel.add(map.get("welcomescreen"), "welcomescreen");

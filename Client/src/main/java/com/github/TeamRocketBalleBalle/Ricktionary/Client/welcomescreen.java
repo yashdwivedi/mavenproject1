@@ -6,10 +6,18 @@ package com.github.TeamRocketBalleBalle.Ricktionary.Client;
  * and open the template in the editor.
  */
 
+import com.github.TeamRocketBalleBalle.Ricktionary.Client.Networking.PlayerNetworking;
+import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.Order;
+import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.Reply;
+import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.PacketType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  *
@@ -18,7 +26,7 @@ import java.awt.event.ActionListener;
 public class welcomescreen extends javax.swing.JPanel implements ActionListener {
     JTextField name = new JTextField("Enter Your Name...");
     JTextField ip = new JTextField("Enter IP...");
-
+    static Logger logger = LoggerFactory.getLogger("Client.welcomescreen");
     static String clientname = "";
     static String clientip = "";
 
@@ -227,7 +235,15 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
     public void actionPerformed(ActionEvent e) {
         clientip = ip.getText();
         clientname = name.getText();
-        System.out.println(clientname + " " + clientip);
+        logger.info("Attempting connection to: {}", clientip);
+        try {
+            PlayerNetworking.setUpNetworking(clientip, 5000);
+            Order<?> order = PlayerNetworking.getOrder(PacketType.INITIALISE);
+            PlayerNetworking.send(PacketType.INITIALISE, order, new Reply<>(clientname));
+            GameScreen.changeName(clientname);
+        } catch (IOException exception) {
+            logger.error("Error while connecting to server", exception);
+        }
         //        new GameScreen().Name.setText(clientname);
 
     }

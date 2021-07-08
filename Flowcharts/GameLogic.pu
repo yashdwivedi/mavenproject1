@@ -1,0 +1,38 @@
+@startuml
+start
+
+:Socket Establishment -> Chat Enabled;
+:Redirect All Clients to Room;
+
+while(Is Hash Visible?) is (No)
+
+:getImageHash();
+
+endwhile(Yes)
+
+:Game.start();
+
+while(time.ended() or All Image Guessed) is (No) 
+
+if (input == answer?) then (yes)
+
+:Chat.print("{user} has guessed!");
+
+:{user}.score += 1;    
+
+:Client.Give(New Image Hash);
+
+else (No)
+
+:Chat.print(input); 
+
+:continue;
+
+endif
+
+endwhile(Yes)
+
+:Declare Winner and Loosers;
+:Show Scenes as per requirement;
+end
+@enduml

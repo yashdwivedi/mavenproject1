@@ -1,0 +1,15 @@
+@startuml
+abstract class GameMode{
+    - answer: String
+    - changeImage: boolean
+    + GameMode(answer)
+    + playTurn()
+    + setChangeImage(bool)
+    + shouldChangeImage()
+    + updateAnswer(answer)
+}
+class Classic {
+    + play()
+}
+GameMode <|-- Classic
+@enduml
