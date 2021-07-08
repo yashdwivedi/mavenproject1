@@ -1,0 +1,33 @@
+@startuml
+start
+:Send all clients show GameScreen message;
+: Sends instruction to LOAD_IMAGE;
+:Room.startSetup();
+fork
+    while (Have all clients loaded the image?) is (no :/)
+
+        switch (clientRequestsSomething (prolly in String?))
+        case (send image hash)
+            :client sends message
+            asking for imageHash;
+            :send imageHash;
+        case (i have loaded image)
+            :update that Player's
+            isLoaded = true;
+        endswitch
+    endwhile (all loaded ^-^)
+end fork
+:send GamesScene;
+:start tick count;
+while (GameMode.ended() != true)
+    if (tick < tickRate) then (yes)
+        :collect and verify and sanitise
+        user input;
+        :tick = time.now() - tickStartTime;
+    else (no)
+        :tickStartTime = time.now();
+        :GameMode.playTurn(userInput dictionary);
+    endif
+endwhile
+    :game ends (Room.endGame());
+@enduml

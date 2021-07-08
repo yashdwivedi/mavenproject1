@@ -1,0 +1,16 @@
+@startuml
+start
+:room starts;
+fork
+    :GameMode Thread;
+    while (game ended or timer runs out?)
+        :collect and verify and sanitise user input
+        during the set server tick;
+        :GameMode.playTurn(userInput dictionary);
+    endwhile
+    :game ends (GameMode.endGame());
+fork again
+    :chat thread;
+end merge
+stop
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+header GameMode InputPhase flowchart
+start
+:set nextTickTime;
+while (currentTime == nextTickTime?) is (no?)
+    :Accept data packets and store them in a queue;
+endwhile (yes) 
+:process the remaining queue
+(run some function PlayTurn());
+end
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+
+abstract class Order{
+    + static send(LoadScene, Player)
+    + static send(GameState, Player)
+}
+class OrderReply {
+    - replyingTo: Order
+    - data: Object
+}
+class ParseOrderReply{
+    + ParseOrderReply(OrderReply)
+}
+class LoadScene{
+    - MATCHMAKING_SCENE = 1
+    - LOAD_IMAGE
+    - GAME_SCENE = 2
+    - WINNER_SCENE = 3
+    - LOSER_SCENE = 4
+    ' TODO: Decide this part in Room
+}
+
+Order <|-- LoadScene
+Order <|-- GameStates
+
+
+@enduml

@@ -1,0 +1,17 @@
+api
+config
+helloo
+hemlo
+idk
+inet
+jdbc
+jpg
+Loosers
+meme
+params
+png
+prolly
+src
+wav
+whos
+yaml

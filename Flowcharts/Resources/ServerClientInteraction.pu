@@ -1,0 +1,24 @@
+@startuml
+' :ServerPacket;
+' split
+'     :ServerPacket(byte packetType, byte orderType,Order<?> orderValue);
+'     :set variables;
+' split again
+    
+' end split
+:Order Class;
+split
+    :Order(<type of value> value);
+    :super(value);
+    :super will set value in value var;
+    detach
+split again
+    :equals(that);
+    if (this.getValue()==that.getValue()?) then (yes)
+        :return true;
+    else (false)
+        :return false;
+    endif
+    detach
+end split
+@enduml
