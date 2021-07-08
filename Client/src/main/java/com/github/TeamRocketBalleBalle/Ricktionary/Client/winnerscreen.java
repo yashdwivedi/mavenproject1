@@ -51,7 +51,7 @@ public class winnerscreen extends javax.swing.JPanel {
     //    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-        ImageIcon icon = new ImageIcon("Client/src/main/resources/triggeredjantu.gif");
+        ImageIcon icon = new ImageIcon(winnerscreen.class.getResource("/triggeredjantu.gif"));
         Image img = icon.getImage();
         Image imgscale = img.getScaledInstance(1077, 767, Image.SCALE_DEFAULT);
         ImageIcon scaledIcon = new ImageIcon(imgscale);

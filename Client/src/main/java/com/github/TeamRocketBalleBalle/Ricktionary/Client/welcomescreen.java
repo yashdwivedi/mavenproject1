@@ -75,7 +75,7 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-        ImageIcon icon = new ImageIcon("Client/src/main/resources/logo.png");
+        ImageIcon icon = new ImageIcon(welcomescreen.class.getResource("/logo.png"));
         Image img = icon.getImage();
         Image imgscale = img.getScaledInstance(1077, 767, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(imgscale);

@@ -117,7 +117,7 @@ public class MatchmakingScreen extends javax.swing.JPanel {
                 );
         Rectangle rectangle = new Rectangle(1077, 767);
         ImageIcon i1;
-        i1 = new ImageIcon(("Client/src/main/resources/" + image()));
+        i1 = new ImageIcon(MatchmakingScreen.class.getResource("/" + image()));
         Image i2;
         i2 = i1.getImage().getScaledInstance(1077, 767, Image.SCALE_DEFAULT);
         ImageIcon resizedImage = new ImageIcon(i2);
