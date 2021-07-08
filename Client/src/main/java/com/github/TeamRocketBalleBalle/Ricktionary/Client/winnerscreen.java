@@ -51,9 +51,9 @@ public class winnerscreen extends javax.swing.JPanel {
     //    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-        ImageIcon icon = new ImageIcon("Client/src/main/resources/jayant.gif");
+        ImageIcon icon = new ImageIcon("Client/src/main/resources/triggeredjantu.gif");
         Image img = icon.getImage();
-        Image imgscale = img.getScaledInstance(1077, 767, Image.SCALE_SMOOTH);
+        Image imgscale = img.getScaledInstance(1077, 767, Image.SCALE_DEFAULT);
         ImageIcon scaledIcon = new ImageIcon(imgscale);
 
         back = new javax.swing.JLabel();
@@ -83,11 +83,12 @@ public class winnerscreen extends javax.swing.JPanel {
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 301,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(
-                                back,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                1080,
-                                javax.swing.GroupLayout.PREFERRED_SIZE));
+//                        .addComponent(
+//                                back,
+//                                javax.swing.GroupLayout.PREFERRED_SIZE,
+//                                1080,
+//                                javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(
@@ -106,13 +107,14 @@ public class winnerscreen extends javax.swing.JPanel {
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 154,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(
-                                back,
-                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                1010,
-                                javax.swing.GroupLayout.PREFERRED_SIZE));
-        Rectangle rect = new Rectangle(1077, 767);
-        back.setBounds(rect);
+//                        .addComponent(
+//                                back,
+//                                javax.swing.GroupLayout.PREFERRED_SIZE,
+//                                1010,
+//                                javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        back.setBounds(new Rectangle(1077, 767));
         add(back);
         // pack();
     } // </editor-fold>
