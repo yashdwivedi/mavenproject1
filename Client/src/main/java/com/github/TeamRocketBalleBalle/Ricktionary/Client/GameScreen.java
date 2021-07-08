@@ -331,7 +331,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
     private void sendChatMessage() {
         String inputText = input.getText();
-//        display.setText(display.getText()+"\n\n"+inputText);
+        //        display.setText(display.getText()+"\n\n"+inputText);
         if (inputText.length() <= 32 && !inputText.isBlank() && !inputText.isEmpty()) {
             PlayerNetworking.send(PacketType.GAME_INPUT, null, new Reply<>(inputText));
         }
