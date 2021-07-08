@@ -150,7 +150,7 @@ public class LoserScreen extends javax.swing.JPanel {
                                                                                         .GroupLayout
                                                                                         .PREFERRED_SIZE)))
                                         .addGap(216, 216, 216)));
-        ImageIcon icon1 = new ImageIcon("Client/src/main/resources/logogif.gif");
+        ImageIcon icon1 = new ImageIcon(LoserScreen.class.getResource("/logogif.gif"));
         Image img1 = icon1.getImage();
         Image imgscale1 = img1.getScaledInstance(1077, 767, Image.SCALE_DEFAULT);
         ImageIcon scaledIcon1 = new ImageIcon(imgscale1);

@@ -288,7 +288,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         Rectangle rectangle = new Rectangle(1077, 767);
         nameLabel.getAccessibleContext().setAccessibleDescription("");
         ImageIcon i1;
-        i1 = new ImageIcon(("Client/src/main/resources/bggame2.gif"));
+        i1 = new ImageIcon((GameScreen.class.getResource("/bggame2.gif")));
 
         // resize an image
         //        backGround.setBounds(rectangle);
