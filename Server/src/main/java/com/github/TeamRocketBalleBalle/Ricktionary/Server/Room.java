@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Room implements Runnable {
 
@@ -19,7 +20,7 @@ public class Room implements Runnable {
     private final int tickRate = 1000;
     private final GameMode gameMode =
             new GameMode("answer ki string value here"); // TODO: do something about this.
-    private final Queue<PlayersInput> inputs = new LinkedList<>();
+    private final Queue<PlayersInput> inputs = new ConcurrentLinkedQueue<>();
     private final HashMap<Player, Integer> scores = new HashMap<>();
 
     {
@@ -37,7 +38,7 @@ public class Room implements Runnable {
     }
 
     public boolean isReady() {
-        return playerArray.toArray().length == 1;
+        return playerArray.toArray().length == 2;
     }
 
     public void run() {
@@ -74,14 +75,17 @@ public class Room implements Runnable {
                     for (PlayersInput ignored : inputs) { // change based on IDE suggestion
                         playersInputs.add(inputs.remove());
                     }
-
-                    logger.debug("processing: {}", playersInputs);
+                    if (0 < inputs.size()) {
+                        logger.debug("processing: {}", playersInputs);
+                    }
                     for (Map.Entry<Player, Integer> entry :
                             gameMode.playTurn(playersInputs).entrySet()) {
                         int new_score = scores.getOrDefault(entry.getKey(), 0) + entry.getValue();
                         scores.put(entry.getKey(), new_score);
+                        tellScores(scores);
                     }
                     tellEveryone(playersInputs);
+
                     // load next image if someone has guessed the answer
                     if (gameMode.isNextImage()) {
                         startSetup();
@@ -103,6 +107,22 @@ public class Room implements Runnable {
         // start tick count
         // while gamemode.ended!=true
 
+    }
+
+    private void tellScores(HashMap<Player, Integer> scores) {
+        if (0 < scores.size()) {
+            ArrayList<Map.Entry<String, Integer>> scoreList = new ArrayList<>();
+            for (Map.Entry<Player, Integer> score : scores.entrySet()) {
+                scoreList.add(
+                        new AbstractMap.SimpleEntry<>(score.getKey().getName(), score.getValue()));
+            }
+            for (Player player : playerArray) {
+                player.send(
+                        PacketType.GAME_STATE,
+                        OrderTypeLookupTable.GAME_STATE,
+                        new Order<>(scoreList));
+            }
+        }
     }
 
     private void tellEveryone(ArrayList<PlayersInput> playersInputs) {

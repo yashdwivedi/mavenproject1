@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ConcurrentModificationException;
 import java.util.HashMap;
 import java.util.Queue;
 
@@ -154,6 +155,10 @@ public class Player implements Runnable {
                 break;
             } catch (ClassNotFoundException ex) {
                 logger.error("Class not found in Player", ex);
+            } catch (ConcurrentModificationException ex) {
+                logger.error("Concurrent modification exception", ex);
+            } catch (Exception ex) {
+                logger.error("FATAL exception:", ex);
             }
             try {
                 Thread.sleep(30);

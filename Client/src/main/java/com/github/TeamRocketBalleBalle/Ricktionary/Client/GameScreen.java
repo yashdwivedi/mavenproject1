@@ -9,9 +9,10 @@ import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Map;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * @author Yash
@@ -110,7 +111,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         send.setText("Submit");
         display.setLineWrap(true);
 
-        scoreLabel.setText("Score: -");
+        //        scoreLabel.setText("Score: -");
 
         Name.setText(welcomescreen.clientname);
 
@@ -233,7 +234,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                                                                 javax.swing
                                                                                         .GroupLayout
                                                                                         .PREFERRED_SIZE,
-                                                                                100,
+                                                                                60,
                                                                                 javax.swing
                                                                                         .GroupLayout
                                                                                         .PREFERRED_SIZE)))
@@ -300,6 +301,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
         //        backGround.add(bg);
         //        add(backGround);
+
         add(bg);
 
         send.addActionListener(this);
@@ -338,26 +340,19 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         input.requestFocus();
     }
 
-    public static String displayTopThree(
-            Map.Entry<String, Integer> Player1,
-            Map.Entry<String, Integer> Player2,
-            Map.Entry<String, Integer> Player3) {
-        String displayPlayers =
-                "<html>"
-                        + Player1.getKey()
-                        + " : "
-                        + Player1.getValue()
-                        + "<br/>"
-                        + Player2.getKey()
-                        + " : "
-                        + Player2.getValue()
-                        + "<br/>"
-                        + Player3.getKey()
-                        + " : "
-                        + Player3.getValue()
-                        + "</html>";
-        topThree.setText(displayPlayers);
-        return displayPlayers;
+    public static String displayTopThree(ArrayList<Map.Entry<String, Integer>> players) {
+        StringBuilder displayPlayers = new StringBuilder("<html>");
+        for (int i = 0; i < players.size() && i <= 3; i++) {
+            Map.Entry<String, Integer> player = players.get(i);
+            displayPlayers
+                    .append(player.getKey())
+                    .append(" : ")
+                    .append(player.getValue())
+                    .append("<br/>");
+        }
+        displayPlayers.append("</html>");
+        topThree.setText(displayPlayers.toString());
+        return displayPlayers.toString();
     }
 
     public static JLabel getPicture() {

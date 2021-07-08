@@ -18,9 +18,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
 
 public class PlayerNetworking {
     private static Socket socket;
@@ -91,12 +89,9 @@ public class PlayerNetworking {
                                 .append(message.getKey() + ": " + message.getValue() + "\n\n");
                     }
                     case PacketType.GAME_STATE -> {
-                        synchronized (pendingOrders) {
-                            pendingOrders.add(
-                                    new AbstractMap.SimpleEntry<>(
-                                            receivedPacket.getPacketType(),
-                                            (Order<?>) receivedPacket.getOrder().getValue()));
-                        }
+                        updateScores(
+                                (ArrayList<Map.Entry<String, Integer>>)
+                                        receivedPacket.getOrder().getValue());
                     }
                 }
             } catch (IOException exception) {
@@ -107,6 +102,18 @@ public class PlayerNetworking {
                 logger.error("Class not found", e);
             }
         }
+    }
+
+    private static void updateScores(ArrayList<Map.Entry<String, Integer>> value) {
+        value.sort(
+                (o1, o2) -> {
+                    if (o1.getValue().equals(o2.getValue())) {
+                        return 0;
+                    }
+                    return o1.getValue() < o2.getValue() ? 1 : -1;
+                });
+        logger.debug("SORTED LIST: {}", value);
+        GameScreen.displayTopThree(value);
     }
 
     public static void send(byte packetType, Order<?> replyingTo, Reply<?> reply) {
