@@ -9,6 +9,8 @@ import java.util.HashMap;
 public class GameMode {
     private String answer;
     int multiplier;
+    int imagesPlayed = 0;
+    boolean nextImage = false;
 
     public void setAnswer(String answer) {
         this.answer = answer;
@@ -19,19 +21,30 @@ public class GameMode {
     }
 
     public boolean ended() {
-        return false;
+        return imagesPlayed == 5;
     }
 
     public HashMap<Player, Integer> playTurn(ArrayList<PlayersInput> inputs) {
         // big brain game logic
         HashMap<Player, Integer> playerIntegerHashMap = new HashMap<>();
         multiplier = 10;
+        boolean imageGuessed = false;
 
         for (PlayersInput is : inputs) {
+            int roundScore = play(is.getTheirInput());
             playerIntegerHashMap.put(
                     is.getThem(),
-                    play(is.getTheirInput())); // TODO --> 2nd parameter will store the
-            // score of player
+                    roundScore);
+            // if answer, modify the original input
+            if (roundScore != 0){
+                is.setTheirInput(is.getThem().getName() + " has guessed the answer!\n\tNow guess this NEW ONE!");
+                is.setSpecialMessage(true);
+                imageGuessed = true;
+            }
+        }
+        if (imageGuessed){
+            imagesPlayed++;
+            setNextImage(true);
         }
         return playerIntegerHashMap;
     }
@@ -47,6 +60,14 @@ public class GameMode {
             }
         }
 
-        return score;
+        return score == 1 ? 0 : score;
+    }
+
+    public boolean isNextImage() {
+        return nextImage;
+    }
+
+    public void setNextImage(boolean nextImage) {
+        this.nextImage = nextImage;
     }
 }

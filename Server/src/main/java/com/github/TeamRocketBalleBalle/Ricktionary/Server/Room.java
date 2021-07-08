@@ -32,7 +32,7 @@ public class Room implements Runnable {
         player.send(
                 PacketType.LOAD_SCENE,
                 OrderTypeLookupTable.LOAD_SCENE,
-                new Order<Byte>((byte) LoadScene.MATCHMAKING_SCENE));
+                new Order<>(LoadScene.MATCHMAKING_SCENE));
         logger.debug("added {} to this room", player.getName());
     }
 
@@ -48,7 +48,7 @@ public class Room implements Runnable {
         startSetup();
 
         // send game scenes
-        Order<Byte> gameOn = new Order<Byte>((byte) LoadScene.GAME_SCENE);
+        Order<Integer> gameOn = new Order<Integer>(LoadScene.GAME_SCENE);
 
         for (Player player : playerArray) {
             player.send(PacketType.LOAD_SCENE, OrderTypeLookupTable.LOAD_SCENE, gameOn);
@@ -63,7 +63,7 @@ public class Room implements Runnable {
         logger.debug("Starting game loop");
         // Game Loop is ON 🔥🔥🔥🔥
         while (!gameMode.ended() && playerArray.size() != 0) {
-            if (tick < tickRate) {
+            if (tick <= tickRate) {
                 // TODO: sanitise input. one day
                 tick = (int) (System.currentTimeMillis() - tickStartTime);
                 //                logger.debug("waiting for tick -> inside if");
@@ -71,7 +71,7 @@ public class Room implements Runnable {
                 //                logger.debug("insdie else block");
                 synchronized (inputs) {
                     ArrayList<PlayersInput> playersInputs = new ArrayList<>();
-                    for (PlayersInput input : inputs) {
+                    for (PlayersInput ignored : inputs) { // change based on IDE suggestion
                         playersInputs.add(inputs.remove());
                     }
 
@@ -81,9 +81,14 @@ public class Room implements Runnable {
                         int new_score = scores.getOrDefault(entry.getKey(), 0) + entry.getValue();
                         scores.put(entry.getKey(), new_score);
                     }
-                    //                    logger.debug("processed input");
                     tellEveryone(playersInputs);
+                    // load next image if someone has guessed the answer
+                    if (gameMode.isNextImage()){
+                        startSetup();
+                        gameMode.setNextImage(false);
+                    }
                     tickStartTime = System.currentTimeMillis();
+                    tick = 0;
                 }
             }
             try {
@@ -103,9 +108,14 @@ public class Room implements Runnable {
     private void tellEveryone(ArrayList<PlayersInput> playersInputs) {
         for (PlayersInput value : playersInputs) {
             if (!value.getTheirInput().isBlank()) {
+                // check if this player is a winner winner?
+                String name = value.isSpecialMessage() ? "SERVER" : value.getThem().getName();
+
                 AbstractMap.SimpleEntry<String, String> chatMessage =
                         new AbstractMap.SimpleEntry<>(
-                                value.getThem().getName(), value.getTheirInput());
+                                name, value.getTheirInput());
+
+                value.setSpecialMessage(false);
                 for (Player player : playerArray) {
                     player.send(
                             PacketType.CHAT_MESSAGE,
@@ -159,6 +169,8 @@ public class Room implements Runnable {
     public void startSetup() {
         hash = getImageHash();
         logger.info("Choosen image hash: {}", hash);
+        // set game mode answer
+        gameMode.setAnswer(DbWork.getAnswer(hash));
         Order<String> imageOrder = new Order<>(hash);
         for (Player player : playerArray) {
             player.send(PacketType.LOAD_IMG, OrderTypeLookupTable.LOAD_IMAGE, imageOrder);
@@ -192,7 +204,7 @@ public class Room implements Runnable {
                                 }
 
                                 try {
-                                    Thread.sleep(100);
+                                    Thread.sleep(10);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }

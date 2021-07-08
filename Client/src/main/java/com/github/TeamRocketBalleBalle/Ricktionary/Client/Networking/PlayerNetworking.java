@@ -63,7 +63,7 @@ public class PlayerNetworking {
                         }
                     }
                     case PacketType.LOAD_SCENE -> {
-                        switch ((Byte) receivedPacket.getOrder().getValue()) {
+                        switch ((Integer) receivedPacket.getOrder().getValue()) {
                             case LoadScene.MATCHMAKING_SCENE -> test.sceneSwitch(
                                     "matchmakingscreen");
 

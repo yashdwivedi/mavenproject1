@@ -149,7 +149,7 @@ public class Player implements Runnable {
                 }
 
             } catch (IOException ex) {
-                logger.error("IOException in Player", ex);
+                logger.warn("Player: {}/{} disconnected", name, socket.getInetAddress());
                 disconnected = true;
                 break;
             } catch (ClassNotFoundException ex) {
