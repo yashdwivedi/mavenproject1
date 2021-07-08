@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Room implements Runnable {
 
@@ -19,7 +21,7 @@ public class Room implements Runnable {
     private final int tickRate = 1000;
     private final GameMode gameMode =
             new GameMode("answer ki string value here"); // TODO: do something about this.
-    private final Queue<PlayersInput> inputs = new LinkedList<>();
+    private final Queue<PlayersInput> inputs = new ConcurrentLinkedQueue<>();
     private final HashMap<Player, Integer> scores = new HashMap<>();
 
     {
@@ -81,9 +83,10 @@ public class Room implements Runnable {
                             gameMode.playTurn(playersInputs).entrySet()) {
                         int new_score = scores.getOrDefault(entry.getKey(), 0) + entry.getValue();
                         scores.put(entry.getKey(), new_score);
+                        tellScores(scores);
                     }
                     tellEveryone(playersInputs);
-                    tellScores(scores);
+
                     // load next image if someone has guessed the answer
                     if (gameMode.isNextImage()) {
                         startSetup();
