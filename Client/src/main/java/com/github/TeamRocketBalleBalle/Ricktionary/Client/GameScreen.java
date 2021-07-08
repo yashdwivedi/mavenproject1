@@ -111,7 +111,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         send.setText("Submit");
         display.setLineWrap(true);
 
-//        scoreLabel.setText("Score: -");
+        //        scoreLabel.setText("Score: -");
 
         Name.setText(welcomescreen.clientname);
 
