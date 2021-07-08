@@ -87,9 +87,9 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
         ip.setFont(new java.awt.Font("Tw Cen MT Condensed", Font.BOLD | Font.ITALIC, 18)); // NOI18N
         nameLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
         nameLabel.setText("Name");
-//        nameLabel.setForeground(Color.decode("#037AA4"));
-//        nameLabel.setOpaque(true);
-//        nameLabel.setBackground(Color.black);
+        //        nameLabel.setForeground(Color.decode("#037AA4"));
+        //        nameLabel.setOpaque(true);
+        //        nameLabel.setBackground(Color.black);
 
         ipLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
         ipLabel.setText("IP Address ");

@@ -1,11 +1,9 @@
 package com.github.TeamRocketBalleBalle.Ricktionary.Client;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.AbstractMap;
 import java.util.Map;
 
 /**
@@ -102,7 +100,6 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         scoreLabel.setText("Score: -");
 
         Name.setText(welcomescreen.clientname);
-
 
         display.setLineWrap(true);
 
@@ -289,8 +286,6 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         //        add(backGround);
         add(bg);
 
-
-
         send.addActionListener(this);
 
         //        pack();
@@ -305,8 +300,25 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         input.setText("");
         input.requestFocus();
     }
-    public static String displayTopThree(Map.Entry<String, Integer> Player1, Map.Entry<String, Integer> Player2, Map.Entry<String, Integer> Player3){
-        String displayPlayers = "<html>"+Player1.getKey()+" : "+Player1.getValue()+ "<br/>"+ Player2.getKey()+" : "+Player2.getValue()+ "<br/>"+Player3.getKey()+" : "+Player3.getValue()+"</html>";
+
+    public static String displayTopThree(
+            Map.Entry<String, Integer> Player1,
+            Map.Entry<String, Integer> Player2,
+            Map.Entry<String, Integer> Player3) {
+        String displayPlayers =
+                "<html>"
+                        + Player1.getKey()
+                        + " : "
+                        + Player1.getValue()
+                        + "<br/>"
+                        + Player2.getKey()
+                        + " : "
+                        + Player2.getValue()
+                        + "<br/>"
+                        + Player3.getKey()
+                        + " : "
+                        + Player3.getValue()
+                        + "</html>";
         topThree.setText(displayPlayers);
         return displayPlayers;
     }

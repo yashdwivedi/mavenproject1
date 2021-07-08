@@ -83,12 +83,12 @@ public class winnerscreen extends javax.swing.JPanel {
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 301,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-//                        .addComponent(
-//                                back,
-//                                javax.swing.GroupLayout.PREFERRED_SIZE,
-//                                1080,
-//                                javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+                //                        .addComponent(
+                //                                back,
+                //                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                //                                1080,
+                //                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(
@@ -107,12 +107,12 @@ public class winnerscreen extends javax.swing.JPanel {
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 154,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-//                        .addComponent(
-//                                back,
-//                                javax.swing.GroupLayout.PREFERRED_SIZE,
-//                                1010,
-//                                javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+                //                        .addComponent(
+                //                                back,
+                //                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                //                                1010,
+                //                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                );
 
         back.setBounds(new Rectangle(1077, 767));
         add(back);
