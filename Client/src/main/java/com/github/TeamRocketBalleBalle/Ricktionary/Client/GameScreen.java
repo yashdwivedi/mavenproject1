@@ -5,6 +5,7 @@ import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Comms.Reply;
 import com.github.TeamRocketBalleBalle.Ricktionary.Resources.Constants.PacketType;
 
 import javax.swing.*;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -297,6 +298,8 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         ImageIcon resizedImage = new ImageIcon(i2);
         bg.setIcon(resizedImage);
         bg.setBounds(rectangle);
+        DefaultCaret caret = (DefaultCaret) display.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
         //        backGround.add(bg);
         //        add(backGround);
         add(bg);
@@ -328,6 +331,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
 
     private void sendChatMessage() {
         String inputText = input.getText();
+//        display.setText(display.getText()+"\n\n"+inputText);
         if (inputText.length() <= 32 && !inputText.isBlank() && !inputText.isEmpty()) {
             PlayerNetworking.send(PacketType.GAME_INPUT, null, new Reply<>(inputText));
         }
