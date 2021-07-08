@@ -233,7 +233,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
                                                                                 javax.swing
                                                                                         .GroupLayout
                                                                                         .PREFERRED_SIZE,
-                                                                                40,
+                                                                                60,
                                                                                 javax.swing
                                                                                         .GroupLayout
                                                                                         .PREFERRED_SIZE)))
@@ -300,6 +300,7 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
         //        backGround.add(bg);
         //        add(backGround);
+
         add(bg);
 
         send.addActionListener(this);
