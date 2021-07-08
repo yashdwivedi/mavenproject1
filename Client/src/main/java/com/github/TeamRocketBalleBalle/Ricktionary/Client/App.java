@@ -5,6 +5,6 @@ import java.awt.*;
 
 public class App {
     public static void main(String[] args) {
-        test.sceneSwitch("gamescreen");
+        test.sceneSwitch("welcomescreen");
     }
 }
