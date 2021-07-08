@@ -32,17 +32,17 @@ public class GameMode {
 
         for (PlayersInput is : inputs) {
             int roundScore = play(is.getTheirInput());
-            playerIntegerHashMap.put(
-                    is.getThem(),
-                    roundScore);
+            playerIntegerHashMap.put(is.getThem(), roundScore);
             // if answer, modify the original input
-            if (roundScore != 0){
-                is.setTheirInput(is.getThem().getName() + " has guessed the answer!\n\tNow guess this NEW ONE!");
+            if (roundScore != 0) {
+                is.setTheirInput(
+                        is.getThem().getName()
+                                + " has guessed the answer!\n\tNow guess this NEW ONE!");
                 is.setSpecialMessage(true);
                 imageGuessed = true;
             }
         }
-        if (imageGuessed){
+        if (imageGuessed) {
             imagesPlayed++;
             setNextImage(true);
         }

@@ -83,7 +83,7 @@ public class Room implements Runnable {
                     }
                     tellEveryone(playersInputs);
                     // load next image if someone has guessed the answer
-                    if (gameMode.isNextImage()){
+                    if (gameMode.isNextImage()) {
                         startSetup();
                         gameMode.setNextImage(false);
                     }
@@ -112,8 +112,7 @@ public class Room implements Runnable {
                 String name = value.isSpecialMessage() ? "SERVER" : value.getThem().getName();
 
                 AbstractMap.SimpleEntry<String, String> chatMessage =
-                        new AbstractMap.SimpleEntry<>(
-                                name, value.getTheirInput());
+                        new AbstractMap.SimpleEntry<>(name, value.getTheirInput());
 
                 value.setSpecialMessage(false);
                 for (Player player : playerArray) {
