@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Room implements Runnable {
@@ -76,7 +75,7 @@ public class Room implements Runnable {
                     for (PlayersInput ignored : inputs) { // change based on IDE suggestion
                         playersInputs.add(inputs.remove());
                     }
-                    if ( 0 < inputs.size()) {
+                    if (0 < inputs.size()) {
                         logger.debug("processing: {}", playersInputs);
                     }
                     for (Map.Entry<Player, Integer> entry :
@@ -111,15 +110,17 @@ public class Room implements Runnable {
     }
 
     private void tellScores(HashMap<Player, Integer> scores) {
-        if (0 < scores.size()){
+        if (0 < scores.size()) {
             ArrayList<Map.Entry<String, Integer>> scoreList = new ArrayList<>();
-            for (Map.Entry<Player, Integer> score :
-                    scores.entrySet()) {
-                scoreList.add(new AbstractMap.SimpleEntry<>(score.getKey().getName(), score.getValue()));
+            for (Map.Entry<Player, Integer> score : scores.entrySet()) {
+                scoreList.add(
+                        new AbstractMap.SimpleEntry<>(score.getKey().getName(), score.getValue()));
             }
-            for (Player player :
-                    playerArray) {
-                player.send(PacketType.GAME_STATE, OrderTypeLookupTable.GAME_STATE, new Order<>(scoreList));
+            for (Player player : playerArray) {
+                player.send(
+                        PacketType.GAME_STATE,
+                        OrderTypeLookupTable.GAME_STATE,
+                        new Order<>(scoreList));
             }
         }
     }

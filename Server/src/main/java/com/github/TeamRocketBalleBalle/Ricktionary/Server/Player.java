@@ -157,8 +157,7 @@ public class Player implements Runnable {
                 logger.error("Class not found in Player", ex);
             } catch (ConcurrentModificationException ex) {
                 logger.error("Concurrent modification exception", ex);
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 logger.error("FATAL exception:", ex);
             }
             try {

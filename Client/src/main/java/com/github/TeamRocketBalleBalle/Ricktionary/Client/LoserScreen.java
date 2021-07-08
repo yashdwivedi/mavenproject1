@@ -159,9 +159,10 @@ public class LoserScreen extends javax.swing.JPanel {
         BackGround.setIcon(scaledIcon1);
         add(BackGround);
 
-        mainmenu.addActionListener((event) -> {
-            test.sceneSwitch("welcomescreen");
-        });
+        mainmenu.addActionListener(
+                (event) -> {
+                    test.sceneSwitch("welcomescreen");
+                });
         // pack();
     } // </editor-fold>
     // End of variables declaration

@@ -344,8 +344,11 @@ public class GameScreen extends javax.swing.JPanel implements ActionListener {
         StringBuilder displayPlayers = new StringBuilder("<html>");
         for (int i = 0; i < players.size() && i <= 3; i++) {
             Map.Entry<String, Integer> player = players.get(i);
-            displayPlayers.append(player.getKey()).append(" : ").append(player.getValue()).append("<br/>");
-
+            displayPlayers
+                    .append(player.getKey())
+                    .append(" : ")
+                    .append(player.getValue())
+                    .append("<br/>");
         }
         displayPlayers.append("</html>");
         topThree.setText(displayPlayers.toString());

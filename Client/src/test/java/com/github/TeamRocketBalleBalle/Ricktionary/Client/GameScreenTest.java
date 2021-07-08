@@ -18,9 +18,7 @@ class GameScreenTest {
         inputs.add(new AbstractMap.SimpleEntry("p2", 75));
         inputs.add(new AbstractMap.SimpleEntry("p3", 50));
 
-
-        String output =
-                GameScreen.displayTopThree(inputs);
+        String output = GameScreen.displayTopThree(inputs);
         String expected = "<html>p1 : 100<br/>p2 : 75<br/>p3 : 50<br/></html>";
         assertEquals(expected, output);
     }

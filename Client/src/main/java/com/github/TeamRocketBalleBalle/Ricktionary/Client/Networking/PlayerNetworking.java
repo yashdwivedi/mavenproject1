@@ -89,7 +89,9 @@ public class PlayerNetworking {
                                 .append(message.getKey() + ": " + message.getValue() + "\n\n");
                     }
                     case PacketType.GAME_STATE -> {
-                        updateScores((ArrayList<Map.Entry<String, Integer>>)receivedPacket.getOrder().getValue());
+                        updateScores(
+                                (ArrayList<Map.Entry<String, Integer>>)
+                                        receivedPacket.getOrder().getValue());
                     }
                 }
             } catch (IOException exception) {
@@ -103,15 +105,15 @@ public class PlayerNetworking {
     }
 
     private static void updateScores(ArrayList<Map.Entry<String, Integer>> value) {
-        value.sort((o1, o2) -> {
-            if (o1.getValue().equals(o2.getValue())) {
-                return 0;
-            }
-            return o1.getValue() < o2.getValue() ? 1 : -1;
-        });
+        value.sort(
+                (o1, o2) -> {
+                    if (o1.getValue().equals(o2.getValue())) {
+                        return 0;
+                    }
+                    return o1.getValue() < o2.getValue() ? 1 : -1;
+                });
         logger.debug("SORTED LIST: {}", value);
         GameScreen.displayTopThree(value);
-
     }
 
     public static void send(byte packetType, Order<?> replyingTo, Reply<?> reply) {
