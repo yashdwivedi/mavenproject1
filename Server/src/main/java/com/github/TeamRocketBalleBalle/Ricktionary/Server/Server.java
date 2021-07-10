@@ -9,13 +9,11 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Server {
-    String ip;
     int port;
     private final Logger logger;
     private final ArrayList<Room> rooms = new ArrayList<Room>();
 
-    public Server(String ip, int port) {
-        this.ip = ip;
+    public Server(int port) {
         this.port = port;
         logger = LoggerFactory.getLogger("Ricktionary.Server");
         // add shutdown hook
@@ -32,7 +30,7 @@ public class Server {
     }
 
     public Server() {
-        this("127.0.0.1", 5000);
+        this(5000);
     }
 
     public static void main(String[] args) {
