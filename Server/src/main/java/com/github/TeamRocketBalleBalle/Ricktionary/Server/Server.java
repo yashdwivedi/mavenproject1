@@ -12,6 +12,12 @@ public class Server {
     int port;
     private final Logger logger;
     private final ArrayList<Room> rooms = new ArrayList<Room>();
+    private int noOfPlayers = 2;
+
+    public Server(int port, int noOfPlayers){
+        this(port);
+        this.noOfPlayers = noOfPlayers;
+    }
 
     public Server(int port) {
         this.port = port;
@@ -39,10 +45,10 @@ public class Server {
 
     public void listen() {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
-            logger.info("server started on port {}", port);
+            logger.info("server started on port {} with {} player list", port, noOfPlayers);
 
             // add the new Room to the list
-            rooms.add(new Room());
+            rooms.add(new Room(noOfPlayers));
 
             while (true) {
                 Room currentRoom = rooms.get(0);
@@ -62,7 +68,7 @@ public class Server {
                 if (currentRoom.isReady()) {
                     Thread thread = new Thread(currentRoom);
                     thread.start();
-                    rooms.add(0, new Room());
+                    rooms.add(0, new Room(noOfPlayers));
                 }
             }
         } catch (IOException ex) {

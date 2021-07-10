@@ -17,14 +17,24 @@ public class Room implements Runnable {
     private final Logger logger;
     private final ArrayList<Player> playerArray = new ArrayList<Player>();
     private String hash;
-    private final int tickRate = 1000;
+    private final int tickRate = 100;
     private final GameMode gameMode =
             new GameMode("answer ki string value here"); // TODO: do something about this.
     private final Queue<PlayersInput> inputs = new ConcurrentLinkedQueue<>();
     private final HashMap<Player, Integer> scores = new HashMap<>();
+    public final int noOfPlayers;
+    private final ArrayList<String> playedHashes = new ArrayList<>();
 
     {
         logger = LoggerFactory.getLogger("Ricktionary.Server.Room");
+    }
+
+    public Room(int noOfPlayers){
+        this.noOfPlayers = noOfPlayers;
+        playedHashes.add("5B2A0BEE0CDB90BB2CABA07AD59D0E95");
+    }
+    public Room() {
+        this(2);
     }
 
     public void add(Player player) {
@@ -34,11 +44,11 @@ public class Room implements Runnable {
                 PacketType.LOAD_SCENE,
                 OrderTypeLookupTable.LOAD_SCENE,
                 new Order<>(LoadScene.MATCHMAKING_SCENE));
-        logger.debug("added {} to this room", player.getName());
+        logger.info("added {} to this room", player.getName());
     }
 
     public boolean isReady() {
-        return playerArray.toArray().length == 2;
+        return playerArray.toArray().length == noOfPlayers;
     }
 
     public void run() {
@@ -177,10 +187,11 @@ public class Room implements Runnable {
 
         ArrayList<String> hash = DbWork.getListOfHashes(); // function to be implemented that
         //         will send an array of all the hashes of images from the database
+        hash.removeAll(playedHashes);
         int lengthOfHash = hash.size();
 
         String choosenHash = hash.get(rand.nextInt(lengthOfHash));
-
+        playedHashes.add(choosenHash);
         logger.debug("choosenHash {}", choosenHash);
         return choosenHash;
     }

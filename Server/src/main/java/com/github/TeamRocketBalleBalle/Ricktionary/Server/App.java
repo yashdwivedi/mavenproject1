@@ -7,7 +7,9 @@ public class App {
         Server server = null;
         if (args.length == 1) {
             server = new Server(Integer.parseInt(args[0]));
-        } else if (args.length > 1) {
+        } else if (args.length == 2) {
+            server = new Server(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+        } else if (args.length > 2) {
             System.out.println("wrong.");
             System.exit(1);
         } else {
