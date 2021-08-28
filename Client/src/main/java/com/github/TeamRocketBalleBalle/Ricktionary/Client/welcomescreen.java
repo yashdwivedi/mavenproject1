@@ -29,6 +29,8 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
     static Logger logger = LoggerFactory.getLogger("Client.welcomescreen");
     static String clientname = "";
     static String clientip = "";
+    JLabel portLabel = new JLabel("Port");
+    JTextField port = new JTextField("5000");
 
     /**
      * Creates new form NewJFrame
@@ -81,8 +83,8 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
         ImageIcon scaledIcon = new ImageIcon(imgscale);
         // Variables declaration - do not modify
 
-        JLabel nameLabel = new JLabel();
-        JLabel ipLabel = new JLabel();
+        JLabel nameLabel = new JLabel("Name");
+        JLabel ipLabel = new JLabel("IP Address");
         JButton sendButton = new JButton();
         JLabel bg = new JLabel(scaledIcon);
         // JLabel jLabel3 = new javax.swing.JLabel();
@@ -94,13 +96,14 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
         name.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         ip.setFont(new java.awt.Font("Tw Cen MT Condensed", Font.BOLD | Font.ITALIC, 18)); // NOI18N
         nameLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
-        nameLabel.setText("Name");
+        portLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18));
+        port.setFont(new java.awt.Font("Tw Cen MT Condensed", Font.BOLD | Font.ITALIC, 18));
         //        nameLabel.setForeground(Color.decode("#037AA4"));
         //        nameLabel.setOpaque(true);
         //        nameLabel.setBackground(Color.black);
 
         ipLabel.setFont(new java.awt.Font("Gabriola", Font.BOLD, 18)); // NOI18N
-        ipLabel.setText("IP Address ");
+        //        ipLabel.setText("IP Address ");
 
         sendButton.setText("SUBMIT");
 
@@ -156,12 +159,26 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 130,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                //                        .addComponent(
-                //                                bg,
-                //                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                //                                1077,
-                //                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                        //                        .addComponent(
+                        //                                bg,
+                        //                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                        //                                1077,
+                        //                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(
+                                layout.createSequentialGroup()
+                                        .addGap(310, 310, 310)
+                                        .addComponent(
+                                                portLabel,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                68,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(222, 222, 222)
+                                        .addComponent(
+                                                port,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                153,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addContainerGap(427, Short.MAX_VALUE)));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         //                        .addGroup(
@@ -216,12 +233,35 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 60,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE))
-                //                        .addComponent(
-                //                                bg,
-                //                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                //                                767,
-                //                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                        //                        .addComponent(
+                        //                                bg,
+                        //                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                        //                                767,
+                        //                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(
+                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                layout.createSequentialGroup()
+                                        .addContainerGap(449, Short.MAX_VALUE)
+                                        .addGroup(
+                                                layout.createParallelGroup(
+                                                                javax.swing.GroupLayout.Alignment
+                                                                        .BASELINE)
+                                                        .addComponent(
+                                                                portLabel,
+                                                                javax.swing.GroupLayout
+                                                                        .PREFERRED_SIZE,
+                                                                60,
+                                                                javax.swing.GroupLayout
+                                                                        .PREFERRED_SIZE)
+                                                        .addComponent(
+                                                                port,
+                                                                javax.swing.GroupLayout
+                                                                        .PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout
+                                                                        .DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout
+                                                                        .PREFERRED_SIZE))
+                                        .addGap(320, 320, 320)));
         bg.setBounds(new Rectangle(1077, 767));
         bg.setIcon(scaledIcon);
         add(bg);
@@ -237,7 +277,7 @@ public class welcomescreen extends javax.swing.JPanel implements ActionListener 
         clientname = name.getText();
         logger.info("Attempting connection to: {}", clientip);
         try {
-            PlayerNetworking.setUpNetworking(clientip, 5000);
+            PlayerNetworking.setUpNetworking(clientip, Integer.parseInt(port.getText()));
             Order<?> order = PlayerNetworking.getOrder(PacketType.INITIALISE);
             PlayerNetworking.send(PacketType.INITIALISE, order, new Reply<>(clientname));
             GameScreen.changeName(clientname);
